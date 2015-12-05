@@ -1,0 +1,1024 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NAVIS</name>
+    </assembly>
+    <members>
+        <member name="T:NAVIS.cAedat16">
+            <summary>
+            Class for working with aedat files with 16-bit address size
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.#ctor(System.String)">
+            <summary>
+            Loads a file and stores it in aedatFileRows. The file can either have .aedat or .csv extension
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.saveAedat(System.String,System.Collections.Generic.List{NAVIS.cAedatRow16})">
+            <summary>
+            Save the loaded information to an aedat file.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.adaptAedat">
+            <summary>
+            Substracts the minimum timestamp on the file to every event, moving the entire information to the start of the chart.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.getValues">
+            <summary>
+            Return the event information of the file
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.dataBetweenTimestamps(System.Int64,System.Int64)">
+            <summary>
+            Returns an event list with those who are in the range [rangeInit, rangeEnd]on the original file.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.eventsFiredForEachChannel(System.Collections.Generic.List{NAVIS.cAedatRow16})">
+            <summary>
+            Returns an array with the number of events fired for each address, based on the list that is used as a parameter.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.eventsFiredTotal(System.Collections.Generic.List{NAVIS.cAedatRow16})">
+            <summary>
+            Returns the total number of events that are stored in the list used as a parameter.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.maxValueSonogram">
+            <summary>
+            Returns the maximum value of the sonogram after calculating it.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.generateBitmap(System.String,System.Int32)">
+            <summary>
+            Generates the sonogram for the loaded file.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.diff2(System.String,System.Int32)">
+            <summary>
+            Generates the disparity between cochleae fo the loaded file
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.AERSplitter(System.Int32,System.Int32)">
+            <summary>
+            Generates splits using the noise tolerance and noise threshold values from the input parameters.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.averageBetweenTimestamps(System.Int64,System.Int64)">
+            <summary>
+            Returns the average activity for both cochleae within the [init, end] timestamp range
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.AERSplitterManual(System.Int32,System.Int32,System.String)">
+            <summary>
+            Saves a new aedat file with the events within the [init, end] timestamp range to the path chosen by the user
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat16.saveStereoToMono(System.String,System.Collections.Generic.List{NAVIS.cAedatRow16})">
+            <summary>
+            Saves the mono information taken from an stereo sound to an aedat file
+            </summary>
+        </member>
+        <member name="T:NAVIS.Controls.CustomSlider">
+            <summary>
+            CustomSlider
+            </summary>
+        </member>
+        <member name="M:NAVIS.Controls.CustomSlider.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Controls.NumericUpDown">
+            <summary>
+            NumericUpDown
+            </summary>
+        </member>
+        <member name="M:NAVIS.Controls.NumericUpDown.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:NAVIS.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:NAVIS.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:NAVIS.Properties.Resources.ImgLocation">
+            <summary>
+              Looks up a localized string similar to pack://application:,,,/Resources.
+            </summary>
+        </member>
+        <member name="P:NAVIS.Properties.Resources.OKClicked">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:NAVIS.Properties.Resources.OKUnclicked">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:NAVIS.Properties.Resources.saveImageClicked">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:NAVIS.Properties.Resources.saveImageUnclicked">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:NAVIS.Screens.AedatSplitterAutoWindow">
+            <summary>
+            Automatic Aedat Splitter window. Lets the user change the values of Noise tolerance and Noise threshold before starting the process
+            </summary>
+            <summary>
+            AedatSplitterAutoWindow
+            </summary>
+        </member>
+        <member name="M:NAVIS.Screens.AedatSplitterAutoWindow.#ctor">
+            <summary>
+            Automatic Aedat Splitter empty constructor
+            </summary>
+        </member>
+        <member name="M:NAVIS.Screens.AedatSplitterAutoWindow.Btn_Split_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Split click event. Splits the loaded aedat file using the values of Noise Tolerance and Noise Threshold selected by the user. After the process is completed, the user is asked if he wants to see the cochleogram for every split that was generated.
+            </summary>
+        </member>
+        <member name="M:NAVIS.Screens.AedatSplitterAutoWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Screens.CochleogramSplit">
+            <summary>
+            Cochleogram split window. Shows the cochleogram of the splitted aedat file after the Automatic Aedat Splitter process.
+            </summary>
+            <summary>
+            CochleogramSplit
+            </summary>
+        </member>
+        <member name="M:NAVIS.Screens.CochleogramSplit.#ctor(System.String)">
+            <summary>
+            Loads an aedat file (split) from a path and displays its cochleogram
+            </summary>
+        </member>
+        <member name="M:NAVIS.Screens.CochleogramSplit.displayCochleogram">
+            <summary>
+            Displays the cochleogram of the file in the chart
+            </summary>
+        </member>
+        <member name="M:NAVIS.Screens.CochleogramSplit.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Average">
+            <summary>
+            Average activity window.
+            </summary>
+            <summary>
+            Average
+            </summary>
+        </member>
+        <member name="M:NAVIS.Average.#ctor">
+            <summary>
+            Average activity empty constructor
+            </summary>
+        </member>
+        <member name="M:NAVIS.Average.B_saveImage_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Saves an image with the diagram that is being displayed in the average activity chart
+            </summary>
+        </member>
+        <member name="M:NAVIS.Average.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Difference">
+            <summary>
+            Disparity between cochleas window
+            </summary>
+            <summary>
+            Difference
+            </summary>
+        </member>
+        <member name="M:NAVIS.Difference.#ctor">
+            <summary>
+            Disparity between cochleas empty constructor
+            </summary>
+        </member>
+        <member name="M:NAVIS.Difference.SB_maxValue_valueChanged(System.Object,System.EventArgs)">
+            <summary>
+            Updates the chart with the new maxValue (saturation) on load
+            </summary>
+        </member>
+        <member name="M:NAVIS.Difference.SB_maxValue_dragCompletedScroll(System.Object,System.EventArgs)">
+            <summary>
+            Updates the chart with the new maxValue (saturation) when the user scrolls the scrollbar
+            </summary>
+        </member>
+        <member name="M:NAVIS.Difference.Btn_resetToDefault_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Resets the chart to the default value.
+            </summary>
+        </member>
+        <member name="M:NAVIS.Difference.Btn_saveImage_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Saves an image with the disparity between cochleae chart information
+            </summary>
+        </member>
+        <member name="M:NAVIS.Difference.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Histogram">
+            <summary>
+            Histogram window
+            </summary>
+            <summary>
+            Histogram
+            </summary>
+        </member>
+        <member name="M:NAVIS.Histogram.#ctor">
+            <summary>
+            Histogram empty constructor
+            </summary>
+        </member>
+        <member name="M:NAVIS.Histogram.CB_normalized_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Normalized checkbox checkedChange event. Swaps between showing the normalized histogram or not.
+            </summary>
+        </member>
+        <member name="M:NAVIS.Histogram.B_saveImage_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save image click event. Saves an image with the information shown in the histogram chart.
+            </summary>
+        </member>
+        <member name="M:NAVIS.Histogram.B_exportCSV_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Export click event. Creates a CSV file with the information from the histogram.
+            </summary>
+        </member>
+        <member name="M:NAVIS.Histogram.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.InfoWindow">
+            <summary>
+            Information message window. Used to show some message to the user.
+            </summary>
+            <summary>
+            InfoWindow
+            </summary>
+        </member>
+        <member name="M:NAVIS.InfoWindow.#ctor(System.String,System.String)">
+            <summary>
+            Shows a message to the user with some information.
+            </summary>
+        </member>
+        <member name="M:NAVIS.InfoWindow.Btn_OK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            OK button click event. Closes the information window.
+            </summary>
+        </member>
+        <member name="M:NAVIS.InfoWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.About">
+            <summary>
+            About
+            </summary>
+        </member>
+        <member name="M:NAVIS.About.#ctor">
+            <summary>
+            About window. Shows information about the author and the software
+            </summary>
+        </member>
+        <member name="M:NAVIS.About.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Sonogram">
+            <summary>
+            Sonogram window
+            </summary>
+            <summary>
+            Sonogram
+            </summary>
+        </member>
+        <member name="M:NAVIS.Sonogram.#ctor">
+            <summary>
+            Sonogram empty constructor
+            </summary>
+        </member>
+        <member name="M:NAVIS.Sonogram.Btn_saveImage_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save image button click event. Saves an image with the sonogram that is displayed in the chart.
+            </summary>
+        </member>
+        <member name="M:NAVIS.Sonogram.Btn_resetToDefault_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            ResetToDefault button click event. Reset the sonogram to its initial state.
+            </summary>
+        </member>
+        <member name="M:NAVIS.Sonogram.SB_maxValue_valueChanged(System.Object,System.EventArgs)">
+            <summary>
+            Updates the chart with the new maxValue (saturation) on load
+            </summary>
+        </member>
+        <member name="M:NAVIS.Sonogram.SB_maxValue_dragCompletedScroll(System.Object,System.EventArgs)">
+            <summary>
+            Updates the chart with the new maxValue (saturation) when the user scrolls the scrollbar
+            </summary>
+        </member>
+        <member name="M:NAVIS.Sonogram.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.MainS">
+            <summary>
+            Main settings class
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainS.#ctor">
+            <summary>
+            Main settings empty constructor
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainS.#ctor(System.Int32,NAVIS.EnumColor,NAVIS.EnumColor,System.Boolean,System.Int32,System.Int32,System.Int32,NAVIS.EnumAudio)">
+            <summary>
+            Main settings constructor with parameters
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainS.toXML(System.Xml.XmlTextWriter)">
+            <summary>
+            Main settings export to XML
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainS.fromXML(System.Xml.Linq.XElement)">
+            <summary>
+            Main settings read from XML
+            </summary>
+        </member>
+        <member name="T:NAVIS.ToolsS">
+            <summary>
+            Tools settings class
+            </summary>
+        </member>
+        <member name="M:NAVIS.ToolsS.#ctor">
+            <summary>
+            Tools settings empty constructor
+            </summary>
+        </member>
+        <member name="M:NAVIS.ToolsS.#ctor(NAVIS.EnumSize,System.Int64,System.Int32,System.Int32)">
+            <summary>
+            Tools settings constructor with parameters
+            </summary>
+        </member>
+        <member name="M:NAVIS.ToolsS.toXML(System.Xml.XmlTextWriter)">
+            <summary>
+            Tools settings export to XML
+            </summary>
+        </member>
+        <member name="M:NAVIS.ToolsS.fromXML(System.Xml.Linq.XElement)">
+            <summary>
+            Tools settings read from XML
+            </summary>
+        </member>
+        <member name="T:NAVIS.PdfS">
+            <summary>
+            PDF settings class
+            </summary>
+        </member>
+        <member name="M:NAVIS.PdfS.#ctor">
+            <summary>
+            PDF settings empty constructor
+            </summary>
+        </member>
+        <member name="M:NAVIS.PdfS.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            PDF settings constructor with parameters
+            </summary>
+        </member>
+        <member name="M:NAVIS.PdfS.toXML(System.Xml.XmlTextWriter)">
+            <summary>
+            PDF settings export to XML
+            </summary>
+        </member>
+        <member name="M:NAVIS.PdfS.fromXML(System.Xml.Linq.XElement)">
+            <summary>
+            PDF settings read from XML
+            </summary>
+        </member>
+        <member name="T:NAVIS.ToolbarS">
+            <summary>
+            Toolbar settings class
+            </summary>
+        </member>
+        <member name="M:NAVIS.ToolbarS.#ctor">
+            <summary>
+            Toolbar settings empty constructor
+            </summary>
+        </member>
+        <member name="M:NAVIS.ToolbarS.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Toolbar settings constructor with parameters
+            </summary>
+        </member>
+        <member name="M:NAVIS.ToolbarS.toXML(System.Xml.XmlTextWriter)">
+            <summary>
+            Toolbar settings export to XML
+            </summary>
+        </member>
+        <member name="M:NAVIS.ToolbarS.fromXML(System.Xml.Linq.XElement)">
+            <summary>
+            Toolbar settings read from XML
+            </summary>
+        </member>
+        <member name="T:NAVIS.cSettings">
+            <summary>
+            Settings class. Includes the other four settings classes (Tools, PDF, Toolbar and Main)
+            </summary>
+        </member>
+        <member name="M:NAVIS.cSettings.#ctor">
+            <summary>
+            Settings empty constructor
+            </summary>
+        </member>
+        <member name="M:NAVIS.cSettings.saveSettingsToFile(System.String)">
+            <summary>
+            Save settings to file. Has a parameter to specify the output filename
+            </summary>
+        </member>
+        <member name="M:NAVIS.cSettings.saveSettingsToFile">
+            <summary>
+            Save settings to the default settings file.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cSettings.loadSettingsFromFile(System.String)">
+            <summary>
+            Load settings from the file specified with the input parameter
+            </summary>
+        </member>
+        <member name="M:NAVIS.cSettings.loadSettingsFromFile">
+            <summary>
+            Load settings from the default settings path
+            </summary>
+        </member>
+        <member name="M:NAVIS.cSettings.Clone">
+            <summary>
+            Settings clone
+            </summary>
+        </member>
+        <member name="T:NAVIS.Settings.saveSettingsBar">
+            <summary>
+            Save settings bar usercontrol for the Settings window
+            </summary>
+            <summary>
+            saveSettingsBar
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.saveSettingsBar._btSave_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save settings to the default path
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.saveSettingsBar._btSaveAs_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save settings to a path chosen by the user
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.saveSettingsBar._btRestore_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Restore settings to its latest saved values
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.saveSettingsBar._btLoad_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Load settings from a path chosen by the user
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.saveSettingsBar.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Settings.Settings">
+            <summary>
+            Settings window. Allows the user to navigate trough the different settings and load, modify and save them.
+            </summary>
+            <summary>
+            Settings
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.Settings.updateFormFromSettings">
+            <summary>
+            Update the Settings form with the values taken from the output file Settings.xml.
+            </summary> 
+        </member>
+        <member name="M:NAVIS.Settings.Settings.updateSettingsFromForm">
+            <summary>
+            Updates Settings.xml output file with the values taken from the Settings form.
+            </summary> 
+        </member>
+        <member name="M:NAVIS.Settings.Settings.B_LoadConfig_Click(System.Object,System.EventArgs)">
+            <summary>
+            Loads Config click event. Loads a Settings file from a path chosen by the user
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.Settings.B_Reload_Default_Click(System.Object,System.EventArgs)">
+            <summary>
+            Reload to default click event. Restores settings values from the last time that they were saved.
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.Settings.B_Save_As_Click(System.Object,System.EventArgs)">
+            <summary>
+            Save as click event. Saves a settings xml file in a path chosen by the user
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.Settings.B_Save_As_Default_Click(System.Object,System.EventArgs)">
+            <summary>
+            Save as default click event. Saves the current state of the settings in the default path.
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.Settings.tabControlConfig_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Changes the content of the tooltip that the Help button shows depending of which tab is selected.
+            </summary> 
+        </member>
+        <member name="M:NAVIS.Settings.Settings.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Settings.uMain">
+            <summary>
+            uMain
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.uMain.#ctor">
+            <summary>
+            User control to show the Main settings
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uMain.ChB_ShowCoch">
+            <summary>
+            ChB_ShowCoch Name Field
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.uMain.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Settings.uPDF">
+            <summary>
+            User control to show the PDF settings
+            </summary>
+            <summary>
+            uPDF
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uPDF.chb_showDate">
+            <summary>
+            chb_showDate Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uPDF.chb_showCochleogram">
+            <summary>
+            chb_showCochleogram Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uPDF.chb_showHistogram">
+            <summary>
+            chb_showHistogram Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uPDF.chb_showSonogram">
+            <summary>
+            chb_showSonogram Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uPDF.chb_showAverage">
+            <summary>
+            chb_showAverage Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uPDF.chb_showDiff">
+            <summary>
+            chb_showDiff Name Field
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.uPDF.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Settings.uToolbar">
+            <summary>
+            User control to show the Toolbar settings
+            </summary>
+            <summary>
+            uToolbar
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uToolbar.chb_LoadAedat">
+            <summary>
+            chb_LoadAedat Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uToolbar.chb_Settings">
+            <summary>
+            chb_Settings Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uToolbar.chb_About">
+            <summary>
+            chb_About Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uToolbar.chb_GeneratePDF">
+            <summary>
+            chb_GeneratePDF Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uToolbar.chb_GenerateCSV">
+            <summary>
+            chb_GenerateCSV Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uToolbar.chb_Sonogram">
+            <summary>
+            chb_Sonogram Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uToolbar.chb_Histogram">
+            <summary>
+            chb_Histogram Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uToolbar.chb_Average">
+            <summary>
+            chb_Average Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uToolbar.chb_Diff">
+            <summary>
+            chb_Diff Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uToolbar.chb_ManualAedatSplitter">
+            <summary>
+            chb_ManualAedatSplitter Name Field
+            </summary>
+        </member>
+        <member name="F:NAVIS.Settings.uToolbar.chb_AutomaticAedatSplitter">
+            <summary>
+            chb_AutomaticAedatSplitter Name Field
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.uToolbar.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.Settings.uTools">
+            <summary>
+            User control to show the Tools settings
+            </summary>
+            <summary>
+            uTools
+            </summary>
+        </member>
+        <member name="M:NAVIS.Settings.uTools.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.cTitleBar">
+            <summary>
+            UserControl for the title bar template
+            </summary>
+            <summary>
+            cTitleBar
+            </summary>
+        </member>
+        <member name="P:NAVIS.cTitleBar.ShowMin">
+            <summary>
+            Shows minimize button
+            </summary>
+        </member>
+        <member name="P:NAVIS.cTitleBar.ShowMax">
+            <summary>
+            Shows maximize button
+            </summary>
+        </member>
+        <member name="P:NAVIS.cTitleBar.JustCloseWindow">
+            <summary>
+            Only closes the window, not the entire application
+            </summary>    
+        </member>
+        <member name="P:NAVIS.cTitleBar.IsPop">
+            <summary>
+            Pop up window
+            </summary>
+        </member>
+        <member name="P:NAVIS.cTitleBar.isMainWindow">
+            <summary>
+            No CornerRadius on mainWindow
+            </summary>    
+        </member>
+        <member name="M:NAVIS.cTitleBar.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:NAVIS.cAedat32">
+            <summary>
+            Class for working with aedat files with 32-bit address size
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.#ctor(System.String)">
+            <summary>
+            Loads a file and stores it in aedatFileRows. The file can either have .aedat or .csv extension
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.adaptAedat">
+            <summary>
+            Substracts the minimum timestamp on the file to every event, moving the entire information to the start of the chart.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.getValues">
+            <summary>
+            Return the event information of the file
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.saveAedat(System.String,System.Collections.Generic.List{NAVIS.cAedatRow32})">
+            <summary>
+            Save the loaded information to an aedat file.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.saveStereoToMono(System.String,System.Collections.Generic.List{NAVIS.cAedatRow32})">
+            <summary>
+            Saves the mono information taken from an stereo sound to an aedat file
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.dataBetweenTimestamps(System.Int64,System.Int64)">
+            <summary>
+            Returns an event list with those who are in the range [rangeInit, rangeEnd]on the original file.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.eventsFiredForEachChannel(System.Collections.Generic.List{NAVIS.cAedatRow32})">
+            <summary>
+            Returns an array with the number of events fired for each address, based on the list that is used as a parameter.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.maxValueSonogram">
+            <summary>
+            Returns the maximum value of the sonogram after calculating it.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.generateBitmap(System.String,System.Int32)">
+            <summary>
+            Generates the sonogram for the loaded file.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.diff2(System.String,System.Int32)">
+            <summary>
+            Generates the disparity between cochleae fo the loaded file
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.eventsFiredTotal(System.Collections.Generic.List{NAVIS.cAedatRow32})">
+            <summary>
+            Returns the total number of events that are stored in the list used as a parameter.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.AedatSplitterAuto(System.Int32,System.Int32)">
+            <summary>
+            Generates splits using the noise tolerance and noise threshold values from the input parameters.
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.AedatSplitterManual(System.Int32,System.Int32,System.String)">
+            <summary>
+            Saves a new aedat file with the events within the [init, end] timestamp range to the path chosen by the user
+            </summary>
+        </member>
+        <member name="M:NAVIS.cAedat32.averageBetweenTimestamps(System.Int64,System.Int64)">
+            <summary>
+            Returns the average activity for both cochleae within the [init, end] timestamp range
+            </summary>
+        </member>
+        <member name="T:NAVIS.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:NAVIS.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:NAVIS.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:NAVIS.MainWindow">
+            <summary>
+            Main application window
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.displayCharts">
+            <summary>
+            If the option is enabled, clears the cochleogram chart and displays the last aedat file that the user loaded.
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.clearCharts">
+            <summary>
+            Clear the content of the chart in the application's main window
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.displayCochleogram">
+            <summary>
+            Display the cochleogram of the loaded aedat file
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.colorFromSettings">
+            <summary>
+            Return an array with two values representing the left and the right color based on the settings
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.loadAedatToolStripMenuItem_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Load aedat click event
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.loadCSVToolStripMenuItem_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Load CSV click event
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.loadFile">
+            <summary>
+            Load the aedat or CSV file selected by the user
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.initState">
+            <summary>
+            Initialize cochlea type after loading the file
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.reloadCochcleogram">
+            <summary>
+            Reload the cochleogram chart in the main window. Used to refresh the graph after changing settings like dots to paint or chart color.
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_Settings_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Settings click event. Open the settings window
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_PDF_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            PDF click event. Generates a PDF with the cochleogram, histogram, sonogram, disparity between cochleae and average activity of the loaded aedat file.
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.ImageToBitmap(System.Windows.Controls.Image)">
+            <summary>
+            Save chart image to Bitmap
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_sonogram_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Sonogram click event. Generates the sonogram for the loaded aedat file and open a window to show it
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_CSV_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            CSV click event. Generates a CSV file with the event information (address and timestamp for each event) of the loaded aedat file 
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_histogram_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Histogram click event. Opens a new window with the histogram of the loaded aedat file
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_difference_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Disparity between cochleae click event. Generates the graph containing the disparity information and opens a window to show it.
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_Reload_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Reload click event. Initialize cochlea settings and reloads the cochleogram chart
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_AedatSplitterManual_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Reload click event. Initialize cochlea settings and reloads the cochleogram chart
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_average_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Average activity click event. Opens a windows containing a graph with the average activity (megaevents per second) for both cochleae
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_cutManualAedatSplitter_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Manual aedat splitter cut click event. Creates a new Aedat file witht the events contained in the range [text_ManualAedatSplitterInit, text_ManualAedatSplitterEnd]
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.chart_Cochleogram_DoubleClick(System.Object,System.EventArgs)">
+            <summary>
+            Cochleogram double click event. Sets the text_ManualAedatSplitterInit value depending on the timestamp that the double click event was raised
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.openManualAedatSplitter">
+            <summary>
+            Opens the Manual aedat splitter menu
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.closeManualAedatSplitter">
+            <summary>
+            Closes the Manual aedat splitter menu
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.text_ManualAedatSplitterInit_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
+            <summary>
+            Limits for the user input on the manual aedat splitter (Saturates values greater than the maximum timestamp found on the file and prevents from using values that are not integers)
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_AedatSplitterAuto_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Opens the Automatic aedat splitter window to select the values of noise tolerance and noise threshold before splitting the aedat file
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.Btn_StereoToMono_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Generates a mono aedat file from a stereo aedat with the information from the left cochlea.
+            </summary>
+        </member>
+        <member name="M:NAVIS.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

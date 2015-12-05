@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<Settings SettingsVersion="1.0">
+  <Main>
+    <Main dotSize="2" leftColor="BLUE" rightColor="ORANGE" showChart="True" eventSize="32" dotsToPaint="10" channels="64" mono_stereo="STEREO" />
+  </Main>
+  <Tools>
+    <Tools imgSize="LARGE" integrationPeriod="100000" noiseThreshold="3" noiseTolerance="20" />
+  </Tools>
+  <PDF>
+    <PDF showDate="True" showCochleogram="True" showHistogram="True" showSonogram="True" showDiff="True" showAverage="True" />
+  </PDF>
+  <Toolbar>
+    <Toolbar showLoadAedat="True" showSettings="True" showAbout="True" showGeneratePDF="True" showGenerateCSV="True" showSonogram="True" showHistogram="True" showAverage="True" showDiff="True" showManualAedatSplitter="True" showAutomaticAedatSplitter="True" />
+  </Toolbar>
+</Settings>
