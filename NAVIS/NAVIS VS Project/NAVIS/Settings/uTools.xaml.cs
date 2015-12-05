@@ -60,8 +60,6 @@ namespace NAVIS.Settings
             TB_IntegrationPeriod.Text = Convert.ToString(sd.integrationPeriod);
             SB_NoiseThreshold.Value = sd.noiseThreshold;
             SB_NoiseTolerance.Value = sd.noiseTolerance;
-            //L_noiseThreshold.Text = sd.noiseThreshold.ToString();
-            //L_noiseTolerance.Text = sd.noiseTolerance.ToString();
             this.InvalidateVisual();
         }
 
@@ -69,33 +67,22 @@ namespace NAVIS.Settings
         {
             ToolsS sd = new ToolsS();
             bool error = false;
-            //RTB_errorShowDiagram.ForeColor = Colors.Red;
-            //RTB_errorShowDiagram.Clear();
             if (CB_ImageSize.SelectedItem == null || (CB_ImageSize.SelectedItem.ToString() != EnumSize.LARGE.ToString() && CB_ImageSize.SelectedItem.ToString() != EnumSize.MEDIUM.ToString() && CB_ImageSize.SelectedItem.ToString() != EnumSize.SMALL.ToString() && CB_ImageSize.SelectedItem.ToString() != EnumSize.TINY.ToString()))
             {
-                //RTB_errorShowDiagram.AppendText("- Image size is not valid\n");
                 error = true;
             }
             if (TB_IntegrationPeriod.Text == "0" || TB_IntegrationPeriod.Text == "")
             {
-                //RTB_errorShowDiagram.AppendText("- Integration Period value is not valid\n");
                 error = true;
             }
 
             if (error == false)
             {
                 sd = new ToolsS();
-                //sd.imgFormat = (EnumFormat)CB_image_Format.SelectedItem;   //ELIMINAR
                 sd.imgSize = (EnumSize)Enum.Parse(typeof(EnumSize), CB_ImageSize.SelectedItem.ToString(), true);
                 sd.integrationPeriod = Convert.ToInt64(TB_IntegrationPeriod.Text);
                 sd.noiseThreshold = SB_NoiseThreshold.Value;
-                sd.noiseTolerance = SB_NoiseTolerance.Value;   //cambiar nombre SB por slider
-
-                //RTB_errorShowDiagram.Clear();
-                //RTB_errorShowDiagram.ForeColor = Colors.Green;
-                //RTB_errorShowDiagram.AppendText("\n\nSettings has been succesfully changed");
-                //RTB_errorShowDiagram.SelectAll();
-                //RTB_errorShowDiagram.SelectionAlignment = HorizontalAlignment.Center;
+                sd.noiseTolerance = SB_NoiseTolerance.Value;
             }
 
             return sd;
@@ -108,7 +95,7 @@ namespace NAVIS.Settings
 
         private static bool IsTextAllowed(string text)
         {
-            Regex regex = new Regex("[^0-9]+"); //regex that matches disallowed text
+            Regex regex = new Regex("[^0-9]+");
             return !regex.IsMatch(text);
         }
 
@@ -127,12 +114,5 @@ namespace NAVIS.Settings
                 e.CancelCommand();
             }
         }
-
-        /*private void SB_noiseThreshold_Scroll(object sender, ScrollEventArgs e)
-        {
-            L_noiseThreshold.Text = SB_NoiseThreshold.Value.ToString();
-            L_noiseTolerance.Text = SB_NoiseTolerance.Value.ToString();
-        }
-        */
     }
 }

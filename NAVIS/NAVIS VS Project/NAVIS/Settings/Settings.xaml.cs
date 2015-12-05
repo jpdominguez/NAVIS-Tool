@@ -155,15 +155,15 @@ namespace NAVIS.Settings
                 bottomBar.popup_text.Inlines.Add(" and ");
                 bottomBar.popup_text.Inlines.Add(new Bold(new Run("\"Dots per event\"")));
                 bottomBar.popup_text.Inlines.Add(" add some tweaks to the cochleogram representation. Lesser values on the first one and greater on the second will help reducing load times.\rWith ");
-                bottomBar.popup_text.Inlines.Add(new Bold(new Run("\"Event Length\"")));
-                bottomBar.popup_text.Inlines.Add(" you can select if the aedat file that you want to load has 16 bits length events or 32 bits length.");
+                bottomBar.popup_text.Inlines.Add(new Bold(new Run("\"Address Length\"")));
+                bottomBar.popup_text.Inlines.Add(" you can select if the aedat file that you want to load has 16 bits or 32 bits address length.");
                 bottomBar.popup_text.TextWrapping = TextWrapping.Wrap;
             }
             else if (tabItem_Tools.IsSelected)
             {
                 bottomBar.popup_text.Text = "";
                 bottomBar.popup_text.Inlines.Add(new Bold(new Run("\"Image Size\"")));
-                bottomBar.popup_text.Inlines.Add(" let you choose between four different sizes, which will be used to generate both \"Sonogram\" and \"Difference between both cochleas\" tools.\r");
+                bottomBar.popup_text.Inlines.Add(" let you choose between four different sizes, which will be used to generate both \"Sonogram\" and \"Disparity between both cochleae\" tools.\r");
                 bottomBar.popup_text.Inlines.Add(new Bold(new Run("\"Integration Period\"")));
                 bottomBar.popup_text.Inlines.Add(" is the smallest time period that this software will work with.\r");
                 bottomBar.popup_text.Inlines.Add(new Bold(new Run("\"Noise Threshold\"")));
