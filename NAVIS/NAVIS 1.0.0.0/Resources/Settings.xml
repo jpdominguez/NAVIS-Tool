@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Settings SettingsVersion="1.0">
   <Main>
-    <Main dotSize="2" leftColor="BLUE" rightColor="ORANGE" showChart="True" eventSize="32" dotsToPaint="10" channels="64" mono_stereo="STEREO" />
+    <Main dotSize="2" leftColor="BLUE" rightColor="ORANGE" showChart="True" eventSize="32" dotsToPaint="10" channels="64" mono_stereo="MONO" />
   </Main>
   <Tools>
     <Tools imgSize="LARGE" integrationPeriod="100000" noiseThreshold="3" noiseTolerance="20" />
