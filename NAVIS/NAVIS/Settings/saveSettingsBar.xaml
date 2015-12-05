@@ -1,0 +1,150 @@
+﻿<!--
+/////////////////////////////////////////////////////////////////////////////////
+//                                                                             //
+//    Copyright © 2015  Juan P. Dominguez-Morales                              //
+//                                                                             //        
+//    This file is part of Neuromorphic Auditory Visualizer Tool (NAVIS Tool). //
+//                                                                             //
+//    NAVIS Tool is free software: you can redistribute it and/or modify       //
+//    it under the terms of the GNU General Public License as published by     //
+//    the Free Software Foundation, either version 3 of the License, or        //
+//    (at your option) any later version.                                      //
+//                                                                             //
+//    NAVIS Tool is distributed in the hope that it will be useful,            //
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of           //
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the              //
+//    GNU General Public License for more details.                             //
+//                                                                             //
+//    You should have received a copy of the GNU General Public License        //
+//    along with NAVIS Tool.  If not, see<http://www.gnu.org/licenses/> .      //
+//                                                                             //
+/////////////////////////////////////////////////////////////////////////////////
+-->
+
+
+<UserControl x:Name="SaveSettings" x:Class="NAVIS.Settings.saveSettingsBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignWidth="500" d:Height="45" Background="#FFABA4AC"  >
+    <UserControl.Resources>
+    </UserControl.Resources>
+    <DockPanel  x:Name="TBStatus" LastChildFill="True"  Background="Gray" Loaded="TBStatus_Loaded">
+        <Border DockPanel.Dock="Top" Style="{DynamicResource VBorderBarBrush}" RenderTransformOrigin="0.5,0.5">
+        </Border>
+        <ToggleButton x:Name="_btHelp" DockPanel.Dock="Left" Content="" ToolTip="Help" HorizontalAlignment="Right"  
+                    VerticalAlignment="Center" Width="37" Height="37" FontSize="29.333"  Margin="5,2,10,2" 
+                    BorderBrush="{x:Null}">
+            <ToggleButton.Template>
+                <ControlTemplate>
+                    <Grid HorizontalAlignment="Right">
+                        <Image x:Name="bg" Source="/NAVIS;component/Images/helpUnclicked.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/helpClicked.png" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </ToggleButton.Template>
+        </ToggleButton>
+
+        <Popup IsOpen="{Binding IsChecked, ElementName=_btHelp}" x:Name="Popup" StaysOpen="False" AllowsTransparency="False" Placement="Bottom" VerticalOffset="15"
+       HorizontalOffset="20" PopupAnimation="Fade" MaxWidth="350">
+            <Border BorderBrush="Black" BorderThickness="1" Background="LightGray" Padding="10">
+                <StackPanel Orientation="Vertical" Width="300">
+                    <TextBlock x:Name="popup_text"  TextAlignment="Justify" TextWrapping="Wrap" LineHeight="25" LineStackingStrategy="BlockLineHeight" Margin="0 0 0 5"></TextBlock>
+                </StackPanel>
+            </Border>
+        </Popup>
+
+        <Button x:Name="_btSave" DockPanel.Dock="Right"  Style="{DynamicResource Button-Transp}" Content=""  FontSize="29.333" 
+                    Height="37" VerticalAlignment="Center" Width="37"  BorderBrush="{x:Null}" HorizontalAlignment="Right"
+                HorizontalContentAlignment="Stretch" Margin="5,2,10,2" ToolTip="Save as default settings" Click="_btSave_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid HorizontalAlignment="Right">
+                        <Image x:Name="bg" Source="/NAVIS;component/Images/saveSetUnclicked.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/saveSetClicked.png" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button x:Name="_btSaveAs" DockPanel.Dock="Right"  Style="{DynamicResource Button-Transp}" Content=""  FontSize="29.333" 
+                    Height="37" VerticalAlignment="Center" Width="37"  BorderBrush="{x:Null}" HorizontalAlignment="Right"
+                HorizontalContentAlignment="Stretch" Margin="5,2,10,2" ToolTip="Save settings to file" Click="_btSaveAs_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid HorizontalAlignment="Right">
+                        <Image x:Name="bg" Source="/NAVIS;component/Images/saveSetAsUnclicked.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/saveSetAsClicked.png" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button x:Name="_btRestore" DockPanel.Dock="Right"  Style="{DynamicResource Button-Transp}" Content=""  FontSize="29.333" 
+                    Height="37" VerticalAlignment="Center" Width="37"  BorderBrush="{x:Null}" HorizontalAlignment="Right"
+                HorizontalContentAlignment="Stretch" Margin="5,2,10,2" ToolTip="Restore default settings" Click="_btRestore_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid HorizontalAlignment="Right">
+                        <Image x:Name="bg" Source="/NAVIS;component/Images/restoreSetUnclicked.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/restoreSetClicked.png" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button x:Name="_btLoad" DockPanel.Dock="Right"  Style="{DynamicResource Button-Transp}" Content=""  FontSize="29.333" 
+                    Height="37" VerticalAlignment="Center" Width="37"  BorderBrush="{x:Null}" HorizontalAlignment="Right"
+                HorizontalContentAlignment="Stretch" Margin="5,2,10,2" ToolTip="Load settings from file" Click="_btLoad_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid HorizontalAlignment="Right">
+                        <Image x:Name="bg" Source="/NAVIS;component/Images/loadSetUnclicked.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/loadSetClicked.png" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Label x:Name="Lb" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+        <ProgressBar d:DesignVisibility="Visible"  x:Name="PBar" Margin="10" Visibility="Hidden"/>
+
+    </DockPanel>
+</UserControl>
