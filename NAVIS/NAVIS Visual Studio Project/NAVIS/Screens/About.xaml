@@ -30,7 +30,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="About"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
       Style="{DynamicResource WindowNoTranspNoMax}"  WindowStyle="None" WindowStartupLocation="CenterScreen"
-        Width="530" Height="305"
+        Width="530" Height="320"
     ScrollViewer.VerticalScrollBarVisibility="Disabled" ShowInTaskbar="True" FontSize="14" ResizeMode="NoResize">
     <Window.Resources>
     </Window.Resources>

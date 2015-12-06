@@ -47,7 +47,7 @@ namespace NAVIS
             InitializeComponent();
 
             System.Version version = Assembly.GetExecutingAssembly().GetName().Version;
-            textInfo.Text = "Copyright © 2015 Juan P. Dominguez-Morales\njpdominguez@atc.us.es\n\nRobotics and Techonology of Computers Lab. (RTC)\nwww.rtc.us.es\n\nDepartment of Architecture and Technology of Computers (ATC)\nwww.atc.us.es\n\nHigher Technical School of Computer Engineering\nUniversity of Seville, Spain\nwww.informatica.us.es";
+            textInfo.Text = "https://github.com/jpdominguez/NAVIS-Tool\nCopyright © 2015 Juan P. Dominguez-Morales\njpdominguez@atc.us.es\n\nRobotics and Techonology of Computers Lab. (RTC)\nwww.rtc.us.es\n\nDepartment of Architecture and Technology of Computers (ATC)\nwww.atc.us.es\n\nHigher Technical School of Computer Engineering\nUniversity of Seville, Spain\nwww.informatica.us.es";
             versionInfo.Text = "v" + version.ToString();
         }
     }
