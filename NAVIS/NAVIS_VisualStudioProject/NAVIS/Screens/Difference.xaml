@@ -29,7 +29,7 @@
         xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Width="Auto"  BorderThickness="2"
-        Title="Difference between cochleas"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+        Title="Difference between cochleae"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
         x:Name="Service"
       Style="{DynamicResource WindowNoTranspNoMax}"  BorderBrush="Black"  WindowStyle="None" WindowStartupLocation="CenterScreen"
     ScrollViewer.VerticalScrollBarVisibility="Disabled" ShowInTaskbar="True" FontSize="14" ResizeMode="NoResize">
