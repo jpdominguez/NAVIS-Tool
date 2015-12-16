@@ -28,16 +28,16 @@ using System.Threading.Tasks;
 
 namespace NAVIS
 {
-    public class cAedatRow16
+    public class aedatEvent16
     {
-        public UInt16 evt;
+        public UInt16 addr;
         public UInt32 timestamp;
-        public int rowID;
+        public int id;
 
-        public cAedatRow16(int row, UInt16 evnt, UInt32 ts)
+        public aedatEvent16(int id, UInt16 addr, UInt32 ts)
         {
-            rowID = row;
-            evt = evnt;
+            this.id = id;
+            this.addr = addr;
             timestamp = ts;
         }
     }

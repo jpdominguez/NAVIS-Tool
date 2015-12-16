@@ -59,8 +59,8 @@ namespace NAVIS
         public bool isLoaded = false;
         Microsoft.Win32.OpenFileDialog selectFileDialog;
 
-        public static cAedat32 aedatObject32;
-        public static cAedat16 aedatObject16;
+        public static aedat32 aedatObject32;
+        public static aedat16 aedatObject16;
 
         public static cSettings settings;
 
@@ -193,26 +193,26 @@ namespace NAVIS
 
             if (settings.MainS.eventSize == 16)
             {
-                foreach (cAedatRow16 fila in aedatObject16.getValues())
+                foreach (aedatEvent16 fila in aedatObject16.getValues())
                 {
                     if (cont == 0)
                     {
                         if (settings.MainS.mono_stereo == EnumAudio.STEREO)  // If the aedat corresponds to a stereo sound
                         {
-                            if (fila.evt < addresses / 2 - 1 && fila.evt < addresses / 2 - 2)
+                            if (fila.addr < addresses / 2 - 1 && fila.addr < addresses / 2 - 2)
                             {
-                                chart_Cochleogram.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.evt);
+                                chart_Cochleogram.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.addr);
                             }
-                            else if (fila.evt >= addresses / 2 && fila.evt < addresses - 2)
+                            else if (fila.addr >= addresses / 2 && fila.addr < addresses - 2)
                             {
-                                chart_Cochleogram.Series["Right"].Points.AddXY(fila.timestamp, (double)fila.evt);
+                                chart_Cochleogram.Series["Right"].Points.AddXY(fila.timestamp, (double)fila.addr);
                             }
                         }
                         else if (settings.MainS.mono_stereo == EnumAudio.MONO) // If the aedat file corresponds to a moono sound
                         {
-                            if (fila.evt < addresses - 2)
+                            if (fila.addr < addresses - 2)
                             {
-                                chart_Cochleogram.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.evt);
+                                chart_Cochleogram.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.addr);
                             }
                         }
                     }
@@ -226,26 +226,26 @@ namespace NAVIS
             else if (settings.MainS.eventSize == 32)
             {
 
-                foreach (cAedatRow32 fila in aedatObject32.getValues())
+                foreach (aedatEvent32 fila in aedatObject32.getValues())
                 {
                     if (cont == 0)
                     {
                         if (settings.MainS.mono_stereo == EnumAudio.STEREO) // If the aedat corresponds to a stereo sound
                         {
-                            if (fila.evt < addresses / 2 - 1 && fila.evt < addresses / 2 - 2)
+                            if (fila.addr < addresses / 2 - 1 && fila.addr < addresses / 2 - 2)
                             {
-                                chart_Cochleogram.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.evt);
+                                chart_Cochleogram.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.addr);
                             }
-                            else if (fila.evt >= addresses / 2 && fila.evt < addresses - 2)
+                            else if (fila.addr >= addresses / 2 && fila.addr < addresses - 2)
                             {
-                                chart_Cochleogram.Series["Right"].Points.AddXY(fila.timestamp, (double)fila.evt);
+                                chart_Cochleogram.Series["Right"].Points.AddXY(fila.timestamp, (double)fila.addr);
                             }
                         }
                         else if (settings.MainS.mono_stereo == EnumAudio.MONO) // If the aedat file corresponds to a moono sound
                         {
-                            if (fila.evt < addresses - 2)
+                            if (fila.addr < addresses - 2)
                             {
-                                chart_Cochleogram.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.evt);
+                                chart_Cochleogram.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.addr);
                             }
                         }
                     }
@@ -335,12 +335,12 @@ namespace NAVIS
 
                 if (settings.MainS.eventSize == 16)
                 {
-                    aedatObject16 = new cAedat16(root);
+                    aedatObject16 = new aedat16(root);
                     aedatObject16.adaptAedat();
                 }
                 else if (settings.MainS.eventSize == 32)
                 {
-                    aedatObject32 = new cAedat32(root);
+                    aedatObject32 = new aedat32(root);
                     aedatObject32.adaptAedat();
                 }
 
@@ -407,14 +407,14 @@ namespace NAVIS
                 if (settings.MainS.eventSize == 16)
                 {
                     aedatObject16.closeAedat();
-                    aedatObject16 = new cAedat16(root);
+                    aedatObject16 = new aedat16(root);
                     aedatObject16.adaptAedat();
                 }
 
                 if (settings.MainS.eventSize == 32)
                 {
                     aedatObject32.closeAedat();
-                    aedatObject32 = new cAedat32(root);
+                    aedatObject32 = new aedat32(root);
                     aedatObject32.adaptAedat();
                 }
 
@@ -663,16 +663,16 @@ namespace NAVIS
 
                 if (settings.MainS.eventSize == 16)
                 {
-                    foreach (cAedatRow16 row in aedatObject16.getValues())
+                    foreach (aedatEvent16 row in aedatObject16.getValues())
                     {
-                        sb.Append(row.timestamp + ";" + row.evt + "\n");
+                        sb.Append(row.timestamp + ";" + row.addr + "\n");
                     }
                 }
                 else if (settings.MainS.eventSize == 32)
                 {
-                    foreach (cAedatRow32 row in aedatObject32.getValues())
+                    foreach (aedatEvent32 row in aedatObject32.getValues())
                     {
-                        sb.Append(row.timestamp + ";" + row.evt + "\n");
+                        sb.Append(row.timestamp + ";" + row.addr + "\n");
                     }
                 }
 

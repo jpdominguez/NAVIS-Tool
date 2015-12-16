@@ -95,8 +95,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Aedat\cAedat16.cs" />
-    <Compile Include="Aedat\cAedatRow16.cs" />
+    <Compile Include="Aedat\aedat16.cs" />
+    <Compile Include="Aedat\aedatEvent16.cs" />
     <Compile Include="Controls\CustomSlider.xaml.cs">
       <DependentUpon>CustomSlider.xaml</DependentUpon>
     </Compile>
@@ -198,8 +198,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Aedat\cAedat32.cs" />
-    <Compile Include="Aedat\cAedatRow32.cs" />
+    <Compile Include="Aedat\aedat32.cs" />
+    <Compile Include="Aedat\aedatEvent32.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -255,6 +255,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

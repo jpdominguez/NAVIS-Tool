@@ -45,8 +45,8 @@ namespace NAVIS
     public partial class Sonogram : Window
     {
         BitmapImage image;
-        cAedat32 c32 = MainWindow.aedatObject32;
-        cAedat16 c16 = MainWindow.aedatObject16;
+        aedat32 c32 = MainWindow.aedatObject32;
+        aedat16 c16 = MainWindow.aedatObject16;
         int maxValueSonog;
         bool isLoaded = false;
 
@@ -75,16 +75,16 @@ namespace NAVIS
 
             if (MainWindow.settings.MainS.eventSize == 16)
             {
-                SB_maxValue.Maximum = cAedat16.maxValSonogram * 2;
-                SB_maxValue.Value = cAedat16.maxValSonogram;
-                maxValueSonog = cAedat16.maxValSonogram;
+                SB_maxValue.Maximum = aedat16.maxValSonogram * 2;
+                SB_maxValue.Value = aedat16.maxValSonogram;
+                maxValueSonog = aedat16.maxValSonogram;
             }
 
             else if (MainWindow.settings.MainS.eventSize == 32)
             {
-                SB_maxValue.Maximum = cAedat32.maxValSonogram * 2;
-                SB_maxValue.Value = cAedat32.maxValSonogram;
-                maxValueSonog = cAedat32.maxValSonogram;
+                SB_maxValue.Maximum = aedat32.maxValSonogram * 2;
+                SB_maxValue.Value = aedat32.maxValSonogram;
+                maxValueSonog = aedat32.maxValSonogram;
             }
             #endregion
             isLoaded = true;

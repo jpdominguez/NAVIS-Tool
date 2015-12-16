@@ -41,8 +41,8 @@ namespace NAVIS.Screens
     /// </summary>
     public partial class CochleogramSplit : Window
     {
-        cAedat16 aedatObject16;
-        cAedat32 aedatObject32;
+        aedat16 aedatObject16;
+        aedat32 aedatObject32;
 
         /// <summary>
         /// Loads an aedat file (split) from a path and displays its cochleogram
@@ -55,12 +55,12 @@ namespace NAVIS.Screens
 
             if (MainWindow.settings.MainS.eventSize == 16)
             {
-                aedatObject16 = new cAedat16(path);
+                aedatObject16 = new aedat16(path);
                 aedatObject16.adaptAedat();
             }
             else if (MainWindow.settings.MainS.eventSize == 32)
             {
-                aedatObject32 = new cAedat32(path);
+                aedatObject32 = new aedat32(path);
                 aedatObject32.adaptAedat();
             }
 
@@ -83,17 +83,17 @@ namespace NAVIS.Screens
             if (MainWindow.settings.MainS.eventSize == 16)
             {
                 
-                foreach (cAedatRow16 fila in aedatObject16.getValues())
+                foreach (aedatEvent16 fila in aedatObject16.getValues())
                 {
                     if (cont == 0)
                     {
-                        if (fila.evt < 127)
+                        if (fila.addr < 127)
                         {
-                            chart_CochleogramCut.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.evt);
+                            chart_CochleogramCut.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.addr);
                         }
-                        else if (fila.evt >= 128)
+                        else if (fila.addr >= 128)
                         {
-                            chart_CochleogramCut.Series["Right"].Points.AddXY(fila.timestamp, (double)fila.evt);
+                            chart_CochleogramCut.Series["Right"].Points.AddXY(fila.timestamp, (double)fila.addr);
                         }
                     }
                     cont++;
@@ -105,17 +105,17 @@ namespace NAVIS.Screens
             }
             else if (MainWindow.settings.MainS.eventSize == 32)
             {
-                foreach (cAedatRow32 fila in aedatObject32.getValues())
+                foreach (aedatEvent32 fila in aedatObject32.getValues())
                 {
                     if (cont == 0)
                     {
-                        if (fila.evt < 127)
+                        if (fila.addr < 127)
                         {
-                            chart_CochleogramCut.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.evt);
+                            chart_CochleogramCut.Series["Left"].Points.AddXY(fila.timestamp, (double)fila.addr);
                         }
-                        else if (fila.evt >= 128)
+                        else if (fila.addr >= 128)
                         {
-                            chart_CochleogramCut.Series["Right"].Points.AddXY(fila.timestamp, (double)fila.evt);
+                            chart_CochleogramCut.Series["Right"].Points.AddXY(fila.timestamp, (double)fila.addr);
                         }
                     }
                     cont++;

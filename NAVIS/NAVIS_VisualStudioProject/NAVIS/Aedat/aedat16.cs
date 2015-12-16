@@ -36,9 +36,9 @@ namespace NAVIS
     /// <summary>
     /// Class for working with aedat files with 16-bit address size
     /// </summary>
-    public class cAedat16
+    public class aedat16
     {
-        private List<cAedatRow16> aedatFileRows = new List<cAedatRow16>();
+        private List<aedatEvent16> aedatFileList = new List<aedatEvent16>();
         BinaryReader bReader;
         BinaryWriter bWriter;
         public long maxTimestamp = 0;
@@ -48,7 +48,7 @@ namespace NAVIS
         /// <summary>
         /// Loads a file and stores it in aedatFileRows. The file can either have .aedat or .csv extension
         /// </summary>
-        public cAedat16(String filePath)
+        public aedat16(String filePath)
         {
             #region .aedat
             if (MainWindow.fileName.Split('.')[MainWindow.fileName.Split('.').Length - 1] == "aedat")  // If the file is an aedat file
@@ -89,7 +89,7 @@ namespace NAVIS
                     {
                         minTimestamp = Convert.ToInt64(timestamp);
                     }
-                    aedatFileRows.Add(new cAedatRow16(rowID, Convert.ToUInt16(evt), Convert.ToUInt32(timestamp)));
+                    aedatFileList.Add(new aedatEvent16(rowID, Convert.ToUInt16(evt), Convert.ToUInt32(timestamp)));
                     rowID++;
                 }
                 bReader.Close();
@@ -109,7 +109,7 @@ namespace NAVIS
                     line = reader.ReadLine().Split(';');
                     if (cont != 0)
                     {
-                        aedatFileRows.Add(new cAedatRow16(rowID, Convert.ToUInt16(line[1]), Convert.ToUInt32(line[0])));
+                        aedatFileList.Add(new aedatEvent16(rowID, Convert.ToUInt16(line[1]), Convert.ToUInt32(line[0])));
                         rowID++;
 
                         if (maxTimestamp < Convert.ToUInt32(line[0]))
@@ -133,15 +133,15 @@ namespace NAVIS
         /// <summary>
         /// Save the loaded information to an aedat file.
         /// </summary>
-        public void saveAedat(String fileName, List<cAedatRow16> aedat)
+        public void saveAedat(String fileName, List<aedatEvent16> aedat)
         {
             bWriter = new BinaryWriter(File.OpenWrite(fileName));
             UInt16 evt;
             UInt32 timestamp;
 
-            foreach (cAedatRow16 row in aedat)
+            foreach (aedatEvent16 row in aedat)
             {
-                evt = (UInt16)((BitConverter.GetBytes(row.evt)[0] << 8) | BitConverter.GetBytes(row.evt)[1]);
+                evt = (UInt16)((BitConverter.GetBytes(row.addr)[0] << 8) | BitConverter.GetBytes(row.addr)[1]);
                 timestamp = (UInt32)((BitConverter.GetBytes(row.timestamp)[0] << 24) | BitConverter.GetBytes(row.timestamp)[1] << 16 | BitConverter.GetBytes(row.timestamp)[2] << 8 | BitConverter.GetBytes(row.timestamp)[3]);
 
                 bWriter.Write(evt);
@@ -155,7 +155,7 @@ namespace NAVIS
         /// </summary>
         public void adaptAedat()
         {
-            aedatFileRows.ForEach(c => c.timestamp = (UInt32)(c.timestamp - minTimestamp));
+            aedatFileList.ForEach(c => c.timestamp = (UInt32)(c.timestamp - minTimestamp));
             maxTimestamp = (long)((maxTimestamp - minTimestamp));
             minTimestamp = 0;
         }
@@ -163,25 +163,25 @@ namespace NAVIS
         /// <summary>
         /// Return the event information of the file
         /// </summary>
-        public List<cAedatRow16> getValues()
+        public List<aedatEvent16> getValues()
         {
-            return aedatFileRows;
+            return aedatFileList;
         }
 
         /// <summary>
         /// Returns an event list with those who are in the range [rangeInit, rangeEnd]on the original file.
         /// </summary>
-        public List<cAedatRow16> dataBetweenTimestamps(long rangeInit, long rangeEnd)
+        public List<aedatEvent16> dataBetweenTimestamps(long rangeInit, long rangeEnd)
         {
-            List<cAedatRow16> res = new List<cAedatRow16>();
-            res = aedatFileRows.FindAll(x => x.timestamp >= rangeInit && x.timestamp <= rangeEnd);
+            List<aedatEvent16> res = new List<aedatEvent16>();
+            res = aedatFileList.FindAll(x => x.timestamp >= rangeInit && x.timestamp <= rangeEnd);
             return res;
         }
 
         /// <summary>
         /// Returns an array with the number of events fired for each address, based on the list that is used as a parameter.
         /// </summary>
-        public int[] eventsFiredForEachChannel(List<cAedatRow16> pairList)
+        public int[] eventsFiredForEachChannel(List<aedatEvent16> pairList)
         {
             int[] eventsFired;
             bool mono = false;
@@ -197,17 +197,17 @@ namespace NAVIS
 
             Array.Clear(eventsFired, 0, eventsFired.Length);
 
-            foreach (cAedatRow16 pair in pairList)
+            foreach (aedatEvent16 pair in pairList)
             {
-                if (pair.evt < limit)
+                if (pair.addr < limit)
                 {
-                    if (mono && ((pair.evt != limit - 2) && (pair.evt != limit - 1)))
+                    if (mono && ((pair.addr != limit - 2) && (pair.addr != limit - 1)))
                     {
-                        eventsFired[pair.evt]++;
+                        eventsFired[pair.addr]++;
                     }
-                    else if (mono == false && ((pair.evt != limit - 1) && (pair.evt != limit - 2) && (pair.evt != limit / 2 - 1) && (pair.evt != limit / 2 - 2)))
+                    else if (mono == false && ((pair.addr != limit - 1) && (pair.addr != limit - 2) && (pair.addr != limit / 2 - 1) && (pair.addr != limit / 2 - 2)))
                     {
-                        eventsFired[pair.evt]++;
+                        eventsFired[pair.addr]++;
                     }
                 }
             }
@@ -218,7 +218,7 @@ namespace NAVIS
         /// <summary>
         /// Returns the total number of events that are stored in the list used as a parameter.
         /// </summary>
-        public int eventsFiredTotal(List<cAedatRow16> pairList)
+        public int eventsFiredTotal(List<aedatEvent16> pairList)
         {
             return pairList.Count;
         }
@@ -444,14 +444,14 @@ namespace NAVIS
         {
             int timesThatEnters = 0;
             int eventsFired;
-            List<cAedatRow16> lista = new List<cAedatRow16>(aedatFileRows);
+            List<aedatEvent16> lista = new List<aedatEvent16>(aedatFileList);
             bool hasEntered = false;
-            List<List<cAedatRow16>> splittedAedat = new List<List<cAedatRow16>>();
+            List<List<aedatEvent16>> splittedAedat = new List<List<aedatEvent16>>();
             for (int i = 0; i < 200; i++)
             {
                 splittedAedat.Add(null);
             }
-            List<cAedatRow16> aedatSplit = new List<cAedatRow16>();
+            List<aedatEvent16> aedatSplit = new List<aedatEvent16>();
             int splitIndex = 0;
 
             for (long i = 0; i <= maxTimestamp; i += (int)MainWindow.settings.ToolsS.integrationPeriod)
@@ -477,7 +477,7 @@ namespace NAVIS
                 else
                 {
                     aedatSplit.AddRange(lista.FindAll(x => x.timestamp >= i && x.timestamp <= i + MainWindow.settings.ToolsS.integrationPeriod));
-                    splittedAedat[splitIndex] = new List<cAedatRow16>(aedatSplit);
+                    splittedAedat[splitIndex] = new List<aedatEvent16>(aedatSplit);
                     hasEntered = true;
                     timesThatEnters++;
                 }
@@ -494,7 +494,7 @@ namespace NAVIS
             }
 
             int a = 0;
-            foreach (List<cAedatRow16> r in splittedAedat)
+            foreach (List<aedatEvent16> r in splittedAedat)
             {
                 if (r != null)
                 {
@@ -510,7 +510,7 @@ namespace NAVIS
         public double[] averageBetweenTimestamps(long init, long end)
         {
             double[] meanLR = new double[2];
-            List<cAedatRow16> listaEventos = dataBetweenTimestamps(init, end);
+            List<aedatEvent16> listaEventos = dataBetweenTimestamps(init, end);
 
             int addresses = 256;
             switch (MainWindow.cochleaInfo)
@@ -533,11 +533,11 @@ namespace NAVIS
                 }
                 else if (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO32 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO64)
                 {
-                    if (listaEventos[i].evt >= addresses / 2 && listaEventos[i].evt < addresses && listaEventos[i].timestamp >= init && listaEventos[i].timestamp < end)
+                    if (listaEventos[i].addr >= addresses / 2 && listaEventos[i].addr < addresses && listaEventos[i].timestamp >= init && listaEventos[i].timestamp < end)
                     {
                         numElR++;
                     }
-                    else if (listaEventos[i].evt < addresses / 2 && listaEventos[i].evt >= 0 && listaEventos[i].timestamp >= init && listaEventos[i].timestamp < end)
+                    else if (listaEventos[i].addr < addresses / 2 && listaEventos[i].addr >= 0 && listaEventos[i].timestamp >= init && listaEventos[i].timestamp < end)
                     {
                         numElL++;
                     }
@@ -560,24 +560,24 @@ namespace NAVIS
         /// </summary>
         public void AERSplitterManual(int init, int end, String path)
         {
-            List<cAedatRow16> res = aedatFileRows.FindAll(x => x.timestamp >= init && x.timestamp <= end);
+            List<aedatEvent16> res = aedatFileList.FindAll(x => x.timestamp >= init && x.timestamp <= end);
             saveAedat(path, res);
         }
 
         /// <summary>
         /// Saves the mono information taken from an stereo sound to an aedat file
         /// </summary>
-        public void saveStereoToMono(String fileName, List<cAedatRow16> aedat)
+        public void saveStereoToMono(String fileName, List<aedatEvent16> aedat)
         {
             bWriter = new BinaryWriter(File.OpenWrite(fileName));
             UInt16 evt;
             UInt32 timestamp;
 
-            foreach (cAedatRow16 row in aedat)
+            foreach (aedatEvent16 row in aedat)
             {
-                if ((MainWindow.cochleaInfo == EnumCochleaInfo.STEREO32 && row.evt < 64) || (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO64 && row.evt < 128))
+                if ((MainWindow.cochleaInfo == EnumCochleaInfo.STEREO32 && row.addr < 64) || (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO64 && row.addr < 128))
                 {
-                    evt = (UInt16)((BitConverter.GetBytes(row.evt)[0] << 8) | BitConverter.GetBytes(row.evt)[1]);
+                    evt = (UInt16)((BitConverter.GetBytes(row.addr)[0] << 8) | BitConverter.GetBytes(row.addr)[1]);
                     timestamp = (UInt32)((BitConverter.GetBytes(row.timestamp)[0] << 24) | BitConverter.GetBytes(row.timestamp)[1] << 16 | BitConverter.GetBytes(row.timestamp)[2] << 8 | BitConverter.GetBytes(row.timestamp)[3]);
 
                     bWriter.Write(evt);
