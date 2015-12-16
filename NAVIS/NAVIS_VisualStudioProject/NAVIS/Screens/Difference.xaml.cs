@@ -101,11 +101,11 @@ namespace NAVIS
 
                 if (MainWindow.settings.MainS.eventSize == 16)
                 {
-                    c16.diff2("archivobmpDiff", SB_maxValue.Value);
+                    c16.generateDisparity("archivobmpDiff", SB_maxValue.Value);
                 }
                 else if (MainWindow.settings.MainS.eventSize == 32)
                 {
-                    c32.diff2("archivobmpDiff", SB_maxValue.Value);
+                    c32.generateDisparity("archivobmpDiff", SB_maxValue.Value);
                 }
 
                 BitmapImage _image = new BitmapImage();
@@ -139,11 +139,11 @@ namespace NAVIS
 
             if (MainWindow.settings.MainS.eventSize == 16)
             {
-                c16.diff2("archivobmpDiff", SB_maxValue.Value);
+                c16.generateDisparity("archivobmpDiff", SB_maxValue.Value);
             }
             else if (MainWindow.settings.MainS.eventSize == 32)
             {
-                c32.diff2("archivobmpDiff", SB_maxValue.Value);
+                c32.generateDisparity("archivobmpDiff", SB_maxValue.Value);
             }
 
             BitmapImage _image = new BitmapImage();

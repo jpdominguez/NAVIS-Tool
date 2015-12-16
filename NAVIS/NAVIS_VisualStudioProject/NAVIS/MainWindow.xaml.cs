@@ -527,11 +527,11 @@ namespace NAVIS
 
                         if (settings.MainS.eventSize == 16)
                         {
-                            aedatObject16.generateBitmap("archivobmp", aedatObject16.maxValueSonogram());
+                            aedatObject16.generateSonogram("archivobmp", aedatObject16.maxValueSonogram());
                         }
                         else if (settings.MainS.eventSize == 32)
                         {
-                            aedatObject32.generateBitmap("archivobmp", aedatObject32.maxValueSonogram());
+                            aedatObject32.generateSonogram("archivobmp", aedatObject32.maxValueSonogram());
                         }
                         Sonogram sd = new Sonogram();
                         iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance(ImageToBitmap(sd.Img_Sonogram), ImageFormat.Bmp);
@@ -556,12 +556,12 @@ namespace NAVIS
 
                         if (settings.MainS.eventSize == 16)
                         {
-                            aedatObject16.diff2("archivobmpDiff", aedatObject16.maxValueSonogram());
+                            aedatObject16.generateDisparity("archivobmpDiff", aedatObject16.maxValueSonogram());
                         }
 
                         else if (settings.MainS.eventSize == 32)
                         {
-                            aedatObject32.diff2("archivobmpDiff", aedatObject32.maxValueSonogram());
+                            aedatObject32.generateDisparity("archivobmpDiff", aedatObject32.maxValueSonogram());
                         }
                         Difference sd = new Difference();
                         iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance(ImageToBitmap(sd.Img_Difference), ImageFormat.Bmp);
@@ -632,11 +632,11 @@ namespace NAVIS
 
             if (settings.MainS.eventSize == 16)
             {
-                res = aedatObject16.generateBitmap("archivobmp", aedatObject16.maxValueSonogram());
+                res = aedatObject16.generateSonogram("archivobmp", aedatObject16.maxValueSonogram());
             }
             else if (settings.MainS.eventSize == 32)
             {
-                res = aedatObject32.generateBitmap("archivobmp", aedatObject32.maxValueSonogram());
+                res = aedatObject32.generateSonogram("archivobmp", aedatObject32.maxValueSonogram());
             }
 
             if (res)
@@ -705,11 +705,11 @@ namespace NAVIS
 
             if (settings.MainS.eventSize == 16)
             {
-                res = aedatObject16.diff2("archivobmpDiff", aedatObject16.maxValueSonogram());
+                res = aedatObject16.generateDisparity("archivobmpDiff", aedatObject16.maxValueSonogram());
             }
             else if (settings.MainS.eventSize == 32)
             {
-                res = aedatObject32.diff2("archivobmpDiff", aedatObject32.maxValueSonogram());
+                res = aedatObject32.generateDisparity("archivobmpDiff", aedatObject32.maxValueSonogram());
             }
 
             if (res)

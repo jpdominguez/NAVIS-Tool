@@ -266,7 +266,7 @@ namespace NAVIS
         /// <summary>
         /// Generates the sonogram for the loaded file.
         /// </summary>
-        public bool generateBitmap(String file, int maxValueSonogram)
+        public bool generateSonogram(String file, int maxValueSonogram)
         {
             maxValSonogram = maxValueSonogram;
 
@@ -351,7 +351,7 @@ namespace NAVIS
         /// <summary>
         /// Generates the disparity between cochleae fo the loaded file
         /// </summary>
-        public bool diff2(String file, int maxValSon)
+        public bool generateDisparity(String file, int maxValSon)
         {
             int tam = (int)MainWindow.settings.ToolsS.imgSize;
 

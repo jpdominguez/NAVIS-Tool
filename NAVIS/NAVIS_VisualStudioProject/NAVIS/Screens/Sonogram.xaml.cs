@@ -141,12 +141,12 @@ namespace NAVIS
 
                 if (MainWindow.settings.MainS.eventSize == 16)
                 {
-                    c16.generateBitmap("archivobmp", SB_maxValue.Value);
+                    c16.generateSonogram("archivobmp", SB_maxValue.Value);
                 }
 
                 else if (MainWindow.settings.MainS.eventSize == 32)
                 {
-                    c32.generateBitmap("archivobmp", (int)SB_maxValue.Value);
+                    c32.generateSonogram("archivobmp", (int)SB_maxValue.Value);
                 }
 
                 BitmapImage _image = new BitmapImage();
@@ -180,12 +180,12 @@ namespace NAVIS
 
             if (MainWindow.settings.MainS.eventSize == 16)
             {
-                c16.generateBitmap("archivobmp", SB_maxValue.Value);
+                c16.generateSonogram("archivobmp", SB_maxValue.Value);
             }
 
             else if (MainWindow.settings.MainS.eventSize == 32)
             {
-                c32.generateBitmap("archivobmp", (int)SB_maxValue.Value);
+                c32.generateSonogram("archivobmp", (int)SB_maxValue.Value);
             }
 
             BitmapImage _image = new BitmapImage();
