@@ -69,203 +69,198 @@
 
             </DockPanel>
         </Border>
-        <StackPanel x:Name="VerticalMenu" Background="Gray"  DockPanel.Dock="Left" >
-            <Button x:Name="Btn_LoadAedat" Height="50" Width="50" Margin="7 30 7 0"  Click="loadAedatToolStripMenuItem_Click" Focusable="False" ToolTip="Load Aedat">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid HorizontalAlignment="Right">
-                            <Image x:Name="bg" Source="pack://application:,,,/Images/folderUnClick.png"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bg" Property="Source" Value="pack://application:,,,/Images/folderClick.png" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button x:Name="Btn_Settings" Height="50" Width="50" Margin="7 10 7 0"  Click="Btn_Settings_Click" Focusable="False" ToolTip="Settings">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid HorizontalAlignment="Right">
-                            <Image x:Name="bg" Source="pack://application:,,,/Images/settingsUnClicked.png"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bg" Property="Source" Value="pack://application:,,,/Images/settingsClicked.png" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="VerticalMenu" Background="Gray"  DockPanel.Dock="Left" >
+                <Button x:Name="Btn_LoadAedat" Height="50" Width="50" Margin="7 10 7 0"  Click="loadAedatToolStripMenuItem_Click" Focusable="False" ToolTip="Load Aedat">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="pack://application:,,,/Images/folderUnClick.png"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="pack://application:,,,/Images/folderClick.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="Btn_Settings" Height="50" Width="50" Margin="7 10 7 0"  Click="Btn_Settings_Click" Focusable="False" ToolTip="Settings">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="pack://application:,,,/Images/settingsUnClicked.png"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="pack://application:,,,/Images/settingsClicked.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="Btn_sonogram" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_sonogram_Click" ToolTip="Sonogram">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/sonogramUnclicked.png"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/sonogramClicked.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="Btn_histogram" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_histogram_Click" ToolTip="Histogram">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/histogramUnclicked.png"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/histogramClicked.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="Btn_average" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_average_Click" ToolTip="Average activity">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/averageUnclicked.png"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/averageClicked.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="Btn_difference" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_difference_Click" ToolTip="Disparity between both cochleae">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/diffUnclicked.png"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/diffClicked.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="Btn_AedatSplitterManual" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" ToolTip="Manual Aedat Splitter" Click="Btn_AedatSplitterManual_Click">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/AedatSplitterManualUnclick.png"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/AedatSplitterManualClick.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="Btn_AedatSplitterAuto" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" ToolTip="Automatic Aedat Splitter" Click="Btn_AedatSplitterAuto_Click">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/AedatSplitterAutoUnclick.png"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/AedatSplitterAutoClick.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="Btn_PDF" Height="50" Width="50" Margin="7 10 7 0"  Click="Btn_PDF_Click" Focusable="False" ToolTip="Generate PDF">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/pdfUnclicked.png"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/pdfClicked.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="Btn_generateCSV" Height="50" Width="50" Margin="7 10 7 0"  Click="Btn_CSV_Click" Focusable="False" ToolTip="Generate CSV">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/csvUnclicked.png"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/csvClicked.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="Btn_About" Height="50" Width="50" Margin="7 10 7 10"  Click="Btn_About_Click" Focusable="False" ToolTip="NAVIS Tool information">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/infoUnclick.png"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/infoClick.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
-            <Button x:Name="Btn_sonogram" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_sonogram_Click" ToolTip="Sonogram">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid HorizontalAlignment="Right">
-                            <Image x:Name="bg" Source="/NAVIS;component/Images/sonogramUnclicked.png"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/sonogramClicked.png" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button x:Name="Btn_histogram" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_histogram_Click" ToolTip="Histogram">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid HorizontalAlignment="Right">
-                            <Image x:Name="bg" Source="/NAVIS;component/Images/histogramUnclicked.png"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/histogramClicked.png" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button x:Name="Btn_average" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_average_Click" ToolTip="Average activity">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid HorizontalAlignment="Right">
-                            <Image x:Name="bg" Source="/NAVIS;component/Images/averageUnclicked.png"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/averageClicked.png" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
-            <Button x:Name="Btn_difference" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_difference_Click" ToolTip="Disparity between both cochleae">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid HorizontalAlignment="Right">
-                            <Image x:Name="bg" Source="/NAVIS;component/Images/diffUnclicked.png"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/diffClicked.png" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
-            <Button x:Name="Btn_AedatSplitterManual" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" ToolTip="Manual Aedat Splitter" Click="Btn_AedatSplitterManual_Click">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid HorizontalAlignment="Right">
-                            <Image x:Name="bg" Source="/NAVIS;component/Images/AedatSplitterManualUnclick.png"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/AedatSplitterManualClick.png" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
-            <Button x:Name="Btn_AedatSplitterAuto" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" ToolTip="Automatic Aedat Splitter" Click="Btn_AedatSplitterAuto_Click">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid HorizontalAlignment="Right">
-                            <Image x:Name="bg" Source="/NAVIS;component/Images/AedatSplitterAutoUnclick.png"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/AedatSplitterAutoClick.png" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
-            <Button x:Name="Btn_PDF" Height="50" Width="50" Margin="7 10 7 0"  Click="Btn_PDF_Click" Focusable="False" ToolTip="Generate PDF">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid HorizontalAlignment="Right">
-                            <Image x:Name="bg" Source="/NAVIS;component/Images/pdfUnclicked.png"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/pdfClicked.png" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button x:Name="Btn_generateCSV" Height="50" Width="50" Margin="7 10 7 0"  Click="Btn_CSV_Click" Focusable="False" ToolTip="Generate CSV">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid HorizontalAlignment="Right">
-                            <Image x:Name="bg" Source="/NAVIS;component/Images/csvUnclicked.png"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/csvClicked.png" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
-            <Button x:Name="Btn_About" Height="50" Width="50" Margin="7 10 7 0"  Click="Btn_About_Click" Focusable="False" ToolTip="NAVIS Tool information">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid HorizontalAlignment="Right">
-                            <Image x:Name="bg" Source="/NAVIS;component/Images/infoUnclick.png"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/infoClick.png" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
-        </StackPanel>
-
+            </StackPanel>
+        </ScrollViewer>
         <DockPanel x:Name="Main" DockPanel.Dock="Right" Background="White">
             <DockPanel DockPanel.Dock="Top" Height="35">
                 <Border x:Name="tab_ManualAedatSplitter" BorderBrush="Gray" BorderThickness="1 0 0 1" Width="351" HorizontalAlignment="Right" DockPanel.Dock="Right" Visibility="Collapsed">

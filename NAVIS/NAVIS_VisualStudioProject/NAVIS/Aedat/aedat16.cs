@@ -58,12 +58,36 @@ namespace NAVIS
                 int length = (int)bReader.BaseStream.Length;
                 int rowID = 0;
 
+                UInt16 s = (UInt16)bReader.ReadByte();
+                pos += sizeof(Byte);
+
+                while (s == 35)
+                {
+                    while (s != '\n')
+                    {
+                        s = bReader.ReadByte();
+                        pos += sizeof(Byte);
+                    }
+                    s = bReader.ReadByte();
+                    pos += sizeof(Byte);
+                }
+
+                int last_pos = pos;
+
                 UInt16 evt;
                 UInt32 timestamp;
                 while (pos < length)
                 {
-                    evt = (UInt16)(bReader.ReadByte());
-                    pos += sizeof(Byte);
+                    if (last_pos == pos)
+                    {
+                        evt = (UInt16)(s);
+                        pos += sizeof(Byte);
+                    }
+                    else
+                    {
+                        evt = (UInt16)(bReader.ReadByte());
+                        pos += sizeof(Byte);
+                    }
                     evt = (UInt16)(evt << 8);
                     evt = (UInt16)(evt | (UInt16)(bReader.ReadByte()));
                     evt = (UInt16)(0x00FF & evt);
@@ -143,9 +167,11 @@ namespace NAVIS
             {
                 evt = (UInt16)((BitConverter.GetBytes(row.addr)[0] << 8) | BitConverter.GetBytes(row.addr)[1]);
                 timestamp = (UInt32)((BitConverter.GetBytes(row.timestamp)[0] << 24) | BitConverter.GetBytes(row.timestamp)[1] << 16 | BitConverter.GetBytes(row.timestamp)[2] << 8 | BitConverter.GetBytes(row.timestamp)[3]);
-
-                bWriter.Write(evt);
-                bWriter.Write(timestamp);
+                if (row.timestamp - aedat[0].timestamp < aedat[aedat.Count - 1].timestamp)
+                {
+                    bWriter.Write(evt);
+                    bWriter.Write(timestamp);
+                }
             }
             bWriter.Close();
         }
