@@ -9,6 +9,11 @@ This software presents diverse utilities to develop the first post-processing la
 <p align="justify">
 <ul>
 <li><a href="#Description">Description</a></li>
+<li><a href="#Description">Installation</a></li>
+<li><a href="#Description">Usage</a></li>
+<li><a href="#Description">Contributing</a></li>
+<li><a href="#Description">Credits</a></li>
+<li><a href="#Description">License</a></li>
 </ul>
 </p>
 
