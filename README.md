@@ -9,15 +9,15 @@ This software presents diverse utilities to develop the first post-processing la
 <p align="justify">
 <ul>
 <li><a href="#Description">Description</a></li>
-<li><a href="#Description">Geeting started</a></li>
-<li><a href="#Description">Usage</a></li>
-<li><a href="#Description">Contributing</a></li>
-<li><a href="#Description">Credits</a></li>
-<li><a href="#Description">License</a></li>
+<li><a href="#GettingStarted">Getting started</a></li>
+<li><a href="#Usage">Usage</a></li>
+<li><a href="#Contributing">Contributing</a></li>
+<li><a href="#Credits">Credits</a></li>
+<li><a href="#License">License</a></li>
 </ul>
 </p>
 
-<h2>Getting started</h2>
+<h2 name="GettingStarted">Getting started</h2>
 <h3>Prerequisites</h3>
 <p align="justify">
 NAVIS requires Microsoft .NET Framework 4.5 or greater to be executed. The .NET Framework 4.5 and later versions are not supported on Windows XP, but on Windows Vista, Windows 7 and later versions of Windows.
@@ -43,10 +43,10 @@ After the file has been downloaded, decompress it. NAVIS executable file (NAVIS.
 </p>
 
 </p>
-<h2>Usage</h2>
-<h2>Contributing</h2>
-<h2>Credits</h2>
-<h2>License</h2>
+<h2 name="Usage">Usage</h2>
+<h2 name="Contributing">Contributing</h2>
+<h2 name="Credits">Credits</h2>
+<h2 name="License">License</h2>
 
 <p align="justify">
 This project is licensed under the GPL License - see the <a href="https://raw.githubusercontent.com/jpdominguez/NAVIS-Tool/master/LICENSE">LICENSE.md</a> file for details.
