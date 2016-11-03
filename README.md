@@ -9,7 +9,7 @@ This software presents diverse utilities to develop the first post-processing la
 <p align="justify">
 <ul>
 <li><a href="#Description">Description</a></li>
-<li><a href="#Description">Installation</a></li>
+<li><a href="#Description">Geeting started</a></li>
 <li><a href="#Description">Usage</a></li>
 <li><a href="#Description">Contributing</a></li>
 <li><a href="#Description">Credits</a></li>
@@ -17,6 +17,18 @@ This software presents diverse utilities to develop the first post-processing la
 </ul>
 </p>
 
+<h2>Getting started</h2>
+<h3>Prerequisites</h3>
+<h3>Installation</h3>
+<h2>Usage</h2>
+<h2>Contributing</h2>
+<h2>Credits</h2>
+<h2>License</h2>
 
+<p align="justify">
+This project is licensed under the GPL License - see the <a href="https://raw.githubusercontent.com/jpdominguez/NAVIS-Tool/master/LICENSE">LICENSE.md</a> file for details.
+</p>
+<p align="justify">
 Copyright © 2015 Juan P. Dominguez-Morales  
 jpdominguez@atc.us.es
+</p>
