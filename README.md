@@ -30,5 +30,5 @@ This project is licensed under the GPL License - see the <a href="https://raw.gi
 </p>
 <p align="justify">
 Copyright © 2015 Juan P. Dominguez-Morales<br>  
-<a href="jpdominguez@atc.us.es">jpdominguez@atc.us.es</a>
+<a href="mailto:jpdominguez@atc.us.es">jpdominguez@atc.us.es</a>
 </p>
