@@ -30,13 +30,16 @@ In addition to Microsoft .NET Framework 4.5 or greater, the NAVIS' Visual Studio
 To use NAVIS, first you need to download the latest release. This can be done by clicking on the "releases" button on the <a href="https://github.com/jpdominguez/NAVIS-Tool">home page</a> or just by cloning/downloading the repository.
 </p>
 <p align="center">
-<img align="right" src="http://github.com/jpdominguez/NAVIS-Tool/NAVIS/Wiki_Images/RM_releases.PNG">
+<img align="center" src="https://github.com/jpdominguez/NAVIS-Tool/blob/master/NAVIS/Wiki_Images/RM_releases.PNG">
 </p>
 <p align="justify">
 Then, select the latest release (it has a green button next to it containing the text "Latest release") and click on the source code download link.
 </p>
 <p align="center">
-<img align="right" src="http://github.com/jpdominguez/NAVIS-Tool/NAVIS/Wiki_Images/RM_latestRelease.PNG">
+<img align="center" src="https://github.com/jpdominguez/NAVIS-Tool/blob/master/NAVIS/Wiki_Images/RM_releaseslatestRelease.png">
+</p>
+<p align="justify">
+After the file has been downloaded, decompress it. NAVIS executable file (NAVIS.exe) is located on the "NAVIS_LatestBuild" folder. Place this folder wherever you prefer and double-click NAVIS.exe to run this tool. If you get an error when trying to execute NAVIS, please check that the folder from which it is being run contains each of the files that are inside the "NAVIS_LatestBuild" folder (no file has been deleted or moved to another folder) and that your have already installed Microsoft .NET Framework 4.5 or greater in your computer. If the problem persist, please send me an <a href="mailto:jpdominguez@atc.us.es">email</a> explaining the situation.
 </p>
 
 </p>
