@@ -29,6 +29,6 @@ This software presents diverse utilities to develop the first post-processing la
 This project is licensed under the GPL License - see the <a href="https://raw.githubusercontent.com/jpdominguez/NAVIS-Tool/master/LICENSE">LICENSE.md</a> file for details.
 </p>
 <p align="justify">
-Copyright © 2015 Juan P. Dominguez-Morales  
-jpdominguez@atc.us.es
+Copyright © 2015 Juan P. Dominguez-Morales<br>  
+<a href="jpdominguez@atc.us.es">jpdominguez@atc.us.es</a>
 </p>
