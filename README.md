@@ -26,6 +26,20 @@ NAVIS requires Microsoft .NET Framework 4.5 or greater to be executed. The .NET 
 In addition to Microsoft .NET Framework 4.5 or greater, the NAVIS' Visual Studio project requires <a href="http://www.visualstudio.com">Microsoft Visual Studio</a> to compile the code (NAVIS was programmed using Visual Studio Community 2015). 
 </p>
 <h3>Installation</h3>
+<p align="justify">
+To use NAVIS, first you need to download the latest release. This can be done by clicking on the "releases" button on the <a href="https://github.com/jpdominguez/NAVIS-Tool">home page</a> or just by cloning/downloading the repository.
+</p>
+<p align="center">
+<img align="right" src="http://github.com/jpdominguez/NAVIS-Tool/NAVIS/Wiki_Images/RM_releases.PNG">
+</p>
+<p align="justify">
+Then, select the latest release (it has a green button next to it containing the text "Latest release") and click on the source code download link.
+</p>
+<p align="center">
+<img align="right" src="http://github.com/jpdominguez/NAVIS-Tool/NAVIS/Wiki_Images/RM_latestRelease.PNG">
+</p>
+
+</p>
 <h2>Usage</h2>
 <h2>Contributing</h2>
 <h2>Credits</h2>
