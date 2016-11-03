@@ -22,7 +22,7 @@ This software presents diverse utilities to develop the first post-processing la
 <p align="justify">
 NAVIS requires Microsoft .NET Framework 4.5 or greater to be executed. The .NET Framework 4.5 and later versions are not supported on Windows XP, but on Windows Vista, Windows 7 and later versions of Windows.
 </p>
-<p align="justify>
+<p align="justify">
 In addition to Microsoft .NET Framework 4.5 or greater, the NAVIS' Visual Studio project requires Microsoft Visual Studio to compile the code (NAVIS was programmed using Visual Studio Community 2015). 
 </p>
 <h3>Installation</h3>
