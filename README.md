@@ -45,6 +45,24 @@ After the file has been downloaded, decompress it. NAVIS executable file (NAVIS.
 </p>
 <h2 name="Usage">Usage</h2>
 <h2 name="Contributing">Contributing</h2>
+<p align="justify">
+New functionalities or improvements to the existing project are welcome. To contribute to this project please follow these guidelines:
+<ol>
+<li> Search previous suggestions before making a new one, as yours may be a duplicate.</li>
+<li> Fork the project.</li>
+<li> Create a branch.</li>
+<li> Commit your changes to improve the project.</li>
+<li> Push this branch to your GitHub project.</li>
+<li> Open a <a href="https://github.com/jpdominguez/NAVIS-Tool/pulls">Pull Request</a>.</li>
+<li> Discuss, and optionally continue committing.</li>
+<li> Wait untill the project owner merges or closes the Pull Request.</li>
+</ol>
+If it is a new feature request (e.g., a new functionality), post an issue to discuss this new feature before you start coding. If the project owner approves it, assign the issue to yourself and then do the steps above.
+</p>
+<p align="justify">
+Thank you for contributing in the NAVIS project!
+</p>
+
 <h2 name="Credits">Credits</h2>
 <h2 name="License">License</h2>
 
