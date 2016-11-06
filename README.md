@@ -48,7 +48,7 @@ After the file has been downloaded, decompress it. NAVIS executable file (NAVIS.
 <h2 name="Usage">Usage</h2>
 <p align="justify">
 Double-click on the NAVIS.exe file to run it. Three main sections can be seen when the main window is opened: the menu, the toolbar and the cochleogram section:
-<ul>
+<ul align="justify">
 <li>The menu is located on the upper side of the window. It allows the user to access each of the NAVIS’s functionalities.</li>
 <li>The toolbar is located on the left side of the application. It has some quick buttons (shortcuts) for the most-common NAVIS’s utilities. All of these buttons are shown by default when using NAVIS for the first time. Although, the user can select which of them should appear or not, based on his /her interests. This can be done in the settings, which are deeply explained in the <a href="https://github.com/jpdominguez/NAVIS-Tool/wiki">NAVIS wiki</a>.</li>
 <li>The cochleogram section is the big empty space that can be seen after opening NAVIS. This will be used to display the cochleogram of the audio file (in .aedat format) after we load it.</li>
@@ -90,7 +90,7 @@ In this tutorial we have introduced you on how to install, configure and start u
 <h2 name="Contributing">Contributing</h2>
 <p align="justify">
 New functionalities or improvements to the existing project are welcome. To contribute to this project please follow these guidelines:
-<ol>
+<ol align="justify">
 <li> Search previous suggestions before making a new one, as yours may be a duplicate.</li>
 <li> Fork the project.</li>
 <li> Create a branch.</li>
@@ -112,7 +112,7 @@ The authors of the NAVIS' original idea are: Juan P. Dominguez-Morales, Angel F.
 </p>
 <p align="justify">
 The authors would like to thank and give credit to:
-<ul>
+<ul align="justify">
 <li>Jiménez-Fernández, A., Cerezuela-Escudero, E., Miró-Amarante, L., Domínguez-Morales, M. J., de Asís Gómez-Rodríguez, F., Linares-Barranco, A., & Jiménez-Moreno, G. (2016). "A binaural neuromorphic auditory sensor for FPGA: a spike signal processing approach". IEEE Transactions on Neural Networks and Learning Systems.Year: 2016, Volume: PP, Issue: 99. Pages: 1 - 15, DOI: 10.1109/TNNLS.2016.2583223.</li>
 <li>Delbrück, T., “jAER Open Source Project,” 2007. [Online]. Available: http://sourceforge.net/p/jaer/wiki/Home/.</li>
 <li>R. Berner et al., “A 5 Meps $100 USB2.0 Address-Event Monitor-Sequencer Interface,” 2007 IEEE ISCAS, 2007.</li>
