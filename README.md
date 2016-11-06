@@ -42,8 +42,51 @@ Then, select the latest release (it has a green button next to it containing the
 After the file has been downloaded, decompress it. NAVIS executable file (NAVIS.exe) is located on the "NAVIS_LatestBuild" folder. Place this folder wherever you prefer and double-click NAVIS.exe to run this tool. If you get an error when trying to execute NAVIS, please check that the folder from which it is being run contains each of the files that are inside the "NAVIS_LatestBuild" folder (no file has been deleted or moved to another folder) and that your have already installed Microsoft .NET Framework 4.5 or greater in your computer. If the problem persist, please send me an <a href="mailto:jpdominguez@atc.us.es">email</a> explaining the situation.
 </p>
 
-</p>
+
+
+
 <h2 name="Usage">Usage</h2>
+<p align="justify">
+Double-click on the NAVIS.exe file to run it. Three main sections can be seen when the main window is opened: the menu, the toolbar and the cochleogram section:
+<ul>
+<li>The menu is located on the upper side of the window. It allows the user to access each of the NAVIS’s functionalities.</li>
+<li>The toolbar is located on the left side of the application. It has some quick buttons (shortcuts) for the most-common NAVIS’s utilities. All of these buttons are shown by default when using NAVIS for the first time. Although, the user can select which of them should appear or not, based on his /her interests. This can be done in the settings, which are deeply explained in the <a href="https://github.com/jpdominguez/NAVIS-Tool/wiki">NAVIS wiki</a>.</li>
+<li>The cochleogram section is the big empty space that can be seen after opening NAVIS. This will be used to display the cochleogram of the audio file (in .aedat format) after we load it.</li>
+</ul>
+</p>
+<p align="justify">
+The following picture shows the main window that you should be seeing after running the application.
+</p>
+<p align="center">
+<img align="center" src="https://github.com/jpdominguez/NAVIS-Tool/blob/master/NAVIS/Wiki_Images/MainWindow_menus.png">
+</p>
+<p align="justify">
+The folder “AedatSampleFiles” contains several aedat files that can be used to test the application and its functionalities. These files have been captured using jAER, the USBAERmini2 platform and a NAS (with different configurations: mono, stereo, 32-channel and 64-channel).
+</p>
+<p align="justify">
+In this step-by-step tutorial we will be using an aedat file that was captured using 64-channel bianural NAS: “en_un_lugar_de_la_mancha_aedat”, which contains a stream of events that correspond to a young woman reading the first sentence of the famous Spanish novel The Ingenious Gentleman Don Quixote of La Mancha: “En un lugar de La Mancha”.
+</p>
+<p align="justify">
+Before loading this file, we need to configure NAVIS first. Click on File->Settings in the menu or on the button with the gear symbol in the toolbar. This will open the settings window, which is organized into different tabs. Each of the parameters that appear on every tab of the settings window is explained on the <a href="https://github.com/jpdominguez/NAVIS-Tool/wiki/1.-Settings">“Settings” page on the Wiki</a>. For loading a file we only need to focus on the “Main” tab, specifically on three values: “Channels”, “Audio” and “Address Length”. The file that we will use in this tutorial is captured using a 64-channel bianural NAS and jAER; hence, we will select: “64” as “Channels”, “STEREO” as “Audio” and “32” as “Address Length” (jAER use 32 bits for storing the event’s address information). After this settings have been selected, click on the “Save as default settings” button.
+</p>
+<p align="center">
+<img align="center" src="https://github.com/jpdominguez/NAVIS-Tool/blob/master/NAVIS/Wiki_Images/Settings_step.png">
+</p>
+<p align="justify">
+After the settings have been modified and saved, we are now ready to load our first aedat file. Click on File->”Load Aedat” or on the button with the folder symbol in the left toolbar. Navigate to the folder where the file is and select it (this aedat can be found in the “Stereo->32-bit address length” folder from the AedatSampleFiles folder of the GitHub project). The loading process will now begin. Take into account that the file will take longer to load depending on its size and length. After the file is loaded correctly, its cochleogram will be shown in the cochleogram section that we mentioned before.
+</p>
+<p align="center">
+<img align="center" src="https://github.com/jpdominguez/NAVIS-Tool/blob/master/NAVIS/Wiki_Images/MainWindow_cochleogram.png">
+</p>
+<p align="justify">
+Now that the file is loaded, you can use any of the functionalities that NAVIS provides: sonogram, histogram, average activity, disparity between left and right cochleae, etc. This software also allows to split the original file into different single aedat files both manually and automatically based on the channel’s average activity.
+</p>
+<p align="justify">
+In this tutorial we have introduced you on how to install, configure and start using NAVIS. We have shown how to load aedat files and the basics for further processing of the information using the tools that this software provides. A more detailed explanation of the main NAVIS’ functionalities (sonogram, histogram, average activity, disparity between cochleae, Manual Aedat Splitter and Automatic Aedat Splitter) and how to use them can be found in the <a href="https://github.com/jpdominguez/NAVIS-Tool/wiki">Wiki</a> of this project.
+</p>
+
+
+
 <h2 name="Contributing">Contributing</h2>
 <p align="justify">
 New functionalities or improvements to the existing project are welcome. To contribute to this project please follow these guidelines:
