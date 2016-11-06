@@ -64,6 +64,19 @@ Thank you for contributing in the NAVIS project!
 </p>
 
 <h2 name="Credits">Credits</h2>
+<p align="justify">
+The authors of the NAVIS' original idea are: Juan P. Dominguez-Morales, Angel F. Jimenez-Fernandez, Manuel J. Dominguez-Morales and Gabriel Jimenez-Moreno.
+</p>
+<p align="justify">
+The authors would like to thank and give credit to:
+<ul>
+<li>Jiménez-Fernández, A., Cerezuela-Escudero, E., Miró-Amarante, L., Domínguez-Morales, M. J., de Asís Gómez-Rodríguez, F., Linares-Barranco, A., & Jiménez-Moreno, G. (2016). "A binaural neuromorphic auditory sensor for FPGA: a spike signal processing approach". IEEE Transactions on Neural Networks and Learning Systems.Year: 2016, Volume: PP, Issue: 99. Pages: 1 - 15, DOI: 10.1109/TNNLS.2016.2583223.</li>
+<li>Delbrück, T., “jAER Open Source Project,” 2007. [Online]. Available: http://sourceforge.net/p/jaer/wiki/Home/.</li>
+<li>R. Berner et al., “A 5 Meps $100 USB2.0 Address-Event Monitor-Sequencer Interface,” 2007 IEEE ISCAS, 2007.</li>
+<li>Alejandro Linares-Barranco, for his support and contribution.</li>
+</ul>
+</p>
+
 <h2 name="License">License</h2>
 
 <p align="justify">
