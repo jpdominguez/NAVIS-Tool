@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <Settings SettingsVersion="1.0">
   <Main>
-    <Main dotSize="2" leftColor="BLUE" rightColor="ORANGE" showChart="True" eventSize="32" dotsToPaint="10" channels="64" mono_stereo="STEREO" />
+    <Main dotSize="2" leftColor="BLUE" rightColor="ORANGE" showChart="True" eventSize="32" dotsToPaint="10" channels="64" mono_stereo="STEREO" screenSize="s1366x768" />
   </Main>
   <Tools>
-    <Tools imgSize="MEDIUM" integrationPeriod="100000" noiseThreshold="3" noiseTolerance="20" />
+    <Tools imgSize="LARGE" integrationPeriod="200000" noiseThreshold="3" noiseTolerance="20" />
   </Tools>
   <PDF>
     <PDF showDate="True" showCochleogram="True" showHistogram="True" showSonogram="True" showDiff="True" showAverage="True" />
