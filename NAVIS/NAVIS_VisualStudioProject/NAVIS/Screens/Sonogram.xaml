@@ -35,7 +35,7 @@
     ScrollViewer.VerticalScrollBarVisibility="Disabled" ShowInTaskbar="True" FontSize="14" ResizeMode="NoResize">
     <Window.Resources>
     </Window.Resources>
-    <DockPanel Background="Gray" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <DockPanel Background="White" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <StackPanel DockPanel.Dock="Top" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Image x:Name="Img_Sonogram" Margin="3 0 3 0">
             </Image>

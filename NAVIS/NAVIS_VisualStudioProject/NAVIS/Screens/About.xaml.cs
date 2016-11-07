@@ -135,5 +135,10 @@ namespace NAVIS
             //Show NAVIS version in a textblock
             versionInfo.Text = "v" + version.ToString();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow.aboutOpenned = false;
+        }
     }
 }

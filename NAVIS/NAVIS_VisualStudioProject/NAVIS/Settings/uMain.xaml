@@ -41,7 +41,7 @@
                 </DockPanel>
                 <DockPanel Margin="0,0,0,10">
                     <local:NumericUpDown x:Name="NUD_Dots_Per_Event" Width="50" minValue="1" maxValue="10"/>
-                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="Dots per event"/>
+                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="Events per dot"/>
                 </DockPanel>
                 <DockPanel LastChildFill="False" Margin="0 0 0 10">
                     <ComboBox x:Name="CB_channels" HorizontalContentAlignment="Left" Width="80" Style="{DynamicResource ComboBoxFlatStyle}">
@@ -56,7 +56,7 @@
             </StackPanel>
 
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0,0,0" Width="200">
-                <GroupBox Header="Cochlea color" Margin="0 0 0 10" BorderBrush="LightGray">
+                <GroupBox Header="Cochleogram color" Margin="0 0 0 10" BorderBrush="LightGray">
                     <StackPanel Height="Auto" Width="Auto" Margin="10 10 10 0">
                         <DockPanel LastChildFill="True" Margin="0 0 0 10">
                             <TextBlock VerticalAlignment="Center" Margin="0,0,14,0" Text="Left"/>
@@ -76,5 +76,12 @@
                 </DockPanel>
             </StackPanel>
         </DockPanel>
+
+        <DockPanel LastChildFill="False" Margin="24,50,0,0" >
+            <ComboBox x:Name="CB_screenSize" HorizontalContentAlignment="Left" Width="98" Style="{DynamicResource ComboBoxFlatStyle}">
+            </ComboBox>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15,0,0,0" Text="Screen size"/>
+        </DockPanel>
+        
     </StackPanel>
 </UserControl>

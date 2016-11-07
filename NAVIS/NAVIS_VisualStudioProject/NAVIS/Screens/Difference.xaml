@@ -29,13 +29,13 @@
         xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Width="Auto"  BorderThickness="2"
-        Title="Difference between cochleae"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+        Title="Disparity between cochleae"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
         x:Name="Service"
       Style="{DynamicResource WindowNoTranspNoMax}"  BorderBrush="Black"  WindowStyle="None" WindowStartupLocation="CenterScreen"
     ScrollViewer.VerticalScrollBarVisibility="Disabled" ShowInTaskbar="True" FontSize="14" ResizeMode="NoResize">
     <Window.Resources>
     </Window.Resources>
-    <DockPanel Background="Gray" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <DockPanel Background="White" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <StackPanel DockPanel.Dock="Top" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Image x:Name="Img_Difference" Margin="3 0 3 0">
             </Image>

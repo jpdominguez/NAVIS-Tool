@@ -57,8 +57,14 @@ namespace NAVIS.Settings
             {
                 CB_mono_stereo.Items.Add(e.ToString());
             }
+            foreach (EnumScreenSize e in Enum.GetValues(typeof(EnumScreenSize)))
+            {
+                CB_screenSize.Items.Add(e.ToString().Replace("s", string.Empty));
+            }
             CB_channels.Items.Add(32);
             CB_channels.Items.Add(64);
+            CB_channels.Items.Add(128);
+            CB_channels.Items.Add(256);
             CB_eventSize.Items.Add(16);
             CB_eventSize.Items.Add(32);
         }
@@ -73,6 +79,7 @@ namespace NAVIS.Settings
             NUD_Dots_Per_Event.NUDTextBox.Text = ms.dotsToPaint.ToString();
             CB_channels.SelectedItem = ms.channels;
             CB_mono_stereo.SelectedItem = ms.mono_stereo.ToString();
+            CB_screenSize.SelectedItem = ms.screenSize.ToString().Replace("s", string.Empty);
             this.InvalidateVisual();
         }
 
@@ -92,7 +99,7 @@ namespace NAVIS.Settings
             {
                 error = true;
             }
-            if (CB_channels.SelectedItem == null || (Convert.ToInt16(CB_channels.SelectedItem) != 64 && Convert.ToInt16(CB_channels.SelectedItem) != 32))
+            if (CB_channels.SelectedItem == null || (Convert.ToInt16(CB_channels.SelectedItem) != 64 && Convert.ToInt16(CB_channels.SelectedItem) != 32 && Convert.ToInt16(CB_channels.SelectedItem) != 128 && Convert.ToInt16(CB_channels.SelectedItem) != 256))
             {
                 error = true;
             }
@@ -110,6 +117,7 @@ namespace NAVIS.Settings
                 ms.dotsToPaint = Convert.ToInt16(NUD_Dots_Per_Event.NUDTextBox.Text);
                 ms.channels = Convert.ToInt16(CB_channels.SelectedItem);
                 ms.mono_stereo = (EnumAudio)Enum.Parse(typeof(EnumAudio), CB_mono_stereo.SelectedItem.ToString(), true);
+                ms.screenSize = (EnumScreenSize)Enum.Parse(typeof(EnumScreenSize), "s" + CB_screenSize.SelectedItem.ToString());
             }
             return ms;
         }        

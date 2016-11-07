@@ -80,7 +80,7 @@ namespace NAVIS.Settings
             MainWindow.settings.PdfS = pdfSettings.getFromForm();
             MainWindow.settings.ToolbarS = toolbarSettings.getFromForm();
 
-            if (backupSettings.MainS.dotSize != MainWindow.settings.MainS.dotSize || backupSettings.MainS.leftColor != MainWindow.settings.MainS.leftColor || backupSettings.MainS.rightColor != MainWindow.settings.MainS.rightColor || backupSettings.MainS.showChart != MainWindow.settings.MainS.showChart || backupSettings.MainS.dotsToPaint != MainWindow.settings.MainS.dotsToPaint)
+            if (backupSettings.MainS.dotSize != MainWindow.settings.MainS.dotSize || backupSettings.MainS.leftColor != MainWindow.settings.MainS.leftColor || backupSettings.MainS.rightColor != MainWindow.settings.MainS.rightColor || backupSettings.MainS.showChart != MainWindow.settings.MainS.showChart || backupSettings.MainS.dotsToPaint != MainWindow.settings.MainS.dotsToPaint || backupSettings.MainS.channels != MainWindow.settings.MainS.channels || backupSettings.MainS.mono_stereo != MainWindow.settings.MainS.mono_stereo)
             {
                 mw.reloadCochcleogram();
                 backupSettings = (cSettings)MainWindow.settings.Clone();
@@ -153,10 +153,12 @@ namespace NAVIS.Settings
                 bottomBar.popup_text.Inlines.Add(" is checked, the cochleogram for the chosen aedat file is generated on load.\r");
                 bottomBar.popup_text.Inlines.Add(new Bold(new Run("\"Dot Size\"")));
                 bottomBar.popup_text.Inlines.Add(" and ");
-                bottomBar.popup_text.Inlines.Add(new Bold(new Run("\"Dots per event\"")));
+                bottomBar.popup_text.Inlines.Add(new Bold(new Run("\"Events\"")));
                 bottomBar.popup_text.Inlines.Add(" add some tweaks to the cochleogram representation. Lesser values on the first one and greater on the second will help reducing load times.\rWith ");
                 bottomBar.popup_text.Inlines.Add(new Bold(new Run("\"Address Length\"")));
-                bottomBar.popup_text.Inlines.Add(" you can select if the aedat file that you want to load has 16 bits or 32 bits address length.");
+                bottomBar.popup_text.Inlines.Add(" you can select if the aedat file that you want to load has 16 bits or 32 bits address length.\r");
+                bottomBar.popup_text.Inlines.Add(new Bold(new Run("\"Screen size\"")));
+                bottomBar.popup_text.Inlines.Add(": width x height (pixels)");
                 bottomBar.popup_text.TextWrapping = TextWrapping.Wrap;
             }
             else if (tabItem_Tools.IsSelected)
@@ -183,6 +185,11 @@ namespace NAVIS.Settings
                 bottomBar.popup_text.Inlines.Add("Check or uncheck the quick buttons of the vertical toolbar that you want to see.");
                 bottomBar.popup_text.TextWrapping = TextWrapping.Wrap;
             }
+        }
+
+        private void Service_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mw.settingsOpenned = false;
         }
     }
 }

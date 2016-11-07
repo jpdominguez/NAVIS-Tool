@@ -211,7 +211,7 @@ namespace NAVIS
 
             foreach (aedatEvent32 row in aedat)
             {
-                if ((MainWindow.cochleaInfo == EnumCochleaInfo.STEREO32 && row.addr < 64) || (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO64 && row.addr < 128))
+                if ((MainWindow.cochleaInfo == EnumCochleaInfo.STEREO32 && row.addr < 64) || (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO64 && row.addr < 128) || (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO128 && row.addr < 256) || (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO256 && row.addr < 512))
                 {
                     evt = (UInt32)((BitConverter.GetBytes(row.addr)[0] << 24) | BitConverter.GetBytes(row.addr)[1] << 16 | BitConverter.GetBytes(row.addr)[2] << 8 | BitConverter.GetBytes(row.addr)[3]);
                     timestamp = (UInt32)((BitConverter.GetBytes(row.timestamp)[0] << 24) | BitConverter.GetBytes(row.timestamp)[1] << 16 | BitConverter.GetBytes(row.timestamp)[2] << 8 | BitConverter.GetBytes(row.timestamp)[3]);
@@ -246,8 +246,12 @@ namespace NAVIS
             {
                 case EnumCochleaInfo.MONO32: eventsFired = new int[64]; limit = 64; mono = true; break;
                 case EnumCochleaInfo.MONO64: eventsFired = new int[128]; limit = 128; mono = true; break;
+                case EnumCochleaInfo.MONO128: eventsFired = new int[256]; limit = 256; mono = true; break;
+                case EnumCochleaInfo.MONO256: eventsFired = new int[512]; limit = 512; mono = true; break;
                 case EnumCochleaInfo.STEREO32: eventsFired = new int[128]; limit = 128; mono = false; break;
                 case EnumCochleaInfo.STEREO64: eventsFired = new int[256]; limit = 256; mono = false; break;
+                case EnumCochleaInfo.STEREO128: eventsFired = new int[512]; limit = 512; mono = false; break;
+                case EnumCochleaInfo.STEREO256: eventsFired = new int[1024]; limit = 1024; mono = false; break;
                 default: eventsFired = new int[256]; limit = 256; mono = false; break;
             }
 
@@ -293,8 +297,12 @@ namespace NAVIS
                     {
                         case EnumCochleaInfo.MONO32: condition = indx != 63 && indx != 62; break;
                         case EnumCochleaInfo.MONO64: condition = indx != 127 && indx != 126; break;
+                        case EnumCochleaInfo.MONO128: condition = indx != 255 && indx != 254; break;
+                        case EnumCochleaInfo.MONO256: condition = indx != 511 && indx != 510; break;
                         case EnumCochleaInfo.STEREO32: condition = indx != 127 && indx != 63 && indx != 126 && indx != 62; break;
                         case EnumCochleaInfo.STEREO64: condition = indx != 127 && indx != 255 && indx != 126 && indx != 254; break;
+                        case EnumCochleaInfo.STEREO128: condition = indx != 511 && indx != 255 && indx != 510 && indx != 254; break;
+                        case EnumCochleaInfo.STEREO256: condition = indx != 511 && indx != 1023 && indx != 510 && indx != 1022; break;
                         default: condition = indx != 127 && indx != 255 && indx != 126 && indx != 254; break;
                     }
 
@@ -322,7 +330,7 @@ namespace NAVIS
 
             if (Convert.ToInt32((maxTimestamp * tam / MainWindow.settings.ToolsS.integrationPeriod) + 4) > System.Windows.SystemParameters.PrimaryScreenWidth)
             {
-                MessageBox.Show("This process would generate an image larger than the primary screen width. Try increasing the Integration Period in File->Settings->ShowDiagram tab or reducing the image size", "Maximum size exceeded", MessageBoxButton.OK);
+                MessageBox.Show("This process would generate an image larger than the primary screen width. Try increasing the Integration Period in File->Settings->Tools tab or reducing the image size", "Maximum size exceeded", MessageBoxButton.OK);
                 return false;
             }
             else
@@ -334,8 +342,12 @@ namespace NAVIS
                 {
                     case EnumCochleaInfo.MONO32: frameSizeHeight = 32; break;
                     case EnumCochleaInfo.MONO64: frameSizeHeight = 64; break;
+                    case EnumCochleaInfo.MONO128: frameSizeHeight = 128; break;
+                    case EnumCochleaInfo.MONO256: frameSizeHeight = 256; break;
                     case EnumCochleaInfo.STEREO32: frameSizeHeight = 64; break;
                     case EnumCochleaInfo.STEREO64: frameSizeHeight = 128; break;
+                    case EnumCochleaInfo.STEREO128: frameSizeHeight = 256; break;
+                    case EnumCochleaInfo.STEREO256: frameSizeHeight = 512; break;
                     default: frameSizeHeight = 128; break;
                 }
 
@@ -407,8 +419,12 @@ namespace NAVIS
             {
                 case EnumCochleaInfo.MONO32: frameSizeHeight = 32; break;
                 case EnumCochleaInfo.MONO64: frameSizeHeight = 64; break;
+                case EnumCochleaInfo.MONO128: frameSizeHeight = 128; break;
+                case EnumCochleaInfo.MONO256: frameSizeHeight = 256; break;
                 case EnumCochleaInfo.STEREO32: frameSizeHeight = 64; break;
                 case EnumCochleaInfo.STEREO64: frameSizeHeight = 128; break;
+                case EnumCochleaInfo.STEREO128: frameSizeHeight = 256; break;
+                case EnumCochleaInfo.STEREO256: frameSizeHeight = 512; break;
                 default: frameSizeHeight = 128; break;
             }
 
@@ -580,8 +596,12 @@ namespace NAVIS
             {
                 case EnumCochleaInfo.MONO32: addresses = 64; break;
                 case EnumCochleaInfo.MONO64: addresses = 128; break;
+                case EnumCochleaInfo.MONO128: addresses = 256; break;
+                case EnumCochleaInfo.MONO256: addresses = 512; break;
                 case EnumCochleaInfo.STEREO32: addresses = 128; break;
                 case EnumCochleaInfo.STEREO64: addresses = 256; break;
+                case EnumCochleaInfo.STEREO128: addresses = 512; break;
+                case EnumCochleaInfo.STEREO256: addresses = 1024; break;
                 default: addresses = 256; break;
             }
 
@@ -590,11 +610,11 @@ namespace NAVIS
 
             for (int i = 0; i < listaEventos.Count; i++)
             {
-                if ((MainWindow.cochleaInfo == EnumCochleaInfo.MONO64 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO32) && listaEventos[i].timestamp >= init && listaEventos[i].timestamp < end)
+                if ((MainWindow.cochleaInfo == EnumCochleaInfo.MONO64 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO32 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO128 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO256) && listaEventos[i].timestamp >= init && listaEventos[i].timestamp < end)
                 {
                     numElL++;
                 }
-                else if (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO32 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO64)
+                else if (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO32 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO64 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO128 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO256)
                 {
                     if (listaEventos[i].addr >= addresses / 2 && listaEventos[i].addr < addresses && listaEventos[i].timestamp >= init && listaEventos[i].timestamp < end)
                     {

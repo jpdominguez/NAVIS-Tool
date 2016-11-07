@@ -77,7 +77,7 @@ namespace NAVIS.Settings
                     MainWindow.buttonList[i].Visibility = Visibility.Visible;
                 }
             }
-
+            MainWindow.updateScreenSize();
             InfoWindow iw = new InfoWindow("Success!", "Settings saved successfuly");
             iw.ShowDialog();
         }

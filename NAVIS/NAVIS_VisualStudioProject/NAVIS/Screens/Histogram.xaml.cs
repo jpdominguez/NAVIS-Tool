@@ -88,8 +88,12 @@ namespace NAVIS
                 {
                     case EnumCochleaInfo.MONO32: condition = i != 63 && i != 62; break;
                     case EnumCochleaInfo.MONO64: condition = i != 127 && i != 126; break;
+                    case EnumCochleaInfo.MONO128: condition = i != 255 && i != 254; break;
+                    case EnumCochleaInfo.MONO256: condition = i != 511 && i != 510; break;
                     case EnumCochleaInfo.STEREO32: condition = i != 127 && i != 63 && i != 126 && i != 62; break;
                     case EnumCochleaInfo.STEREO64: condition = i != 127 && i != 255 && i != 126 && i != 254; break;
+                    case EnumCochleaInfo.STEREO128: condition = i != 511 && i != 255 && i != 510 && i != 254; break;
+                    case EnumCochleaInfo.STEREO256: condition = i != 511 && i != 1023 && i != 510 && i != 1022; break;
                     default: condition = i != 127 && i != 255 && i != 126 && i != 254; break;
                 }
 
@@ -142,8 +146,12 @@ namespace NAVIS
                     {
                         case EnumCochleaInfo.MONO32: condition = i != 63 && i != 62; break;
                         case EnumCochleaInfo.MONO64: condition = i != 127 && i != 126; break;
+                        case EnumCochleaInfo.MONO128: condition = i != 255 && i != 254; break;
+                        case EnumCochleaInfo.MONO256: condition = i != 511 && i != 510; break;
                         case EnumCochleaInfo.STEREO32: condition = i != 127 && i != 63 && i != 126 && i != 62; break;
                         case EnumCochleaInfo.STEREO64: condition = i != 127 && i != 255 && i != 126 && i != 254; break;
+                        case EnumCochleaInfo.STEREO128: condition = i != 511 && i != 255 && i != 510 && i != 254; break;
+                        case EnumCochleaInfo.STEREO256: condition = i != 511 && i != 1023 && i != 510 && i != 1022; break;
                         default: condition = i != 127 && i != 255 && i != 126 && i != 254; break;
                     }
                     if (condition)
@@ -164,8 +172,12 @@ namespace NAVIS
                     {
                         case EnumCochleaInfo.MONO32: condition = i != 63 && i != 62; break;
                         case EnumCochleaInfo.MONO64: condition = i != 127 && i != 126; break;
+                        case EnumCochleaInfo.MONO128: condition = i != 255 && i != 254; break;
+                        case EnumCochleaInfo.MONO256: condition = i != 511 && i != 510; break;
                         case EnumCochleaInfo.STEREO32: condition = i != 127 && i != 63 && i != 126 && i != 62; break;
                         case EnumCochleaInfo.STEREO64: condition = i != 127 && i != 255 && i != 126 && i != 254; break;
+                        case EnumCochleaInfo.STEREO128: condition = i != 511 && i != 255 && i != 510 && i != 254; break;
+                        case EnumCochleaInfo.STEREO256: condition = i != 511 && i != 1023 && i != 510 && i != 1022; break;
                         default: condition = i != 127 && i != 255 && i != 126 && i != 254; break;
                     }
                     if (condition)

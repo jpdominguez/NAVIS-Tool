@@ -46,6 +46,7 @@ namespace NAVIS
         public int dotsToPaint;
         public int channels;
         public EnumAudio mono_stereo;
+        public EnumScreenSize screenSize;
 
         /// <summary>
         /// Main settings empty constructor
@@ -60,12 +61,13 @@ namespace NAVIS
             this.dotsToPaint = 10;
             this.channels = 64;
             this.mono_stereo = EnumAudio.STEREO;
+            this.screenSize = EnumScreenSize.s1366x768;
         }
 
         /// <summary>
         /// Main settings constructor with parameters
         /// </summary>
-        public MainS(int dotSize, EnumColor leftColor, EnumColor rightColor, bool showChart, int eventSize, int dotsToPaint, int channels, EnumAudio mono_stereo)
+        public MainS(int dotSize, EnumColor leftColor, EnumColor rightColor, bool showChart, int eventSize, int dotsToPaint, int channels, EnumAudio mono_stereo, EnumScreenSize screenSize)
         {
             this.dotSize = dotSize;
             this.leftColor = leftColor;
@@ -75,6 +77,7 @@ namespace NAVIS
             this.dotsToPaint = dotsToPaint;
             this.channels = channels;
             this.mono_stereo = mono_stereo;
+            this.screenSize = screenSize;
         }
 
         /// <summary>
@@ -93,6 +96,7 @@ namespace NAVIS
             textWriter.WriteAttributeString("dotsToPaint", dotsToPaint.ToString(ci));
             textWriter.WriteAttributeString("channels", channels.ToString(ci));
             textWriter.WriteAttributeString("mono_stereo", mono_stereo.ToString("G"));
+            textWriter.WriteAttributeString("screenSize", screenSize.ToString("G"));
             textWriter.WriteEndElement();
         }
 
@@ -112,6 +116,7 @@ namespace NAVIS
             dotsToPaint = Convert.ToInt16(xe.Attribute("dotsToPaint").Value, ci);
             channels = Convert.ToInt16(xe.Attribute("channels").Value, ci);
             mono_stereo = (EnumAudio)Enum.Parse(typeof(EnumAudio), xe.Attribute("mono_stereo").Value);
+            screenSize = (EnumScreenSize)Enum.Parse(typeof(EnumScreenSize), xe.Attribute("screenSize").Value);
         }
     }
 
@@ -349,7 +354,8 @@ namespace NAVIS
     public enum EnumColor { BLUE = 0, ORANGE = 1, RED = 2, BLACK = 3, GREEN = 4, YELLOW = 5, BROWN = 6, MAGENTA = 7 };
     public enum EnumSize { TINY = 1, SMALL = 2, MEDIUM = 3, LARGE = 4 };
     public enum EnumAudio { MONO = 0, STEREO = 1 };
-    public enum EnumCochleaInfo { MONO32 = 0, MONO64 = 1, STEREO32 = 2, STEREO64 = 3 };
+    public enum EnumCochleaInfo { MONO32 = 0, MONO64 = 1, MONO128 = 2, MONO256 = 3, STEREO32 = 4, STEREO64 = 5, STEREO128 = 6, STEREO256 = 7 };
+    public enum EnumScreenSize { s800x600 = 0, s1024x768 = 1, s1280x1024 = 2, s1366x768 = 3, s1920x1080 = 4 };
 
     /// <summary>
     /// Settings class. Includes the other four settings classes (Tools, PDF, Toolbar and Main)

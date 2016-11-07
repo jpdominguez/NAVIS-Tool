@@ -71,6 +71,13 @@ namespace NAVIS
         
         private bool isOpen_ManualAedatSplitter = false;
 
+        internal static MainWindow main;
+
+        Settings.Settings set = null;
+        NAVIS.About ni = null;
+        public bool settingsOpenned = false;
+        public static bool aboutOpenned = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -79,6 +86,13 @@ namespace NAVIS
             this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
 
             settings = new cSettings();
+
+            main = this;
+
+
+            this.Width = Convert.ToInt32(settings.MainS.screenSize.ToString().Remove(0, 1).Split('x')[0]);
+            this.Height = Convert.ToInt32(settings.MainS.screenSize.ToString().Remove(0, 1).Split('x')[1]);
+
 
             // List of buttons which will be disabled untill the aedat file is loaded
             buttonList = new List<Button> { Btn_LoadAedat, Btn_Settings, Btn_About, Btn_PDF, Btn_generateCSV, Btn_histogram, Btn_sonogram, Btn_average, Btn_difference, Btn_AedatSplitterManual, Btn_AedatSplitterAuto };
@@ -103,6 +117,12 @@ namespace NAVIS
 
             text_ManualAedatSplitterInit.Text = "0";
             text_ManualAedatSplitterEnd.Text = "0";
+
+            if (isOpen_ManualAedatSplitter)
+            {
+                closeManualAedatSplitter();
+                isOpen_ManualAedatSplitter = false;
+            }
 
             System.Version version = Assembly.GetExecutingAssembly().GetName().Version;
             lblVersion.Text = String.Format(lblVersion.Text, version.Major, version.Minor, version.Build, version.Revision);
@@ -138,6 +158,15 @@ namespace NAVIS
                 displayCochleogram();
                 chart_Cochleogram.Visible = true;
             }
+
+            text_ManualAedatSplitterInit.Text = "0";
+            text_ManualAedatSplitterEnd.Text = "0";
+
+            if (isOpen_ManualAedatSplitter)
+            {
+                closeManualAedatSplitter();
+                isOpen_ManualAedatSplitter = false;
+            }
         }
 
         /// <summary>
@@ -166,8 +195,12 @@ namespace NAVIS
             {
                 case EnumCochleaInfo.MONO32: addresses = 64; break;
                 case EnumCochleaInfo.MONO64: addresses = 128; break;
+                case EnumCochleaInfo.MONO128: addresses = 256; break;
+                case EnumCochleaInfo.MONO256: addresses = 512; break;
                 case EnumCochleaInfo.STEREO32: addresses = 128; break;
                 case EnumCochleaInfo.STEREO64: addresses = 256; break;
+                case EnumCochleaInfo.STEREO128: addresses = 512; break;
+                case EnumCochleaInfo.STEREO256: addresses = 1024; break;
                 default: addresses = 256; break;
             }
 
@@ -354,7 +387,7 @@ namespace NAVIS
                     buttonList[i].IsEnabled = true;
                     buttonList[i].Opacity = 1;
                 }
-                if (cochleaInfo == EnumCochleaInfo.MONO32 || cochleaInfo == EnumCochleaInfo.MONO64) // If the file corresponds to a mono sound, there's no point on enabling the "Disparity between cochleae" function.
+                if (cochleaInfo == EnumCochleaInfo.MONO32 || cochleaInfo == EnumCochleaInfo.MONO64 || cochleaInfo == EnumCochleaInfo.MONO128 || cochleaInfo == EnumCochleaInfo.MONO256) // If the file corresponds to a mono sound, there's no point on enabling the "Disparity between cochleae" function.
                 {
                     Btn_difference.IsEnabled = false;
                     Btn_difference.Opacity = 0.6;
@@ -383,6 +416,14 @@ namespace NAVIS
                 {
                     cochleaInfo = EnumCochleaInfo.MONO64;
                 }
+                else if (MainWindow.settings.MainS.channels == 128)
+                {
+                    cochleaInfo = EnumCochleaInfo.MONO128;
+                }
+                else if (MainWindow.settings.MainS.channels == 256)
+                {
+                    cochleaInfo = EnumCochleaInfo.MONO256;
+                }
             }
             else if (MainWindow.settings.MainS.mono_stereo == EnumAudio.STEREO)
             {
@@ -393,6 +434,14 @@ namespace NAVIS
                 else if (MainWindow.settings.MainS.channels == 64)
                 {
                     cochleaInfo = EnumCochleaInfo.STEREO64;
+                }
+                else if (MainWindow.settings.MainS.channels == 128)
+                {
+                    cochleaInfo = EnumCochleaInfo.STEREO128;
+                }
+                else if (MainWindow.settings.MainS.channels == 256)
+                {
+                    cochleaInfo = EnumCochleaInfo.STEREO256;
                 }
             }
         }
@@ -417,9 +466,18 @@ namespace NAVIS
                     aedatObject32 = new aedat32(root);
                     aedatObject32.adaptAedat();
                 }
-
-                displayCharts();
-
+                initState();
+                displayCharts();                
+                if (cochleaInfo == EnumCochleaInfo.MONO32 || cochleaInfo == EnumCochleaInfo.MONO64 || cochleaInfo == EnumCochleaInfo.MONO128 || cochleaInfo == EnumCochleaInfo.MONO256) // If the file corresponds to a mono sound, there's no point on enabling the "Disparity between cochleae" function.
+                {
+                    Btn_difference.IsEnabled = false;
+                    Btn_difference.Opacity = 0.6;
+                }
+                else
+                {
+                    Btn_difference.IsEnabled = true;
+                    Btn_difference.Opacity = 1;
+                }
                 InfoWindow iw = new InfoWindow("Success!", "The Aedat file was loaded correctly");
                 iw.ShowDialog();
             }
@@ -430,8 +488,20 @@ namespace NAVIS
         /// </summary>
         private void Btn_Settings_Click(object sender, RoutedEventArgs e)
         {
-            Settings.Settings set = new Settings.Settings(this);
-            set.Show();
+            //set = new Settings.Settings(this);
+            if (settingsOpenned == false)
+            {
+                set = new Settings.Settings(this);
+                set.Show();
+                settingsOpenned = true;
+            }
+            else
+            {
+                set.WindowState = WindowState.Normal;
+                set.Activate();
+            }
+            
+            
         }
 
         /// <summary>
@@ -541,11 +611,11 @@ namespace NAVIS
                 }
                 #endregion
                 #region Disparity
-                if (settings.PdfS.showDiff && (cochleaInfo == EnumCochleaInfo.STEREO32 || cochleaInfo == EnumCochleaInfo.STEREO64))
+                if (settings.PdfS.showDiff && (cochleaInfo == EnumCochleaInfo.STEREO32 || cochleaInfo == EnumCochleaInfo.STEREO64 || cochleaInfo == EnumCochleaInfo.STEREO128 || cochleaInfo == EnumCochleaInfo.STEREO256))
                 {
                     paragraph = new iTextSharp.text.Paragraph("\n\n           4. Disparity between cochleae\n\n", fHead);
                     doc.Add(paragraph);
-                    paragraph = new iTextSharp.text.Paragraph("                     Difference between both cochleae.\n", fText);
+                    paragraph = new iTextSharp.text.Paragraph("                     Disparity between both cochleae.\n", fText);
                     doc.Add(paragraph);
                     paragraph = new iTextSharp.text.Paragraph("                         - Red: left cochlea predominance.", fText);
                     doc.Add(paragraph);
@@ -958,9 +1028,32 @@ namespace NAVIS
         }
 
         private void Btn_About_Click(object sender, RoutedEventArgs e)
+        {         
+
+            if (aboutOpenned == false)
+            {
+                ni = new NAVIS.About();
+                ni.Show();
+                aboutOpenned = true;
+            }
+            else
+            {
+                ni.WindowState = WindowState.Normal;
+                ni.Activate();
+            }
+        }
+
+
+        /*internal int Status
         {
-            NAVIS.About ni = new NAVIS.About();
-            ni.Show();
+            get { return (int)Width; }
+            set { Dispatcher.Invoke(new Action(() => { Width = value; })); }
+        }
+        */
+        public static void updateScreenSize()
+        {
+            main.Width = Convert.ToInt32(settings.MainS.screenSize.ToString().Replace("s", string.Empty).Split('x')[0]);
+            main.Height = Convert.ToInt32(settings.MainS.screenSize.ToString().Replace("s", string.Empty).Split('x')[1]);
         }
     }
 }

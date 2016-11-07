@@ -218,14 +218,16 @@ namespace NAVIS
             Debug.WriteLine("Window state: " + _Owner.WindowState.ToString());
         }
         private void SetWState(WindowState WS)
-        {
+        {            
             WState = WS;
             SetWState();
+            MainWindow.updateScreenSize();
         }
 
         private void _BtNormal_Click(object sender, RoutedEventArgs e)
         {
             SetWState(WindowState.Normal);
+            //MainWindow.updateScreenResolution();
         }
 
         private void cTitleBar_Name_MouseDoubleClick(object sender, MouseButtonEventArgs e)

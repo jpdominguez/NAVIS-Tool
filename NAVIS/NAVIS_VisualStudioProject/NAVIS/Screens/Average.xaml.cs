@@ -90,12 +90,12 @@ namespace NAVIS
                 for (long i = 0; i <= MainWindow.aedatObject16.maxTimestamp; i += (int)MainWindow.settings.ToolsS.integrationPeriod)
                 {
                     media = MainWindow.aedatObject16.averageBetweenTimestamps(i, i + MainWindow.settings.ToolsS.integrationPeriod);
-                    if (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO32 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO64)
+                    if (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO32 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO64 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO128 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO256)
                     {
                         chart_Average.Series["Right"].Points.AddXY(i, media[1]);
                         chart_Average.Series["Left"].Points.AddXY(i, media[0]);
                     }
-                    else if (MainWindow.cochleaInfo == EnumCochleaInfo.MONO32 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO64)
+                    else if (MainWindow.cochleaInfo == EnumCochleaInfo.MONO32 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO64 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO128 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO256)
                     {
                         chart_Average.Series["Left"].Points.AddXY(i, media[0]);
                     }
@@ -106,12 +106,12 @@ namespace NAVIS
                 for (long i = 0; i <= MainWindow.aedatObject32.maxTimestamp; i += (int)MainWindow.settings.ToolsS.integrationPeriod)
                 {
                     media = MainWindow.aedatObject32.averageBetweenTimestamps(i, i + MainWindow.settings.ToolsS.integrationPeriod);
-                    if (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO32 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO64)
+                    if (MainWindow.cochleaInfo == EnumCochleaInfo.STEREO32 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO64 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO128 || MainWindow.cochleaInfo == EnumCochleaInfo.STEREO256)
                     {
                         chart_Average.Series["Right"].Points.AddXY(i, media[1]);
                         chart_Average.Series["Left"].Points.AddXY(i, media[0]);
                     }
-                    else if (MainWindow.cochleaInfo == EnumCochleaInfo.MONO32 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO64)
+                    else if (MainWindow.cochleaInfo == EnumCochleaInfo.MONO32 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO64 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO128 || MainWindow.cochleaInfo == EnumCochleaInfo.MONO256)
                     {
                         chart_Average.Series["Left"].Points.AddXY(i, media[0]);
                     }

@@ -31,7 +31,7 @@
         Title="About"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
       Style="{DynamicResource WindowNoTranspNoMax}"  WindowStyle="None" WindowStartupLocation="CenterScreen"
         Width="530" Height="320"
-    ScrollViewer.VerticalScrollBarVisibility="Disabled" ShowInTaskbar="True" FontSize="14" ResizeMode="NoResize">
+    ScrollViewer.VerticalScrollBarVisibility="Disabled" ShowInTaskbar="True" FontSize="14" ResizeMode="NoResize" Closing="Window_Closing">
     <Window.Resources>
     </Window.Resources>
     <DockPanel x:Name="histogram_Container" Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

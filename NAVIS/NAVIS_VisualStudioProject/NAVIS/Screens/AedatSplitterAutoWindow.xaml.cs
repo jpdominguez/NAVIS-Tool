@@ -71,7 +71,7 @@ namespace NAVIS.Screens
             }
             if (Directory.GetFiles("./" + path).Length != 0)
             {
-                MessageBoxResult res = System.Windows.MessageBox.Show("The split process generated " + Directory.GetFiles("./" + path).Length + " files\nDo you want to display them individually as a cochleohgram", "AedatSplitter success", System.Windows.MessageBoxButton.YesNo);
+                MessageBoxResult res = System.Windows.MessageBox.Show("The split process generated " + Directory.GetFiles("./" + path).Length + " files\nDo you want to display them individually as a cochleogram", "AedatSplitter success", System.Windows.MessageBoxButton.YesNo);
                 if (res == MessageBoxResult.Yes)
                 {
                     foreach (String file in Directory.GetFiles("./" + path))
