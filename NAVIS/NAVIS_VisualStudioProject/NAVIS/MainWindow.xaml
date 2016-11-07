@@ -1,8 +1,9 @@
-﻿ <!--
+﻿
+<!--
 /////////////////////////////////////////////////////////////////////////////////
 //                                                                             //
 //    Copyright © 2015  Juan P. Dominguez-Morales                              //
-//                                                                             //        
+//                                                                             //
 //    This file is part of Neuromorphic Auditory Visualizer Tool (NAVIS Tool). //
 //                                                                             //
 //    NAVIS Tool is free software: you can redistribute it and/or modify       //
@@ -18,51 +19,74 @@
 //    You should have received a copy of the GNU General Public License        //
 //    along with NAVIS Tool.  If not, see<http://www.gnu.org/licenses/> .      //
 //                                                                             //
-/////////////////////////////////////////////////////////////////////////////////
--->
+/////////////////////////////////////////////////////////////////////////////////-->
 
 
-<Window
+<Window x:Class="NAVIS.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:toolkit="http://schemas.microsoft.com/wpf/2008/toolkit"
-       
-        xmlns:winformchart="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="NAVIS.MainWindow"
-        Title="NAVIS Tool" TextBlock.TextAlignment="Center"
-    Height="Auto" Width="Auto"
-    Style="{DynamicResource MainWindow}"  BorderBrush="Black"  WindowStyle="None" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" WindowStartupLocation="CenterScreen"
-    ScrollViewer.VerticalScrollBarVisibility="Auto" ShowInTaskbar="True" FontSize="14" ResizeMode="NoResize">
+        xmlns:winformchart="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+        Title="NAVIS Tool"
+        Width="Auto"
+        Height="Auto"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        BorderBrush="Black"
+        FontSize="14"
+        ResizeMode="NoResize"
+        ScrollViewer.VerticalScrollBarVisibility="Auto"
+        ShowInTaskbar="True"
+        Style="{DynamicResource MainWindow}"
+        TextBlock.TextAlignment="Center"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        mc:Ignorable="d">
     <DockPanel x:Name="Container" Background="Transparent">
-        <Border BorderBrush="Gray" BorderThickness="0 0 0 1" VerticalAlignment="Top" DockPanel.Dock="Top">
+        <Border VerticalAlignment="Top"
+                BorderBrush="Gray"
+                BorderThickness="0 0 0 1"
+                DockPanel.Dock="Top">
             <DockPanel Background="#FFd7d7d7">
-                <TextBlock x:Name="lblVersion"  Background="#FFd7d7d7" DockPanel.Dock="Right" Text="v{0}.{1}.{2}.{3}" VerticalAlignment="Center" Margin="0 0 10 0"></TextBlock>
-                <Menu IsMainMenu="True"  Background="#FFd7d7d7" >
-                    <MenuItem Header="File" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center">
-                        <MenuItem Header="Load Aedat" Click="loadAedatToolStripMenuItem_Click"/>
-                        <MenuItem Header="Load CSV" Click="loadCSVToolStripMenuItem_Click"/>
-                        <Separator/>
-                        <MenuItem Header="Reload" x:Name="menuItem_Reload" Click="Btn_Reload_Click"/>
-                        <Separator/>
-                        <MenuItem Header="Settings" Click="Btn_Settings_Click"/>
-                        <MenuItem Header="About" Click="Btn_About_Click"/>
+                <TextBlock x:Name="lblVersion"
+                           Margin="0 0 10 0"
+                           VerticalAlignment="Center"
+                           Background="#FFd7d7d7"
+                           DockPanel.Dock="Right"
+                           Text="v{0}.{1}.{2}.{3}" />
+                <Menu Background="#FFd7d7d7" IsMainMenu="True">
+                    <MenuItem Height="30"
+                              VerticalAlignment="Center"
+                              VerticalContentAlignment="Center"
+                              Header="File">
+                        <MenuItem Click="loadAedatToolStripMenuItem_Click" Header="Load Aedat" />
+                        <MenuItem Click="loadCSVToolStripMenuItem_Click" Header="Load CSV" />
+                        <Separator />
+                        <MenuItem x:Name="menuItem_Reload"
+                                  Click="Btn_Reload_Click"
+                                  Header="Reload" />
+                        <Separator />
+                        <MenuItem Click="Btn_Settings_Click" Header="Settings" />
+                        <MenuItem Click="Btn_About_Click" Header="About" />
                     </MenuItem>
-                    <MenuItem Header="Tools" x:Name="menuItem_Tools">
-                        <MenuItem Header="Sonogram" Click="Btn_sonogram_Click"/>
-                        <MenuItem Header="Histogram" Click="Btn_histogram_Click"/>
-                        <MenuItem Header="Average activity" Click="Btn_average_Click"/>
-                        <MenuItem Header="Difference between cochleae" Click="Btn_difference_Click"/>
-                        <Separator/>
-                        <MenuItem Header="Manual Aedat Splitter" Click="Btn_AedatSplitterManual_Click"/>
-                        <MenuItem Header="Automatic Aedat Splitter" Click="Btn_AedatSplitterAuto_Click"/>
-                        <Separator/>
-                        <MenuItem Header="Stereo to Mono" Click="Btn_StereoToMono_Click"/>
+                    <MenuItem x:Name="menuItem_Tools" Header="Tools">
+                        <MenuItem Click="Btn_sonogram_Click" Header="Sonogram" />
+                        <MenuItem Click="Btn_histogram_Click" Header="Histogram" />
+                        <MenuItem Click="Btn_average_Click" Header="Average activity" />
+                        <MenuItem Click="Btn_difference_Click" Header="Disparity between cochleae" />
+                        <Separator />
+                        <MenuItem Click="Btn_AedatSplitterManual_Click" Header="Manual Aedat Splitter" />
+                        <MenuItem Click="Btn_AedatSplitterAuto_Click" Header="Automatic Aedat Splitter" />
+                        <Separator />
+                        <MenuItem Click="Btn_StereoToMono_Click" Header="Stereo to Mono" />
 
                     </MenuItem>
-                    <MenuItem Header="Report" x:Name="menuItem_Report">
-                        <MenuItem Header="Generate PDF" Click="Btn_PDF_Click"/>
-                        <MenuItem Header="Generate CSV" Click="Btn_CSV_Click"/>
+                    <MenuItem x:Name="menuItem_Report" Header="Report">
+                        <MenuItem Click="Btn_PDF_Click" Header="Generate PDF" />
+                        <MenuItem Click="Btn_CSV_Click" Header="Generate CSV" />
                     </MenuItem>
 
                 </Menu>
@@ -70,12 +94,20 @@
             </DockPanel>
         </Border>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="VerticalMenu" Background="Gray"  DockPanel.Dock="Left" >
-                <Button x:Name="Btn_LoadAedat" Height="50" Width="50" Margin="7 10 7 0"  Click="loadAedatToolStripMenuItem_Click" Focusable="False" ToolTip="Load Aedat">
+            <StackPanel x:Name="VerticalMenu"
+                        Background="Gray"
+                        DockPanel.Dock="Left">
+                <Button x:Name="Btn_LoadAedat"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="loadAedatToolStripMenuItem_Click"
+                        Focusable="False"
+                        ToolTip="Load Aedat">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid HorizontalAlignment="Right">
-                                <Image x:Name="bg" Source="pack://application:,,,/Images/folderUnClick.png"/>
+                                <Image x:Name="bg" Source="pack://application:,,,/Images/folderUnClick.png" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -88,11 +120,17 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="Btn_Settings" Height="50" Width="50" Margin="7 10 7 0"  Click="Btn_Settings_Click" Focusable="False" ToolTip="Settings">
+                <Button x:Name="Btn_Settings"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="Btn_Settings_Click"
+                        Focusable="False"
+                        ToolTip="Settings">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid HorizontalAlignment="Right">
-                                <Image x:Name="bg" Source="pack://application:,,,/Images/settingsUnClicked.png"/>
+                                <Image x:Name="bg" Source="pack://application:,,,/Images/settingsUnClicked.png" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -105,11 +143,17 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="Btn_sonogram" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_sonogram_Click" ToolTip="Sonogram">
+                <Button x:Name="Btn_sonogram"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="Btn_sonogram_Click"
+                        Focusable="False"
+                        ToolTip="Sonogram">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid HorizontalAlignment="Right">
-                                <Image x:Name="bg" Source="/NAVIS;component/Images/sonogramUnclicked.png"/>
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/sonogramUnclicked.png" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -122,11 +166,17 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="Btn_histogram" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_histogram_Click" ToolTip="Histogram">
+                <Button x:Name="Btn_histogram"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="Btn_histogram_Click"
+                        Focusable="False"
+                        ToolTip="Histogram">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid HorizontalAlignment="Right">
-                                <Image x:Name="bg" Source="/NAVIS;component/Images/histogramUnclicked.png"/>
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/histogramUnclicked.png" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -139,11 +189,17 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="Btn_average" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_average_Click" ToolTip="Average activity">
+                <Button x:Name="Btn_average"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="Btn_average_Click"
+                        Focusable="False"
+                        ToolTip="Average activity">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid HorizontalAlignment="Right">
-                                <Image x:Name="bg" Source="/NAVIS;component/Images/averageUnclicked.png"/>
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/averageUnclicked.png" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -156,11 +212,17 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="Btn_difference" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" Click="Btn_difference_Click" ToolTip="Disparity between both cochleae">
+                <Button x:Name="Btn_difference"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="Btn_difference_Click"
+                        Focusable="False"
+                        ToolTip="Disparity between both cochleae">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid HorizontalAlignment="Right">
-                                <Image x:Name="bg" Source="/NAVIS;component/Images/diffUnclicked.png"/>
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/diffUnclicked.png" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -173,11 +235,17 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="Btn_AedatSplitterManual" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" ToolTip="Manual Aedat Splitter" Click="Btn_AedatSplitterManual_Click">
+                <Button x:Name="Btn_AedatSplitterManual"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="Btn_AedatSplitterManual_Click"
+                        Focusable="False"
+                        ToolTip="Manual Aedat Splitter">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid HorizontalAlignment="Right">
-                                <Image x:Name="bg" Source="/NAVIS;component/Images/AedatSplitterManualUnclick.png"/>
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/AedatSplitterManualUnclick.png" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -190,11 +258,17 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="Btn_AedatSplitterAuto" Height="50" Width="50" Margin="7 10 7 0" Focusable="False" ToolTip="Automatic Aedat Splitter" Click="Btn_AedatSplitterAuto_Click">
+                <Button x:Name="Btn_AedatSplitterAuto"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="Btn_AedatSplitterAuto_Click"
+                        Focusable="False"
+                        ToolTip="Automatic Aedat Splitter">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid HorizontalAlignment="Right">
-                                <Image x:Name="bg" Source="/NAVIS;component/Images/AedatSplitterAutoUnclick.png"/>
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/AedatSplitterAutoUnclick.png" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -207,11 +281,17 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="Btn_PDF" Height="50" Width="50" Margin="7 10 7 0"  Click="Btn_PDF_Click" Focusable="False" ToolTip="Generate PDF">
+                <Button x:Name="Btn_PDF"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="Btn_PDF_Click"
+                        Focusable="False"
+                        ToolTip="Generate PDF">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid HorizontalAlignment="Right">
-                                <Image x:Name="bg" Source="/NAVIS;component/Images/pdfUnclicked.png"/>
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/pdfUnclicked.png" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -224,11 +304,17 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="Btn_generateCSV" Height="50" Width="50" Margin="7 10 7 0"  Click="Btn_CSV_Click" Focusable="False" ToolTip="Generate CSV">
+                <Button x:Name="Btn_generateCSV"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="Btn_CSV_Click"
+                        Focusable="False"
+                        ToolTip="Generate CSV">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid HorizontalAlignment="Right">
-                                <Image x:Name="bg" Source="/NAVIS;component/Images/csvUnclicked.png"/>
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/csvUnclicked.png" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -241,11 +327,17 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="Btn_About" Height="50" Width="50" Margin="7 10 7 10"  Click="Btn_About_Click" Focusable="False" ToolTip="NAVIS Tool information">
+                <Button x:Name="Btn_About"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 10"
+                        Click="Btn_About_Click"
+                        Focusable="False"
+                        ToolTip="NAVIS Tool information">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid HorizontalAlignment="Right">
-                                <Image x:Name="bg" Source="/NAVIS;component/Images/infoUnclick.png"/>
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/infoUnclick.png" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -261,19 +353,55 @@
 
             </StackPanel>
         </ScrollViewer>
-        <DockPanel x:Name="Main" DockPanel.Dock="Right" Background="White">
-            <DockPanel DockPanel.Dock="Top" Height="35">
-                <Border x:Name="tab_ManualAedatSplitter" BorderBrush="Gray" BorderThickness="1 0 0 1" Width="351" HorizontalAlignment="Right" DockPanel.Dock="Right" Visibility="Collapsed">
-                    <StackPanel Background="#FFd7d7d7" Orientation="Horizontal" Width="350">
-                        <TextBlock Width="30" Margin="5 0 0 0" VerticalAlignment="Center">Init:</TextBlock>
-                        <TextBox x:Name="text_ManualAedatSplitterInit" Width="100" Height="20" VerticalAlignment="Center" TextChanged="text_ManualAedatSplitterInit_TextChanged" PreviewTextInput="text_ManualAedatSplitterInit_PreviewTextInput" DataObject.Pasting="TextBoxPasting"></TextBox>
-                        <TextBlock Width="30" Margin="5 0 0 0" VerticalAlignment="Center">End:</TextBlock>
-                        <TextBox x:Name="text_ManualAedatSplitterEnd" Width="100" Height="20" VerticalAlignment="Center" TextChanged="text_ManualAedatSplitterEnd_TextChanged" PreviewTextInput="text_ManualAedatSplitterEnd_PreviewTextInput" DataObject.Pasting="TextBoxPasting"></TextBox>
-                        <ToggleButton x:Name="Btn_helpManualAedatSplitter" Height="30" Width="30" Margin="5 0 0 0" Focusable="False" ToolTip="Help" VerticalAlignment="Center">
+        <DockPanel x:Name="Main"
+                   Background="White"
+                   DockPanel.Dock="Right">
+            <DockPanel Height="35" DockPanel.Dock="Top">
+                <Border x:Name="tab_ManualAedatSplitter"
+                        Width="351"
+                        HorizontalAlignment="Right"
+                        BorderBrush="Gray"
+                        BorderThickness="1 0 0 1"
+                        DockPanel.Dock="Right"
+                        Visibility="Collapsed">
+                    <StackPanel Width="350"
+                                Background="#FFd7d7d7"
+                                Orientation="Horizontal">
+                        <TextBlock Width="30"
+                                   Margin="5 0 0 0"
+                                   VerticalAlignment="Center">
+                            Init:
+                        </TextBlock>
+                        <TextBox x:Name="text_ManualAedatSplitterInit"
+                                 Width="100"
+                                 Height="20"
+                                 VerticalAlignment="Center"
+                                 DataObject.Pasting="TextBoxPasting"
+                                 PreviewTextInput="text_ManualAedatSplitterInit_PreviewTextInput"
+                                 TextChanged="text_ManualAedatSplitterInit_TextChanged" />
+                        <TextBlock Width="30"
+                                   Margin="5 0 0 0"
+                                   VerticalAlignment="Center">
+                            End:
+                        </TextBlock>
+                        <TextBox x:Name="text_ManualAedatSplitterEnd"
+                                 Width="100"
+                                 Height="20"
+                                 VerticalAlignment="Center"
+                                 DataObject.Pasting="TextBoxPasting"
+                                 PreviewTextInput="text_ManualAedatSplitterEnd_PreviewTextInput"
+                                 TextChanged="text_ManualAedatSplitterEnd_TextChanged" />
+                        <ToggleButton x:Name="Btn_helpManualAedatSplitter"
+                                      Width="30"
+                                      Height="30"
+                                      Margin="5 0 0 0"
+                                      VerticalAlignment="Center"
+                                      Focusable="False"
+                                      ToolTip="Help">
                             <ToggleButton.Template>
                                 <ControlTemplate>
                                     <Grid HorizontalAlignment="Right">
-                                        <Image x:Name="bg" Source="/NAVIS;component/Images/helpUnclicked.png"/>
+                                        <Image x:Name="bg" Source="/NAVIS;component/Images/helpUnclicked.png" />
                                     </Grid>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
@@ -287,22 +415,65 @@
                             </ToggleButton.Template>
                         </ToggleButton>
 
-                        <Popup IsOpen="{Binding IsChecked, ElementName=Btn_helpManualAedatSplitter}" x:Name="Popup" StaysOpen="False" AllowsTransparency="False" Placement="Bottom" VerticalOffset="15"
-       HorizontalOffset="20" PopupAnimation="Fade" MaxWidth="350">
-                            <Border BorderBrush="Black" BorderThickness="1" Background="LightGray" Padding="10">
-                                <StackPanel Orientation="Vertical" Width="300">
-                                    <TextBlock TextAlignment="Justify" TextWrapping="Wrap" LineHeight="25" LineStackingStrategy="BlockLineHeight" Margin="0 0 0 5">Press double click on the cochleogram with the <TextBlock FontWeight="DemiBold">left mouse button</TextBlock> to select the <TextBlock FontWeight="DemiBold">first</TextBlock> timestamp of the frame that you want to get from the aedat file.</TextBlock>
-                                    <TextBlock TextAlignment="Justify" TextWrapping="Wrap" LineHeight="25" LineStackingStrategy="BlockLineHeight" Margin="0 0 0 5">Press double click on the cochleogram with the <TextBlock FontWeight="DemiBold">right mouse button</TextBlock> to select the <TextBlock FontWeight="DemiBold">last timestamp</TextBlock> of the frame that you want to get from the aedat file.</TextBlock>
-                                    <TextBlock TextAlignment="Justify" TextWrapping="Wrap" LineHeight="25" LineStackingStrategy="BlockLineHeight">Once you've selected both origin and ending, press the cut button to choose a path for the file to be saved and start the split process.</TextBlock>
+                        <Popup x:Name="Popup"
+                               MaxWidth="350"
+                               AllowsTransparency="False"
+                               HorizontalOffset="20"
+                               IsOpen="{Binding IsChecked,
+                                                ElementName=Btn_helpManualAedatSplitter}"
+                               Placement="Bottom"
+                               PopupAnimation="Fade"
+                               StaysOpen="False"
+                               VerticalOffset="15">
+                            <Border Background="LightGray"
+                                    BorderBrush="Black"
+                                    BorderThickness="1"
+                                    Padding="10">
+                                <StackPanel Width="300" Orientation="Vertical">
+                                    <TextBlock Margin="0 0 0 5"
+                                               LineHeight="25"
+                                               LineStackingStrategy="BlockLineHeight"
+                                               TextAlignment="Justify"
+                                               TextWrapping="Wrap">
+                                        Press double click on the cochleogram with the
+                                        <TextBlock FontWeight="DemiBold">left mouse button</TextBlock>
+                                        to select the
+                                        <TextBlock FontWeight="DemiBold">first</TextBlock>
+                                        timestamp of the frame that you want to get from the aedat file.
+                                    </TextBlock>
+                                    <TextBlock Margin="0 0 0 5"
+                                               LineHeight="25"
+                                               LineStackingStrategy="BlockLineHeight"
+                                               TextAlignment="Justify"
+                                               TextWrapping="Wrap">
+                                        Press double click on the cochleogram with the
+                                        <TextBlock FontWeight="DemiBold">right mouse button</TextBlock>
+                                        to select the
+                                        <TextBlock FontWeight="DemiBold">last timestamp</TextBlock>
+                                        of the frame that you want to get from the aedat file.
+                                    </TextBlock>
+                                    <TextBlock LineHeight="25"
+                                               LineStackingStrategy="BlockLineHeight"
+                                               TextAlignment="Justify"
+                                               TextWrapping="Wrap">
+                                        Once you've selected both origin and ending, press the cut button to choose a path for the file to be saved and start the split process.
+                                    </TextBlock>
                                 </StackPanel>
                             </Border>
                         </Popup>
 
-                        <Button x:Name="Btn_cutManualAedatSplitter" Height="30" Width="30" Margin="5 0 10 0" Focusable="False" ToolTip="Cut" VerticalAlignment="Center" Click="Btn_cutManualAedatSplitter_Click">
+                        <Button x:Name="Btn_cutManualAedatSplitter"
+                                Width="30"
+                                Height="30"
+                                Margin="5 0 10 0"
+                                VerticalAlignment="Center"
+                                Click="Btn_cutManualAedatSplitter_Click"
+                                Focusable="False"
+                                ToolTip="Cut">
                             <Button.Template>
                                 <ControlTemplate>
                                     <Grid HorizontalAlignment="Right">
-                                        <Image x:Name="bg" Source="/NAVIS;component/Images/cutUnclick.png"/>
+                                        <Image x:Name="bg" Source="/NAVIS;component/Images/cutUnclick.png" />
                                     </Grid>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
@@ -317,22 +488,47 @@
                         </Button>
                     </StackPanel>
                 </Border>
-                <Border x:Name="tab_fileLoaded" BorderBrush="Gray" BorderThickness="1 0 1 1" HorizontalAlignment="Center" Margin="0 0 0 0" Background="#FFd7d7d7" Height="30" VerticalAlignment="Top" Visibility="Collapsed">
+                <Border x:Name="tab_fileLoaded"
+                        Height="30"
+                        Margin="0 0 0 0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Background="#FFd7d7d7"
+                        BorderBrush="Gray"
+                        BorderThickness="1 0 1 1"
+                        Visibility="Collapsed">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="5 0 0 0" VerticalAlignment="Center" FontWeight="DemiBold">Loaded file:</TextBlock>
-                        <TextBlock x:Name="TB_aedatName" VerticalAlignment="Center" Margin="5 0 5 0"/>
+                        <TextBlock Margin="5 0 0 0"
+                                   VerticalAlignment="Center"
+                                   FontWeight="DemiBold">
+                            Loaded file:
+                        </TextBlock>
+                        <TextBlock x:Name="TB_aedatName"
+                                   Margin="5 0 5 0"
+                                   VerticalAlignment="Center" />
                     </StackPanel>
                 </Border>
             </DockPanel>
-            <WindowsFormsHost  Margin="0,0,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="Auto" Width="Auto" DockPanel.Dock="Bottom" Background="White">
-                <winformchart:Chart x:Name="chart_Cochleogram" Dock="Fill" DoubleClick="chart_Cochleogram_DoubleClick" >
+            <WindowsFormsHost Width="Auto"
+                              Height="Auto"
+                              Margin="0,0,10,10"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              Background="White"
+                              DockPanel.Dock="Bottom">
+                <winformchart:Chart x:Name="chart_Cochleogram"
+                                    Dock="Fill"
+                                    DoubleClick="chart_Cochleogram_DoubleClick">
                     <winformchart:Chart.Series>
-                        <winformchart:Series Name="Left" ChartType="Point" MarkerSize="2"/>
-                        <winformchart:Series Name="Right" ChartType="Point" MarkerSize="2"/>
+                        <winformchart:Series Name="Left"
+                                             ChartType="Point"
+                                             MarkerSize="2" />
+                        <winformchart:Series Name="Right"
+                                             ChartType="Point"
+                                             MarkerSize="2" />
                     </winformchart:Chart.Series>
                     <winformchart:Chart.ChartAreas>
-                        <winformchart:ChartArea Name="ChartArea">
-                        </winformchart:ChartArea>
+                        <winformchart:ChartArea Name="ChartArea" />
                     </winformchart:Chart.ChartAreas>
                 </winformchart:Chart>
             </WindowsFormsHost>
