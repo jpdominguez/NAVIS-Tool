@@ -50,7 +50,7 @@ After the file has been downloaded, decompress it. NAVIS executable file (NAVIS.
 Double-click on the NAVIS.exe file to run it. Three main sections can be seen when the main window is opened: the menu, the toolbar and the cochleogram section:
 <ul align="justify">
 <li>The menu is located on the upper side of the window. It allows the user to access each of the NAVIS’s functionalities.</li>
-<li>The toolbar is located on the left side of the application. It has some quick buttons (shortcuts) for the most-common NAVIS’s utilities. All of these buttons are shown by default when using NAVIS for the first time. Although, the user can select which of them should appear or not, based on his /her interests. This can be done in the settings, which are deeply explained in the <a href="https://github.com/jpdominguez/NAVIS-Tool/wiki">NAVIS wiki</a>.</li>
+<li>The toolbar is located on the left side of the application. It has some quick buttons (shortcuts) for the most-common NAVIS’s utilities. All of these buttons are shown by default when using NAVIS for the first time. Although, the user can select which of them should appear or not, based on his /her interests. This can be done in the settings, which are deeply explained in the <a href="https://github.com/jpdominguez/NAVIS-Tool/wiki/1.-Settings">NAVIS wiki</a>.</li>
 <li>The cochleogram section is the big empty space that can be seen after opening NAVIS. This will be used to display the cochleogram of the audio file (in .aedat format) after we load it.</li>
 </ul>
 </p>
