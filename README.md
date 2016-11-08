@@ -39,7 +39,7 @@ Then, select the latest release (it has a green button next to it containing the
 <img align="center" src="https://github.com/jpdominguez/NAVIS-Tool/blob/master/NAVIS/Wiki_Images/RM_releaseslatestRelease.png">
 </p>
 <p align="justify">
-After the file has been downloaded, decompress it. NAVIS executable file (NAVIS.exe) is located on the "NAVIS_LatestBuild" folder. Place this folder wherever you prefer and double-click NAVIS.exe to run this tool. If you get an error when trying to execute NAVIS, please check that the folder from which it is being run contains each of the files that are inside the "NAVIS_LatestBuild" folder (no file has been deleted or moved to another folder) and that your have already installed Microsoft .NET Framework 4.5 or greater in your computer. If the problem persist, please send me an <a href="mailto:jpdominguez@atc.us.es">email</a> explaining the situation.
+After the file has been downloaded, decompress it. NAVIS executable file (NAVIS.exe) is located at the "NAVIS_LatestBuild" folder. Place this folder wherever you prefer and double-click NAVIS.exe to run this tool. If you get an error when trying to execute NAVIS, please check that the folder from which it is being run contains each of the files that are inside the "NAVIS_LatestBuild" folder (no file has been deleted or moved to another folder) and that your have already installed Microsoft .NET Framework 4.5 or greater in your computer. If the problem persist, please send me an <a href="mailto:jpdominguez@atc.us.es">email</a> explaining the situation.
 </p>
 
 
@@ -49,8 +49,8 @@ After the file has been downloaded, decompress it. NAVIS executable file (NAVIS.
 <p align="justify">
 Double-click on the NAVIS.exe file to run it. Three main sections can be seen when the main window is opened: the menu, the toolbar and the cochleogram section:
 <ul align="justify">
-<li>The menu is located on the upper side of the window. It allows the user to access each of the NAVIS’s functionalities.</li>
-<li>The toolbar is located on the left side of the application. It has some quick buttons (shortcuts) for the most-common NAVIS’s utilities. All of these buttons are shown by default when using NAVIS for the first time. Although, the user can select which of them should appear or not, based on his /her interests. This can be done in the settings, which are deeply explained in the <a href="https://github.com/jpdominguez/NAVIS-Tool/wiki/1.-Settings">NAVIS wiki</a>.</li>
+<li>The menu is located at the upper side of the window. It allows the user to access each of the NAVIS’s functionalities.</li>
+<li>The toolbar is located at the left side of the application. It has some quick buttons (shortcuts) for the most-common NAVIS’s utilities. All of these buttons are shown by default when using NAVIS for the first time. Although, the user can select which of them should appear or not, based on his /her interests. This can be done in the settings, which are deeply explained in the <a href="https://github.com/jpdominguez/NAVIS-Tool/wiki/1.-Settings">NAVIS wiki</a>.</li>
 <li>The cochleogram section is the big empty space that can be seen after opening NAVIS. This will be used to display the cochleogram of the audio file (in .aedat format) after we load it.</li>
 </ul>
 </p>
