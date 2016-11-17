@@ -19,7 +19,7 @@ This software presents diverse utilities to develop the first post-processing la
 
 <h2 name="GettingStarted">Getting started</h2>
 <p align="justify">
-The following step-by-step guide will show you how to download, install and start using NAVIS. If you prefer a more user-friendly tutorial, you can watch the NAVIS' Getting Started videotutorial by clicking on the next image.
+The following step-by-step guide will show you how to download, install and start using NAVIS. If you prefer a more user-friendly tutorial, you can watch the NAVIS' Getting Started video by clicking on the next image.
 </p>
 <p align="center">
 <a href="https://www.youtube.com/watch?v=xJ27ZqqyDRo"><img align="center" src="http://img.youtube.com/vi/xJ27ZqqyDRo/0.jpg"></a>
