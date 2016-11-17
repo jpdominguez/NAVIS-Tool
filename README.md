@@ -18,6 +18,12 @@ This software presents diverse utilities to develop the first post-processing la
 </p>
 
 <h2 name="GettingStarted">Getting started</h2>
+<p align="justify">
+The following step-by-step guide will show you how to download, install and start using NAVIS. If you prefer a more user-friendly tutorial, you can watch the NAVIS' Getting Started videotutorial by clicking on the next image.
+</p>
+<p align="center">
+<a href="https://www.youtube.com/watch?v=xJ27ZqqyDRo"><img align="center" src="http://img.youtube.com/vi/xJ27ZqqyDRo/0.jpg"></a>
+</p>
 <h3>Prerequisites</h3>
 <p align="justify">
 NAVIS requires Microsoft .NET Framework 4.5 or greater to be executed. The .NET Framework 4.5 and later versions are not supported on Windows XP, but on Windows Vista, Windows 7 and later versions of Windows.
