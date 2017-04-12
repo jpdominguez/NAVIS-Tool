@@ -68,7 +68,7 @@ namespace NAVIS
         public static List<bool> buttonListCollapsed;
 
         public static EnumCochleaInfo cochleaInfo;
-        
+
         private bool isOpen_ManualAedatSplitter = false;
 
         internal static MainWindow main;
@@ -359,45 +359,63 @@ namespace NAVIS
         {
             if (selectFileDialog.ShowDialog() == true)
             {
-                root = selectFileDialog.FileName;
-                this.Cursor = Cursors.Wait;
-                fileName = root.Split('\\')[root.Split('\\').Length - 1];
-                TB_aedatName.Text = fileName;
-
-                tab_fileLoaded.Visibility = Visibility.Visible;
-
-                if (settings.MainS.eventSize == 16)
+                try
                 {
-                    aedatObject16 = new aedat16(root);
-                    aedatObject16.adaptAedat();
+                    root = selectFileDialog.FileName;
+                    this.Cursor = Cursors.Wait;
+                    fileName = root.Split('\\')[root.Split('\\').Length - 1];
+                    
+
+                    
+
+                    if (settings.MainS.eventSize == 16)
+                    {
+                        aedatObject16 = new aedat16(root);
+                        aedatObject16.adaptAedat();
+                    }
+                    else if (settings.MainS.eventSize == 32)
+                    {
+                        aedatObject32 = new aedat32(root);
+                        aedatObject32.adaptAedat();
+                    }
+                    TB_aedatName.Text = fileName;
+                    tab_fileLoaded.Visibility = Visibility.Visible;
+
+                    isLoaded = true;
+
+                    initState();
+                    displayCharts();
+
+                    for (int i = 2; i < buttonList.Count; i++)  //Enable tools buttons after loading the file
+                    {
+                        buttonList[i].IsEnabled = true;
+                        buttonList[i].Opacity = 1;
+                    }
+                    if (cochleaInfo == EnumCochleaInfo.MONO32 || cochleaInfo == EnumCochleaInfo.MONO64 || cochleaInfo == EnumCochleaInfo.MONO128 || cochleaInfo == EnumCochleaInfo.MONO256) // If the file corresponds to a mono sound, there's no point on enabling the "Disparity between cochleae" function.
+                    {
+                        Btn_difference.IsEnabled = false;
+                        Btn_difference.Opacity = 0.6;
+                    }
+                    menuItem_Reload.IsEnabled = true; menuItem_Report.IsEnabled = true; menuItem_Tools.IsEnabled = true;
+
+                    this.Cursor = Cursors.Arrow;
+
+                    InfoWindow iw = new InfoWindow("Success!", "The Aedat file was loaded correctly"); // Show the user a message saying that everything went OK
+                    iw.ShowDialog();
                 }
-                else if (settings.MainS.eventSize == 32)
+                catch (Exception e)
                 {
-                    aedatObject32 = new aedat32(root);
-                    aedatObject32.adaptAedat();
+                    this.Cursor = Cursors.Arrow;
+                    InfoWindow iw = new InfoWindow("Error", "The Aedat file was not loaded correctly. This may be caused by an incorrect\nconfiguration of the number of channels and address length in NAVIS' settings.");
+                    iw.ShowDialog();
+                    for (int i = 2; i < buttonList.Count; i++)  //Enable tools buttons after loading the file
+                    {
+                        buttonList[i].IsEnabled = false;
+                        buttonList[i].Opacity = 0.6;
+                    }
+                    menuItem_Reload.IsEnabled = false; menuItem_Report.IsEnabled = false; menuItem_Tools.IsEnabled = false;
+                    tab_fileLoaded.Visibility = Visibility.Hidden;
                 }
-
-                isLoaded = true;
-
-                initState();
-                displayCharts();
-
-                for (int i = 2; i < buttonList.Count; i++)  //Enable tools buttons after loading the file
-                {
-                    buttonList[i].IsEnabled = true;
-                    buttonList[i].Opacity = 1;
-                }
-                if (cochleaInfo == EnumCochleaInfo.MONO32 || cochleaInfo == EnumCochleaInfo.MONO64 || cochleaInfo == EnumCochleaInfo.MONO128 || cochleaInfo == EnumCochleaInfo.MONO256) // If the file corresponds to a mono sound, there's no point on enabling the "Disparity between cochleae" function.
-                {
-                    Btn_difference.IsEnabled = false;
-                    Btn_difference.Opacity = 0.6;
-                }
-                menuItem_Reload.IsEnabled = true; menuItem_Report.IsEnabled = true; menuItem_Tools.IsEnabled = true;
-
-                this.Cursor = Cursors.Arrow;
-
-                InfoWindow iw = new InfoWindow("Success!", "The Aedat file was loaded correctly"); // Show the user a message saying that everything went OK
-                iw.ShowDialog();
             }
         }
 
@@ -453,33 +471,49 @@ namespace NAVIS
         {
             if (isLoaded)
             {
-                if (settings.MainS.eventSize == 16)
+                try
                 {
-                    aedatObject16.closeAedat();
-                    aedatObject16 = new aedat16(root);
-                    aedatObject16.adaptAedat();
-                }
+                    if (settings.MainS.eventSize == 16)
+                    {
+                        aedatObject16.closeAedat();
+                        aedatObject16 = new aedat16(root);
+                        aedatObject16.adaptAedat();
+                    }
 
-                if (settings.MainS.eventSize == 32)
-                {
-                    aedatObject32.closeAedat();
-                    aedatObject32 = new aedat32(root);
-                    aedatObject32.adaptAedat();
+                    if (settings.MainS.eventSize == 32)
+                    {
+                        aedatObject32.closeAedat();
+                        aedatObject32 = new aedat32(root);
+                        aedatObject32.adaptAedat();
+                    }
+                    initState();
+                    displayCharts();
+                    if (cochleaInfo == EnumCochleaInfo.MONO32 || cochleaInfo == EnumCochleaInfo.MONO64 || cochleaInfo == EnumCochleaInfo.MONO128 || cochleaInfo == EnumCochleaInfo.MONO256) // If the file corresponds to a mono sound, there's no point on enabling the "Disparity between cochleae" function.
+                    {
+                        Btn_difference.IsEnabled = false;
+                        Btn_difference.Opacity = 0.6;
+                    }
+                    else
+                    {
+                        Btn_difference.IsEnabled = true;
+                        Btn_difference.Opacity = 1;
+                    }
+                    InfoWindow iw = new InfoWindow("Success!", "The Aedat file was loaded correctly");
+                    iw.ShowDialog();
                 }
-                initState();
-                displayCharts();                
-                if (cochleaInfo == EnumCochleaInfo.MONO32 || cochleaInfo == EnumCochleaInfo.MONO64 || cochleaInfo == EnumCochleaInfo.MONO128 || cochleaInfo == EnumCochleaInfo.MONO256) // If the file corresponds to a mono sound, there's no point on enabling the "Disparity between cochleae" function.
+                catch (Exception e)
                 {
-                    Btn_difference.IsEnabled = false;
-                    Btn_difference.Opacity = 0.6;
+                    this.Cursor = Cursors.Arrow;
+                    InfoWindow iw = new InfoWindow("Error", "The Aedat file was not loaded correctly. This may be caused by an incorrect\nconfiguration of the number of channels and address length in NAVIS' settings.");
+                    iw.ShowDialog();
+                    for (int i = 2; i < buttonList.Count; i++)  //Enable tools buttons after loading the file
+                    {
+                        buttonList[i].IsEnabled = false;
+                        buttonList[i].Opacity = 0.6;
+                    }
+                    menuItem_Reload.IsEnabled = false; menuItem_Report.IsEnabled = false; menuItem_Tools.IsEnabled = false;
+                    tab_fileLoaded.Visibility = Visibility.Hidden;
                 }
-                else
-                {
-                    Btn_difference.IsEnabled = true;
-                    Btn_difference.Opacity = 1;
-                }
-                InfoWindow iw = new InfoWindow("Success!", "The Aedat file was loaded correctly");
-                iw.ShowDialog();
             }
         }
 
@@ -500,8 +534,8 @@ namespace NAVIS
                 set.WindowState = WindowState.Normal;
                 set.Activate();
             }
-            
-            
+
+
         }
 
         /// <summary>
@@ -1028,7 +1062,7 @@ namespace NAVIS
         }
 
         private void Btn_About_Click(object sender, RoutedEventArgs e)
-        {         
+        {
 
             if (aboutOpenned == false)
             {
