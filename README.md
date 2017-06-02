@@ -136,3 +136,26 @@ Copyright © 2015 Juan P. Dominguez-Morales<br>
 <a href="mailto:jpdominguez@atc.us.es">jpdominguez@atc.us.es</a>
 </p>
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+
+<h2 name="Cite">Cite this work</h2>
+<p align="justify">
+<b>APA</b>: Dominguez-Morales, J. P., Jimenez-Fernandez, A., Dominguez-Morales, M., & Jimenez-Moreno, G. (2017). NAVIS: Neuromorphic Auditory VISualizer Tool. Neurocomputing, 237, 418-422.
+</p>
+<p align="justify">
+<b>ISO 690</b>: DOMINGUEZ-MORALES, Juan P., et al. NAVIS: Neuromorphic Auditory VISualizer Tool. Neurocomputing, 2017, vol. 237, p. 418-422.
+</p>
+<p align="justify">
+<b>MLA</b>: Dominguez-Morales, Juan P., et al. "NAVIS: Neuromorphic Auditory VISualizer Tool." Neurocomputing 237 (2017): 418-422.
+</p>
+<p align="justify">
+<b>BibTeX</b>: @article{dominguez2017navis,
+  title={NAVIS: Neuromorphic Auditory VISualizer Tool},
+  author={Dominguez-Morales, Juan P and Jimenez-Fernandez, A and Dominguez-Morales, M and Jimenez-Moreno, G},
+  journal={Neurocomputing},
+  volume={237},
+  pages={418--422},
+  year={2017},
+  publisher={Elsevier}
+}
+</p>
