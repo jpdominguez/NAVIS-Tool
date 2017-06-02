@@ -14,6 +14,7 @@ This software presents diverse utilities to develop the first post-processing la
 <li><a href="#Contributing">Contributing</a></li>
 <li><a href="#Credits">Credits</a></li>
 <li><a href="#License">License</a></li>
+<li><a href="#Cite">Cite this work</a></li>
 </ul>
 </p>
 
@@ -135,7 +136,9 @@ This project is licensed under the GPL License - see the <a href="https://raw.gi
 Copyright © 2015 Juan P. Dominguez-Morales<br>  
 <a href="mailto:jpdominguez@atc.us.es">jpdominguez@atc.us.es</a>
 </p>
+
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 <h2 name="Cite">Cite this work</h2>
