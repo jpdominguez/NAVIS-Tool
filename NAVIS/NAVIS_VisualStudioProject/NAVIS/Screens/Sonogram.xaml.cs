@@ -199,5 +199,38 @@ namespace NAVIS
 
             this.Cursor = Cursors.Arrow;
         }
+
+        private void Btn_saveCSV_Click(object sender, RoutedEventArgs e)
+        {
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "CSV file (.csv)|*.csv";
+
+            sfd.Title = "Select path to save the csv file";
+            sfd.ShowDialog();
+
+            if (sfd.FileName != "")
+            {
+                if (MainWindow.settings.MainS.eventSize == 16)
+                {
+                    c16.generateSonogramCSV(sfd.FileName);
+                }
+
+                else if (MainWindow.settings.MainS.eventSize == 32)
+                {
+                    c32.generateSonogramCSV(sfd.FileName);
+                }
+
+                InfoWindow iw = new InfoWindow("Success!", "CSV file saved successfuly");
+                iw.ShowDialog();
+            }
+
+
+
+
+            
+
+
+        }
     }
 }

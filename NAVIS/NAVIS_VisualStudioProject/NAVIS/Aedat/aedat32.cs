@@ -44,6 +44,7 @@ namespace NAVIS
         public long maxTimestamp = 0;
         public long minTimestamp = long.MaxValue;
         public static int maxValSonogram;
+        private StringBuilder sb_csv = new StringBuilder();
 
         /// <summary>
         /// Loads a file and stores it in aedatFileRows. The file can either have .aedat or .csv extension
@@ -363,10 +364,10 @@ namespace NAVIS
                     for (int indx = 0; indx < eventsForEachChannelInRange.Length; indx += 2)
                     {
                         eventos = eventsForEachChannelInRange[indx] + eventsForEachChannelInRange[indx + 1];
-
-                        {
+                        
                             float max = (float)eventos / maxValSonogram;
 
+                            #region color scale
                             Byte green, red, blue;
                             if (max >= 0.5)
                             {
@@ -391,7 +392,8 @@ namespace NAVIS
                             }
 
                             color = Color.FromArgb((Byte)red, (Byte)green, (Byte)blue);
-                        }
+                            #endregion
+                        
                         for (int rep = 0; rep < tam; rep++)
                         {
                             for (int rep2 = 0; rep2 < tam; rep2++)
@@ -399,12 +401,20 @@ namespace NAVIS
                                 Bmp.SetPixel((int)(i / (int)MainWindow.settings.ToolsS.integrationPeriod) + contador + rep, tam * frameSizeHeight - 1 - rep2 - indx * tam / 2, color);
                             }
                         }
+
+                        sb_csv.Append(max + ";");
                     }
+                    sb_csv.Append("\n");
                     contador += tam - 1;
                 }
                 Bmp.Save(file + ".png", ImageFormat.Png);
                 return true;
             }
+        }
+
+        public void generateSonogramCSV(string fileName)
+        {
+            File.AppendAllText(fileName, sb_csv.Replace(",", ".").ToString());
         }
 
         /// <summary>

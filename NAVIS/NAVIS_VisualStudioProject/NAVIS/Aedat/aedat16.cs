@@ -44,6 +44,7 @@ namespace NAVIS
         public long maxTimestamp = 0;
         public long minTimestamp = long.MaxValue;
         public static int maxValSonogram;
+        private StringBuilder sb_csv = new StringBuilder();
 
         /// <summary>
         /// Loads a file and stores it in aedatFileRows. The file can either have .aedat or .csv extension
@@ -193,6 +194,7 @@ namespace NAVIS
         {
             return aedatFileList;
         }
+
 
         /// <summary>
         /// Returns an event list with those who are in the range [rangeInit, rangeEnd]on the original file.
@@ -378,12 +380,22 @@ namespace NAVIS
                                 Bmp.SetPixel((int)(i / (int)MainWindow.settings.ToolsS.integrationPeriod) + contador + rep, tam * frameSizeHeight - 1 - rep2 - indx * tam / 2, color); //Paint the pixel with the color, depending on the activity
                             }
                         }
+
+                        sb_csv.Append(max + ";");
                     }
+                    sb_csv.Append("\n");
                     contador += tam - 1;
                 }
                 Bmp.Save(file + ".png", ImageFormat.Png);
                 return true;
             }
+        }
+
+
+
+        public void generateSonogramCSV(string fileName)
+        {
+            File.AppendAllText(fileName, sb_csv.Replace(",", ".").ToString());
         }
 
         /// <summary>
