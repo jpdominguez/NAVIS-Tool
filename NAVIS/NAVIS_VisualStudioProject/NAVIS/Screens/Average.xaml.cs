@@ -43,6 +43,7 @@ namespace NAVIS
     /// </summary>
     public partial class Average : Window
     {
+        private double[] media;
         /// <summary>
         /// Average activity empty constructor
         /// </summary>
@@ -81,7 +82,7 @@ namespace NAVIS
 
             #endregion
 
-            double[] media;
+
 
             chart_Average.Series.SuspendUpdates();
 
@@ -135,6 +136,72 @@ namespace NAVIS
                 InfoWindow iw = new InfoWindow("Success!", "Image saved successfuly");
                 iw.ShowDialog();
             }
+        }
+
+        private void Btn_saveCSV_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            StringBuilder sb_csv = new StringBuilder();
+            float mult_factor = 0.1f;
+            sfd.Filter = "CSV file (.csv)|*.csv";
+
+            sfd.Title = "Select path to save the csv file";
+            sfd.ShowDialog();
+
+            if (sfd.FileName != "")
+            {
+                switch (MainWindow.settings.MainS.eventSize)
+                {
+                    case 16: mult_factor = 0.2f; break;
+                    case 32: mult_factor = 0.1f; break;
+                }
+
+
+                if (chart_Average.Series[1].Points.Count > 0)
+                {
+                    sb_csv.Append(chart_Average.Series[0].Name + "_X;" + chart_Average.Series[0].Name + "_Y;" + chart_Average.Series[1].Name + "_X;" + chart_Average.Series[1].Name + "_Y;\n");
+                }
+                else
+                {
+                    sb_csv.Append("Mono_X;" + "Mono_Y;\n");
+                }
+
+
+                if (chart_Average.Series[1].Points.Count > 0)
+                {
+                    for (int i = 0; i < chart_Average.Series[0].Points.Count; i++)
+                    {
+                        sb_csv.Append((chart_Average.Series[0].Points[i].XValue * mult_factor).ToString("F") + ";" + chart_Average.Series[0].Points[i].YValues[0].ToString("F") + ";" + (chart_Average.Series[1].Points[i].XValue * mult_factor).ToString("F") + ";" + chart_Average.Series[1].Points[i].YValues[0].ToString("F") + ";\n");
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < chart_Average.Series[0].Points.Count; i++)
+                    {
+                        sb_csv.Append((chart_Average.Series[0].Points[i].XValue * mult_factor).ToString("F") + ";" + chart_Average.Series[0].Points[i].YValues[0].ToString("F") + ";\n");
+                    }
+                }
+
+                File.AppendAllText(sfd.FileName, sb_csv.Replace(",", ".").ToString());
+                InfoWindow iw = new InfoWindow("Success!", "CSV file saved successfuly");
+                iw.ShowDialog();
+            }
+
+
+            /*
+            if (MainWindow.settings.MainS.eventSize == 16)
+            {
+                c16.generateSonogramCSV(sfd.FileName);
+            }
+
+            else if (MainWindow.settings.MainS.eventSize == 32)
+            {
+                c32.generateSonogramCSV(sfd.FileName);
+            }
+
+            InfoWindow iw = new InfoWindow("Success!", "CSV file saved successfuly");
+            iw.ShowDialog();
+            */
         }
     }
 }

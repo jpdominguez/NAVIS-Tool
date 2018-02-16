@@ -202,7 +202,6 @@ namespace NAVIS
 
         private void Btn_saveCSV_Click(object sender, RoutedEventArgs e)
         {
-
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "CSV file (.csv)|*.csv";
 
@@ -224,13 +223,6 @@ namespace NAVIS
                 InfoWindow iw = new InfoWindow("Success!", "CSV file saved successfuly");
                 iw.ShowDialog();
             }
-
-
-
-
-            
-
-
         }
     }
 }

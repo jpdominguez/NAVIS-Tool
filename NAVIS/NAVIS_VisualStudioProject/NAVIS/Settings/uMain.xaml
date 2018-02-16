@@ -40,7 +40,7 @@
                     <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="Dot size"/>
                 </DockPanel>
                 <DockPanel Margin="0,0,0,10">
-                    <local:NumericUpDown x:Name="NUD_Dots_Per_Event" Width="50" minValue="1" maxValue="10"/>
+                    <local:NumericUpDown x:Name="NUD_Dots_Per_Event" Width="50" minValue="1" maxValue="100"/>
                     <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="Events per dot"/>
                 </DockPanel>
                 <DockPanel LastChildFill="False" Margin="0 0 0 10">

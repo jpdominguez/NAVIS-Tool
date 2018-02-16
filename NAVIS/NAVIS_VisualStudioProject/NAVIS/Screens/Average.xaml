@@ -45,6 +45,7 @@
                 <Rectangle x:Name="rect_rightCochlea" Width="20" Height="20" Fill="DodgerBlue" Margin="20 0 0 0" Stroke="Black"></Rectangle>
                 <TextBlock Margin="5 0 0 0" FontWeight="Bold">- Right Cochlea</TextBlock>
             </StackPanel>
+            
             <Button x:Name="Btn_saveImage" DockPanel.Dock="Right" Content="" ToolTip="Save Image" Click="B_saveImage_Click"
                     VerticalAlignment="Center" Width="48" Height="48" FontSize="29.333"  Margin="10,0,20,0" HorizontalAlignment="Right"
                     BorderBrush="{x:Null}" Style="{DynamicResource Button-Transp}">
@@ -56,6 +57,25 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/saveImageClicked.png" />
+                            </Trigger>
+                            <Trigger Property="Button.IsPressed" Value="True">
+                                <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Btn_saveCSV" DockPanel.Dock="Right"  Content="" ToolTip="Save as CSV" Click="Btn_saveCSV_Click"  
+                    VerticalAlignment="Center" HorizontalAlignment="Right" Width="48" Height="48" FontSize="29.333"  Margin="0,0,0,0" 
+                    BorderBrush="{x:Null}" Style="{DynamicResource Button-Transp}">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid HorizontalAlignment="Right">
+                            <Image x:Name="bg" Source="/NAVIS;component/Images/csvUnclicked.png"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/csvClicked.png" />
                             </Trigger>
                             <Trigger Property="Button.IsPressed" Value="True">
                                 <Setter TargetName="bg" Property="Opacity" Value="0.7" />
