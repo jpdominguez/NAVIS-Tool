@@ -171,14 +171,14 @@ namespace NAVIS
                 {
                     for (int i = 0; i < chart_Average.Series[0].Points.Count; i++)
                     {
-                        sb_csv.Append((chart_Average.Series[0].Points[i].XValue * mult_factor).ToString("F") + ";" + chart_Average.Series[0].Points[i].YValues[0].ToString("F") + ";" + (chart_Average.Series[1].Points[i].XValue * mult_factor).ToString("F") + ";" + chart_Average.Series[1].Points[i].YValues[0].ToString("F") + ";\n");
+                        sb_csv.Append((chart_Average.Series[0].Points[i].XValue * mult_factor).ToString("0.######################") + ";" + chart_Average.Series[0].Points[i].YValues[0].ToString("0.######################") + ";" + (chart_Average.Series[1].Points[i].XValue * mult_factor).ToString("0.######################") + ";" + chart_Average.Series[1].Points[i].YValues[0].ToString("0.######################") + ";\n");
                     }
                 }
                 else
                 {
                     for (int i = 0; i < chart_Average.Series[0].Points.Count; i++)
                     {
-                        sb_csv.Append((chart_Average.Series[0].Points[i].XValue * mult_factor).ToString("F") + ";" + chart_Average.Series[0].Points[i].YValues[0].ToString("F") + ";\n");
+                        sb_csv.Append((chart_Average.Series[0].Points[i].XValue * mult_factor).ToString("0.######################") + ";" + chart_Average.Series[0].Points[i].YValues[0].ToString("0.######################") + ";\n");
                     }
                 }
 
