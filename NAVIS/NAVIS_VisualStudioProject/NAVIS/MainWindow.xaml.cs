@@ -1051,13 +1051,23 @@ namespace NAVIS
         /// </summary>
         private void Btn_StereoToMono_Click(object sender, RoutedEventArgs e)
         {
-            if (settings.MainS.eventSize == 16)
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Aedat file (.aedat)|*.aedat";
+
+            sfd.Title = "Select path to save the aedat file";
+            sfd.FileName = MainWindow.fileName.Split('.')[0] + "_mono";
+            sfd.ShowDialog();
+
+            if (sfd.FileName != "")
             {
-                aedatObject16.saveStereoToMono(MainWindow.fileName.Split('.')[0] + "_mono" + ".aedat", aedatObject16.getValues());
-            }
-            else if (settings.MainS.eventSize == 32)
-            {
-                aedatObject32.saveStereoToMono(MainWindow.fileName.Split('.')[0] + "_mono" + ".aedat", aedatObject32.getValues());
+                if (settings.MainS.eventSize == 16)
+                {
+                    aedatObject16.saveStereoToMono(MainWindow.fileName.Split('.')[0] + "_mono" + ".aedat", aedatObject16.getValues());
+                }
+                else if (settings.MainS.eventSize == 32)
+                {
+                    aedatObject32.saveStereoToMono(MainWindow.fileName.Split('.')[0] + "_mono" + ".aedat", aedatObject32.getValues());
+                }
             }
         }
 
