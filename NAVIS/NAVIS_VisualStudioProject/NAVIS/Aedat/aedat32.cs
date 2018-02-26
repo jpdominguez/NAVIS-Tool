@@ -325,6 +325,7 @@ namespace NAVIS
         /// </summary>
         public bool generateSonogram(String file, int maxValueSonogram)
         {
+            sb_csv.Clear();
             maxValSonogram = maxValueSonogram;
 
             int tam = (int)MainWindow.settings.ToolsS.imgSize;
@@ -364,36 +365,36 @@ namespace NAVIS
                     for (int indx = 0; indx < eventsForEachChannelInRange.Length; indx += 2)
                     {
                         eventos = eventsForEachChannelInRange[indx] + eventsForEachChannelInRange[indx + 1];
-                        
-                            float max = (float)eventos / maxValSonogram;
 
-                            #region color scale
-                            Byte green, red, blue;
-                            if (max >= 0.5)
+                        float max = (float)eventos / maxValSonogram;
+
+                        #region color scale
+                        Byte green, red, blue;
+                        if (max >= 0.5)
+                        {
+                            if (max >= 1)
                             {
-                                if (max >= 1)
-                                {
-                                    red = 255;
-                                    green = 0;
-                                    blue = 0;
-                                }
-                                else
-                                {
-                                    red = (Byte)((255 * (max - 0.5) * 2));
-                                    green = (Byte)(255 - red);
-                                    blue = (Byte)(0);
-                                }
+                                red = 255;
+                                green = 0;
+                                blue = 0;
                             }
                             else
                             {
-                                red = (Byte)(0);
-                                green = (Byte)((255 * (max) * 2));
-                                blue = (Byte)(255 - green);
+                                red = (Byte)((255 * (max - 0.5) * 2));
+                                green = (Byte)(255 - red);
+                                blue = (Byte)(0);
                             }
+                        }
+                        else
+                        {
+                            red = (Byte)(0);
+                            green = (Byte)((255 * (max) * 2));
+                            blue = (Byte)(255 - green);
+                        }
 
-                            color = Color.FromArgb((Byte)red, (Byte)green, (Byte)blue);
-                            #endregion
-                        
+                        color = Color.FromArgb((Byte)red, (Byte)green, (Byte)blue);
+                        #endregion
+
                         for (int rep = 0; rep < tam; rep++)
                         {
                             for (int rep2 = 0; rep2 < tam; rep2++)
@@ -417,12 +418,18 @@ namespace NAVIS
             File.AppendAllText(fileName, sb_csv.Replace(",", ".").ToString());
         }
 
+        public void generateDisparityCSV(string fileName)
+        {
+            File.AppendAllText(fileName, sb_csv.Replace(",", ".").ToString());
+        }
+
         /// <summary>
         /// Generates the disparity between cochleae fo the loaded file
         /// </summary>
         public bool generateDisparity(String file, int maxValSon)
         {
             int tam = (int)MainWindow.settings.ToolsS.imgSize;
+            sb_csv.Clear();
 
             int frameSizeHeight = 128;
             switch (MainWindow.cochleaInfo)
@@ -495,7 +502,10 @@ namespace NAVIS
                                 Bmp.SetPixel((int)(i / (int)MainWindow.settings.ToolsS.integrationPeriod) + contador + rep, tam * frameSizeHeight / 2 - 1 - rep2 - indx * tam / 2, color);
                             }
                         }
+                        sb_csv.Append(difference + ";");
+
                     }
+                    sb_csv.Append("\n");
                     contador += tam - 1;
                 }
                 Bmp.Save(file + ".png", ImageFormat.Png);

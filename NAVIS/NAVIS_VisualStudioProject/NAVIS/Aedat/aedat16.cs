@@ -305,6 +305,7 @@ namespace NAVIS
         public bool generateSonogram(String file, int maxValueSonogram)
         {
             maxValSonogram = maxValueSonogram;
+            sb_csv.Clear();
 
             int tam = (int)MainWindow.settings.ToolsS.imgSize;
 
@@ -398,12 +399,18 @@ namespace NAVIS
             File.AppendAllText(fileName, sb_csv.Replace(",", ".").ToString());
         }
 
+        public void generateDisparityCSV(string fileName)
+        {
+            File.AppendAllText(fileName, sb_csv.Replace(",", ".").ToString());
+        }
+
         /// <summary>
         /// Generates the disparity between cochleae fo the loaded file
         /// </summary>
         public bool generateDisparity(String file, int maxValSon)
         {
             int tam = (int)MainWindow.settings.ToolsS.imgSize;
+            sb_csv.Clear();
 
             int frameSizeHeight = 128;
             switch (MainWindow.cochleaInfo)
@@ -477,7 +484,9 @@ namespace NAVIS
                                 Bmp.SetPixel((int)(i / (int)MainWindow.settings.ToolsS.integrationPeriod) + contador + rep, tam * frameSizeHeight / 2 - 1 - rep2 - indx * tam / 2, color); //Paint the pixel with the color, depending on the activity
                             }
                         }
+                        sb_csv.Append(difference + ";");
                     }
+                    sb_csv.Append("\n");
                     contador += tam - 1;
                 }
                 Bmp.Save(file + ".png", ImageFormat.Png);
