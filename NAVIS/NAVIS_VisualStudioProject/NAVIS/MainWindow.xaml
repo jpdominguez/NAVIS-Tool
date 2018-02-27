@@ -82,6 +82,7 @@
                         <MenuItem Click="Btn_AedatSplitterAuto_Click" Header="Automatic Aedat Splitter" />
                         <Separator />
                         <MenuItem Click="Btn_StereoToMono_Click" Header="Stereo to Mono" />
+                        <MenuItem Click="Btn_MonoToStereo_Click" Header="Mono to Stereo" />
 
                     </MenuItem>
                     <MenuItem x:Name="menuItem_Report" Header="Report">

@@ -225,6 +225,49 @@ namespace NAVIS
         }
 
         /// <summary>
+        /// Saves the stereo information taken from a mono sound to an aedat file
+        /// </summary>
+        public void saveMonoToStereo(String fileName, List<aedatEvent32> aedat, int delay)
+        {
+            bWriter = new BinaryWriter(File.Create(fileName));
+            UInt32 evt;
+            UInt32 timestamp;
+            int offset = 0;
+
+            switch (MainWindow.cochleaInfo)
+            {
+                case EnumCochleaInfo.MONO32:
+                    offset = 64;
+                    break;
+                case EnumCochleaInfo.MONO64:
+                    offset = 128;
+                    break;
+                case EnumCochleaInfo.MONO128:
+                    offset = 256;
+                    break;
+                case EnumCochleaInfo.MONO256:
+                    offset = 512;
+                    break;
+            }
+
+            foreach (aedatEvent32 row in aedat)
+            {
+                evt = (UInt32)((BitConverter.GetBytes(row.addr)[0] << 24) | BitConverter.GetBytes(row.addr)[1] << 16 | BitConverter.GetBytes(row.addr)[2] << 8 | BitConverter.GetBytes(row.addr)[3]);
+                timestamp = (UInt32)((BitConverter.GetBytes(row.timestamp)[0] << 24) | BitConverter.GetBytes(row.timestamp)[1] << 16 | BitConverter.GetBytes(row.timestamp)[2] << 8 | BitConverter.GetBytes(row.timestamp)[3]);
+
+                bWriter.Write(evt);
+                bWriter.Write(timestamp);
+
+                evt = (UInt32)((BitConverter.GetBytes(row.addr + offset)[0] << 24) | BitConverter.GetBytes(row.addr + offset)[1] << 16 | BitConverter.GetBytes(row.addr + offset)[2] << 8 | BitConverter.GetBytes(row.addr + offset)[3]);
+                timestamp = (UInt32)((BitConverter.GetBytes(row.timestamp + delay)[0] << 24) | BitConverter.GetBytes(row.timestamp + delay)[1] << 16 | BitConverter.GetBytes(row.timestamp + delay)[2] << 8 | BitConverter.GetBytes(row.timestamp + delay)[3]);
+
+                bWriter.Write(evt);
+                bWriter.Write(timestamp);
+            }
+            bWriter.Close();
+        }
+
+        /// <summary>
         /// Returns an event list with those who are in the range [rangeInit, rangeEnd]on the original file.
         /// </summary>
         public List<aedatEvent32> dataBetweenTimestamps(long rangeInit, long rangeEnd)
@@ -503,7 +546,6 @@ namespace NAVIS
                             }
                         }
                         sb_csv.Append(difference + ";");
-
                     }
                     sb_csv.Append("\n");
                     contador += tam - 1;

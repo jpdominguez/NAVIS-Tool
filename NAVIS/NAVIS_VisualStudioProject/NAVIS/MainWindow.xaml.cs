@@ -1062,18 +1062,43 @@ namespace NAVIS
             {
                 if (settings.MainS.eventSize == 16)
                 {
-                    aedatObject16.saveStereoToMono(MainWindow.fileName.Split('.')[0] + "_mono" + ".aedat", aedatObject16.getValues());
+                    aedatObject16.saveStereoToMono(sfd.FileName, aedatObject16.getValues());
                 }
                 else if (settings.MainS.eventSize == 32)
                 {
-                    aedatObject32.saveStereoToMono(MainWindow.fileName.Split('.')[0] + "_mono" + ".aedat", aedatObject32.getValues());
+                    aedatObject32.saveStereoToMono(sfd.FileName, aedatObject32.getValues());
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Generates a stereo aedat file from a mono aedat.
+        /// </summary>
+        private void Btn_MonoToStereo_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Aedat file (.aedat)|*.aedat";
+
+            sfd.Title = "Select path to save the aedat file";
+            sfd.FileName = MainWindow.fileName.Split('.')[0] + "_stereo";
+            sfd.ShowDialog();
+
+            if (sfd.FileName != "")
+            {
+                if (settings.MainS.eventSize == 16)
+                {
+                    aedatObject16.saveStereoToMono(sfd.FileName, aedatObject16.getValues());
+                }
+                else if (settings.MainS.eventSize == 32)
+                {
+                    aedatObject32.saveMonoToStereo(sfd.FileName, aedatObject32.getValues(), 1000000);
                 }
             }
         }
 
         private void Btn_About_Click(object sender, RoutedEventArgs e)
         {
-
             if (aboutOpenned == false)
             {
                 ni = new NAVIS.About();
