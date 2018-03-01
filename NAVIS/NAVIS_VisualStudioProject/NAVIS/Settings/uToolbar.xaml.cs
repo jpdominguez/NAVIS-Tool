@@ -48,7 +48,7 @@ namespace NAVIS.Settings
         {
             InitializeComponent();
 
-            chbList = new List<CheckBox> { chb_LoadAedat, chb_Settings, chb_About, chb_Sonogram, chb_Histogram, chb_Average, chb_Diff, chb_ManualAedatSplitter, chb_AutomaticAedatSplitter, chb_GeneratePDF, chb_GenerateCSV };
+            chbList = new List<CheckBox> { chb_LoadAedat, chb_Settings, chb_About, chb_Sonogram, chb_Histogram, chb_Average, chb_Diff, chb_ManualAedatSplitter, chb_AutomaticAedatSplitter, chb_GeneratePDF, chb_GenerateCSV, chb_StereoToMono, chb_MonoToStereo };
         }
 
         public void updateFrom(ToolbarS tb)
@@ -64,6 +64,8 @@ namespace NAVIS.Settings
             chb_GeneratePDF.IsChecked = tb.showGeneratePDF;
             chb_ManualAedatSplitter.IsChecked = tb.showManualAedatSplitter;
             chb_AutomaticAedatSplitter.IsChecked = tb.showAutomaticAedatSplitter;
+            chb_StereoToMono.IsChecked = tb.showStereoToMono;
+            chb_MonoToStereo.IsChecked = tb.showMonoToStereo;
             this.InvalidateVisual();
         }
 
@@ -82,6 +84,8 @@ namespace NAVIS.Settings
             tb.showGeneratePDF = chb_GeneratePDF.IsChecked.Value;
             tb.showManualAedatSplitter = chb_ManualAedatSplitter.IsChecked.Value;
             tb.showAutomaticAedatSplitter = chb_AutomaticAedatSplitter.IsChecked.Value;
+            tb.showStereoToMono = chb_StereoToMono.IsChecked.Value;
+            tb.showMonoToStereo = chb_MonoToStereo.IsChecked.Value;
             return tb;
         }
 

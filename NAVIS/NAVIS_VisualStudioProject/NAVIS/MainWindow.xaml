@@ -282,6 +282,56 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+
+                <Button x:Name="Btn_StereoToMono"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="Btn_StereoToMono_Click"
+                        Focusable="False"
+                        ToolTip="Stereo to mono">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/stereoToMonoUnclicked.png" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/stereoToMonoClicked.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button x:Name="Btn_MonoToStereo"
+                        Width="50"
+                        Height="50"
+                        Margin="7 10 7 0"
+                        Click="Btn_MonoToStereo_Click"
+                        Focusable="False"
+                        ToolTip="Mono to stereo">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Right">
+                                <Image x:Name="bg" Source="/NAVIS;component/Images/monoToStereoUnclicked.png" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bg" Property="Source" Value="/NAVIS;component/Images/monoToStereoClicked.png" />
+                                </Trigger>
+                                <Trigger Property="Button.IsPressed" Value="True">
+                                    <Setter TargetName="bg" Property="Opacity" Value="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
                 <Button x:Name="Btn_PDF"
                         Width="50"
                         Height="50"

@@ -380,6 +380,12 @@
     <Resource Include="Images\infoClick.png" />
     <Resource Include="Images\infoUnclick.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\monoToStereoClicked.png" />
+    <Resource Include="Images\monoToStereoUnclicked.png" />
+    <Resource Include="Images\stereoToMonoClicked.png" />
+    <Resource Include="Images\stereoToMonoUnclicked.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -29,9 +29,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="340" d:DesignWidth="430">
+             d:DesignHeight="360" d:DesignWidth="430">
     <StackPanel Background="#FFDADADA">
-        <WrapPanel Margin="24,20,24,0" VerticalAlignment="Center" Height="250" Orientation="Vertical">
+        <WrapPanel Margin="24,20,24,0" VerticalAlignment="Center" Height="290" Orientation="Vertical">
 
             <GroupBox VerticalAlignment="Top" Margin="0,6,20,6" Width="Auto" Header="Main" BorderBrush="LightGray">
                 <StackPanel VerticalAlignment="Center" Margin="0,6,20,6" Width="Auto">
@@ -56,6 +56,8 @@
                     <CheckBox Margin="5,3,0,10" x:Name="chb_Diff" x:FieldModifier="public" Content="Disparity between cochleae" HorizontalAlignment="Left"  IsChecked="True"/>
                     <CheckBox Margin="5,3,0,10" x:Name="chb_ManualAedatSplitter" x:FieldModifier="public" Content="Manual Aedat Splitter" HorizontalAlignment="Left"  IsChecked="True"/>
                     <CheckBox Margin="5,3,0,10" x:Name="chb_AutomaticAedatSplitter" x:FieldModifier="public" Content="Automatic Aedat Splitter" HorizontalAlignment="Left"  IsChecked="True"/>
+                    <CheckBox Margin="5,3,0,10" x:Name="chb_StereoToMono" x:FieldModifier="public" Content="Stereo to mono" HorizontalAlignment="Left"  IsChecked="True"/>
+                    <CheckBox Margin="5,3,0,10" x:Name="chb_MonoToStereo" x:FieldModifier="public" Content="Mono to stereo" HorizontalAlignment="Left"  IsChecked="True"/>
                 </StackPanel>
             </GroupBox>
 
@@ -63,7 +65,7 @@
 
         </WrapPanel>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20 50 20 0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20 10 20 0">
             <Button Margin="0 0 10 0" Click="Btn_SelectAll_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">

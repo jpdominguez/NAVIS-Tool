@@ -270,6 +270,8 @@ namespace NAVIS
         public bool showManualAedatSplitter;
         public bool showAutomaticAedatSplitter;
         public bool showAbout;
+        public bool showStereoToMono;
+        public bool showMonoToStereo;
 
         /// <summary>
         /// Toolbar settings empty constructor
@@ -287,12 +289,14 @@ namespace NAVIS
             this.showManualAedatSplitter = true;
             this.showAutomaticAedatSplitter = true;
             this.showAbout = true;
+            this.showStereoToMono = true;
+            this.showMonoToStereo = true;
         }
 
         /// <summary>
         /// Toolbar settings constructor with parameters
         /// </summary>
-        public ToolbarS(bool showLoadAedat, bool showSettings, bool showAbout, bool showGeneratePDF, bool showGenerateCSV, bool showSonogram, bool showHistogram, bool showAverage, bool showDiff, bool showManualAedatSplitter, bool showAutomaticAedatSplitter)
+        public ToolbarS(bool showLoadAedat, bool showSettings, bool showAbout, bool showGeneratePDF, bool showGenerateCSV, bool showSonogram, bool showHistogram, bool showAverage, bool showDiff, bool showManualAedatSplitter, bool showAutomaticAedatSplitter, bool showStereoToMono, bool showMonoToStereo)
         {
             this.showLoadAedat = showLoadAedat;
             this.showSettings = showSettings;
@@ -305,6 +309,8 @@ namespace NAVIS
             this.showDiff = showDiff;
             this.showManualAedatSplitter = showManualAedatSplitter;
             this.showAutomaticAedatSplitter = showAutomaticAedatSplitter;
+            this.showMonoToStereo = showMonoToStereo;
+            this.showStereoToMono = showStereoToMono;
         }
 
         /// <summary>
@@ -326,6 +332,8 @@ namespace NAVIS
             textWriter.WriteAttributeString("showDiff", showDiff.ToString(ci));
             textWriter.WriteAttributeString("showManualAedatSplitter", showManualAedatSplitter.ToString(ci));
             textWriter.WriteAttributeString("showAutomaticAedatSplitter", showAutomaticAedatSplitter.ToString(ci));
+            textWriter.WriteAttributeString("showStereoToMono", showStereoToMono.ToString(ci));
+            textWriter.WriteAttributeString("showMonoToStereo", showMonoToStereo.ToString(ci));
             textWriter.WriteEndElement();
         }
 
@@ -348,6 +356,8 @@ namespace NAVIS
             showDiff = Convert.ToBoolean(xe.Attribute("showDiff").Value);
             showManualAedatSplitter = Convert.ToBoolean(xe.Attribute("showManualAedatSplitter").Value);
             showAutomaticAedatSplitter = Convert.ToBoolean(xe.Attribute("showAutomaticAedatSplitter").Value);
+            showStereoToMono = Convert.ToBoolean(xe.Attribute("showStereoToMono").Value);
+            showMonoToStereo = Convert.ToBoolean(xe.Attribute("showMonoToStereo").Value);
         }
     }
 
