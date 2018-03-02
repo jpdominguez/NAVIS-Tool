@@ -364,9 +364,9 @@ namespace NAVIS
                     root = selectFileDialog.FileName;
                     this.Cursor = Cursors.Wait;
                     fileName = root.Split('\\')[root.Split('\\').Length - 1];
-                    
 
-                    
+
+
 
                     if (settings.MainS.eventSize == 16)
                     {
@@ -1082,9 +1082,8 @@ namespace NAVIS
 
             sfd.Title = "Select path to save the aedat file";
             sfd.FileName = MainWindow.fileName.Split('.')[0] + "_stereo";
-            sfd.ShowDialog();
 
-            if (sfd.FileName != "")
+            if (selectFileDialog.ShowDialog() == true && sfd.FileName != "")
             {
                 if (settings.MainS.eventSize == 16)
                 {
@@ -1094,6 +1093,9 @@ namespace NAVIS
                 {
                     aedatObject32.saveMonoToStereo(sfd.FileName, aedatObject32.getValues(), 1000000);
                 }
+
+                InfoWindow iw = new InfoWindow("Success", "The aedat file was saved correctly");
+                iw.ShowDialog();
             }
         }
 
