@@ -4,12 +4,12 @@
     <Main dotSize="2" leftColor="BLUE" rightColor="ORANGE" showChart="True" eventSize="32" dotsToPaint="10" channels="64" mono_stereo="STEREO" screenSize="s1366x768" />
   </Main>
   <Tools>
-    <Tools imgSize="LARGE" integrationPeriod="200000" noiseThreshold="3" noiseTolerance="20" />
+    <Tools imgSize="LARGE" integrationPeriod="100000" noiseThreshold="3" noiseTolerance="20" />
   </Tools>
   <PDF>
     <PDF showDate="True" showCochleogram="True" showHistogram="True" showSonogram="True" showDiff="True" showAverage="True" />
   </PDF>
   <Toolbar>
-    <Toolbar showLoadAedat="True" showSettings="True" showAbout="True" showGeneratePDF="True" showGenerateCSV="True" showSonogram="True" showHistogram="True" showAverage="True" showDiff="True" showManualAedatSplitter="True" showAutomaticAedatSplitter="True" />
+    <Toolbar showLoadAedat="True" showSettings="True" showAbout="True" showGeneratePDF="True" showGenerateCSV="True" showSonogram="True" showHistogram="True" showAverage="True" showDiff="True" showManualAedatSplitter="True" showAutomaticAedatSplitter="True" showStereoToMono="True" showMonoToStereo="True" />
   </Toolbar>
 </Settings>
