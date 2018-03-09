@@ -395,6 +395,19 @@ namespace NAVIS
                     {
                         Btn_difference.IsEnabled = false;
                         Btn_difference.Opacity = 0.6;
+                        Btn_StereoToMono.IsEnabled = false;
+                        Btn_StereoToMono.Opacity = 0.6;
+                        Btn_MonoToStereo.IsEnabled = true;
+                        Btn_MonoToStereo.Opacity = 1;
+                    }
+                    else
+                    {
+                        Btn_difference.IsEnabled = true;
+                        Btn_difference.Opacity = 1;
+                        Btn_StereoToMono.IsEnabled = true;
+                        Btn_StereoToMono.Opacity = 1;
+                        Btn_MonoToStereo.IsEnabled = false;
+                        Btn_MonoToStereo.Opacity = 0.6;
                     }
                     menuItem_Reload.IsEnabled = true; menuItem_Report.IsEnabled = true; menuItem_Tools.IsEnabled = true;
 
@@ -492,11 +505,19 @@ namespace NAVIS
                     {
                         Btn_difference.IsEnabled = false;
                         Btn_difference.Opacity = 0.6;
+                        Btn_StereoToMono.IsEnabled = false;
+                        Btn_StereoToMono.Opacity = 0.6;
+                        Btn_MonoToStereo.IsEnabled = true;
+                        Btn_MonoToStereo.Opacity = 1;
                     }
                     else
                     {
                         Btn_difference.IsEnabled = true;
                         Btn_difference.Opacity = 1;
+                        Btn_StereoToMono.IsEnabled = true;
+                        Btn_StereoToMono.Opacity = 1;
+                        Btn_MonoToStereo.IsEnabled = false;
+                        Btn_MonoToStereo.Opacity = 0.6;
                     }
                     InfoWindow iw = new InfoWindow("Success!", "The Aedat file was loaded correctly");
                     iw.ShowDialog();
@@ -1077,25 +1098,29 @@ namespace NAVIS
         /// </summary>
         private void Btn_MonoToStereo_Click(object sender, RoutedEventArgs e)
         {
+            MonoToStereoConfig mtsc = new MonoToStereoConfig();
+            
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Aedat file (.aedat)|*.aedat";
 
             sfd.Title = "Select path to save the aedat file";
             sfd.FileName = MainWindow.fileName.Split('.')[0] + "_stereo";
 
-            if (selectFileDialog.ShowDialog() == true && sfd.FileName != "")
+            if (sfd.ShowDialog() == true && sfd.FileName != "")
             {
-                if (settings.MainS.eventSize == 16)
+                if (mtsc.ShowDialog() == true)
                 {
-                    aedatObject16.saveStereoToMono(sfd.FileName, aedatObject16.getValues());
+                    if (settings.MainS.eventSize == 16)
+                    {
+                        aedatObject16.saveMonoToStereo(sfd.FileName, aedatObject16.getValues(), mtsc.delayValue);
+                    }
+                    else if (settings.MainS.eventSize == 32)
+                    {
+                        aedatObject32.saveMonoToStereo(sfd.FileName, aedatObject32.getValues(), mtsc.delayValue);
+                    }
+                    InfoWindow iw = new InfoWindow("Success", "The aedat file was saved correctly");
+                    iw.ShowDialog();
                 }
-                else if (settings.MainS.eventSize == 32)
-                {
-                    aedatObject32.saveMonoToStereo(sfd.FileName, aedatObject32.getValues(), 1000000);
-                }
-
-                InfoWindow iw = new InfoWindow("Success", "The aedat file was saved correctly");
-                iw.ShowDialog();
             }
         }
 

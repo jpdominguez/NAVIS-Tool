@@ -653,5 +653,77 @@ namespace NAVIS
             }
             bWriter.Close();
         }
+
+
+
+        public void saveMonoToStereo(String fileName, List<aedatEvent16> aedat, int delay)
+        {
+            bWriter = new BinaryWriter(File.Create(fileName));
+            UInt16 evt;
+            UInt16 timestamp;
+            int offset = 0;
+
+            Random r = new Random();
+
+            int delayL = 0, delayR = 0;
+
+            switch (MainWindow.cochleaInfo)
+            {
+                case EnumCochleaInfo.MONO32:
+                    offset = 64;
+                    break;
+                case EnumCochleaInfo.MONO64:
+                    offset = 128;
+                    break;
+                case EnumCochleaInfo.MONO128:
+                    offset = 256;
+                    break;
+                case EnumCochleaInfo.MONO256:
+                    offset = 512;
+                    break;
+            }
+
+            if (delay < 0)
+            {
+                delayL = Math.Abs(delay);
+            }
+            else
+            {
+                delayR = delay;
+            }
+
+            for (int i = 0; i < aedat.Count; i++)
+            {
+                if (r.Next(0, 2) == 0)
+                {
+                    evt = (UInt16)((BitConverter.GetBytes(aedat[i].addr)[0] << 8) | BitConverter.GetBytes(aedat[i].addr)[1]);
+                    timestamp = (UInt16)((BitConverter.GetBytes(aedat[i].timestamp + delayL)[0] << 24) | BitConverter.GetBytes(aedat[i].timestamp + delayL)[1] << 16 | BitConverter.GetBytes(aedat[i].timestamp + delayL)[2] << 8 | BitConverter.GetBytes(aedat[i].timestamp + delayL)[3]);
+
+                    bWriter.Write(evt);
+                    bWriter.Write(timestamp);
+
+                    evt = (UInt16)((BitConverter.GetBytes(aedat[i].addr + offset)[0] << 8) | BitConverter.GetBytes(aedat[i].addr + offset)[1]);
+                    timestamp = (UInt16)((BitConverter.GetBytes(aedat[i].timestamp + delayR)[0] << 24) | BitConverter.GetBytes(aedat[i].timestamp + delayR)[1] << 16 | BitConverter.GetBytes(aedat[i].timestamp + delayR)[2] << 8 | BitConverter.GetBytes(aedat[i].timestamp + delayR)[3]);
+
+                    bWriter.Write(evt);
+                    bWriter.Write(timestamp);
+                }
+                else
+                {
+                    evt = (UInt16)((BitConverter.GetBytes(aedat[i].addr + offset)[0] << 8) | BitConverter.GetBytes(aedat[i].addr + offset)[1]);
+                    timestamp = (UInt16)((BitConverter.GetBytes(aedat[i].timestamp + delayR)[0] << 24) | BitConverter.GetBytes(aedat[i].timestamp + delayR)[1] << 16 | BitConverter.GetBytes(aedat[i].timestamp + delayR)[2] << 8 | BitConverter.GetBytes(aedat[i].timestamp + delayR)[3]);
+
+                    bWriter.Write(evt);
+                    bWriter.Write(timestamp);
+
+                    evt = (UInt16)((BitConverter.GetBytes(aedat[i].addr)[0] << 8) | BitConverter.GetBytes(aedat[i].addr)[1]);
+                    timestamp = (UInt16)((BitConverter.GetBytes(aedat[i].timestamp + delayL)[0] << 24) | BitConverter.GetBytes(aedat[i].timestamp + delayL)[1] << 16 | BitConverter.GetBytes(aedat[i].timestamp + delayL)[2] << 8 | BitConverter.GetBytes(aedat[i].timestamp + delayL)[3]);
+
+                    bWriter.Write(evt);
+                    bWriter.Write(timestamp);
+                }
+            }
+            bWriter.Close();
+        }
     }
 }

@@ -126,6 +126,9 @@
     <Compile Include="Screens\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\MonoToStereoConfig.xaml.cs">
+      <DependentUpon>MonoToStereoConfig.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screens\Sonogram.xaml.cs">
       <DependentUpon>Sonogram.xaml</DependentUpon>
     </Compile>
@@ -187,6 +190,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\MonoToStereoConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
