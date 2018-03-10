@@ -40,7 +40,7 @@
                 </DockPanel>
                 <DockPanel LastChildFill="False" Margin="0 0 0 10">
                     <TextBox x:Name="TB_IntegrationPeriod" HorizontalContentAlignment="Center" Width="100" PreviewTextInput="TB_IntegrationPeriod_PreviewTextInput" DataObject.Pasting="TextBoxPasting"></TextBox>
-                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="Integration Period (us)"/>
+                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="Integration Period (μs)"/>
                 </DockPanel>
                 <DockPanel LastChildFill="False" Margin="0 0 0 10">
                     <!--<Slider x:Name="SB_NoiseThreshold" Width="250" Height="20" Orientation="Horizontal" Background="White" IsSnapToTickEnabled="True"

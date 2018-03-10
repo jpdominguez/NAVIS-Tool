@@ -1099,29 +1099,21 @@ namespace NAVIS
         private void Btn_MonoToStereo_Click(object sender, RoutedEventArgs e)
         {
             MonoToStereoConfig mtsc = new MonoToStereoConfig();
-            
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Aedat file (.aedat)|*.aedat";
 
-            sfd.Title = "Select path to save the aedat file";
-            sfd.FileName = MainWindow.fileName.Split('.')[0] + "_stereo";
-
-            if (sfd.ShowDialog() == true && sfd.FileName != "")
+            if (mtsc.ShowDialog() == true)
             {
-                if (mtsc.ShowDialog() == true)
+                if (settings.MainS.eventSize == 16)
                 {
-                    if (settings.MainS.eventSize == 16)
-                    {
-                        aedatObject16.saveMonoToStereo(sfd.FileName, aedatObject16.getValues(), mtsc.delayValue);
-                    }
-                    else if (settings.MainS.eventSize == 32)
-                    {
-                        aedatObject32.saveMonoToStereo(sfd.FileName, aedatObject32.getValues(), mtsc.delayValue);
-                    }
-                    InfoWindow iw = new InfoWindow("Success", "The aedat file was saved correctly");
-                    iw.ShowDialog();
+                    aedatObject16.saveMonoToStereo(mtsc.filePath, aedatObject16.getValues(), mtsc.delayValue);
                 }
+                else if (settings.MainS.eventSize == 32)
+                {
+                    aedatObject32.saveMonoToStereo(mtsc.filePath, aedatObject32.getValues(), mtsc.delayValue);
+                }
+                InfoWindow iw = new InfoWindow("Success", "The aedat file was saved correctly");
+                iw.ShowDialog();
             }
+
         }
 
         private void Btn_About_Click(object sender, RoutedEventArgs e)
