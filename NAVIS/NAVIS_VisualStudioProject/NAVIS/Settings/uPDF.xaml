@@ -31,22 +31,40 @@
              mc:Ignorable="d" 
              d:DesignHeight="340" d:DesignWidth="430">
     <StackPanel Background="#FFDADADA">
-        <DockPanel Margin="24,20,24,0" VerticalAlignment="Center" Height="Auto">
+        <DockPanel Margin="40,20,40,0" VerticalAlignment="Center" Height="Auto">
             <StackPanel VerticalAlignment="Center" Margin="0,6,20,6" Width="Auto">
-                <CheckBox  Margin="0,3,0,10" x:Name="chb_showDate" x:FieldModifier="public" Content="Date" HorizontalAlignment="Left"  IsChecked="True"/>
-                <CheckBox Margin="0,3,0,10" x:Name="chb_showCochleogram" x:FieldModifier="public" Content="Cochleogram" HorizontalAlignment="Left"  IsChecked="True"/>
-                <CheckBox Margin="0,3,0,10" x:Name="chb_showHistogram" x:FieldModifier="public" Content="Histogram" HorizontalAlignment="Left"  IsChecked="True"/>
+                <DockPanel VerticalAlignment="Center" Margin="0,3,0,10" >
+                    <CheckBox Style="{DynamicResource GraySwitchStyleSmall}" x:Name="chb_showDate" x:FieldModifier="public" HorizontalAlignment="Left"  IsChecked="True"/>
+                    <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Date</TextBlock>
+                </DockPanel>
+                <DockPanel VerticalAlignment="Center" Margin="0,10,0,10" >
+                    <CheckBox Style="{DynamicResource GraySwitchStyleSmall}" x:Name="chb_showCochleogram" x:FieldModifier="public" HorizontalAlignment="Left"  IsChecked="True"/>
+                    <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Cochleogram</TextBlock>
+                </DockPanel>
+                <DockPanel VerticalAlignment="Center" Margin="0,10,0,10" >
+                    <CheckBox Style="{DynamicResource GraySwitchStyleSmall}" x:Name="chb_showHistogram" x:FieldModifier="public" HorizontalAlignment="Left"  IsChecked="True"/>
+                    <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Histogram</TextBlock>
+                </DockPanel>
             </StackPanel>
 
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0,0,0" Width="130">
-                <CheckBox Margin="0,3,0,10" x:Name="chb_showSonogram" x:FieldModifier="public" Content="Sonogram" HorizontalAlignment="Left"  IsChecked="True"/>
-                <CheckBox Margin="0,3,0,10" x:Name="chb_showAverage" x:FieldModifier="public" Content="Average activity" HorizontalAlignment="Left"  IsChecked="True"/>
-                <CheckBox Margin="0,3,0,10" x:Name="chb_showDiff" x:FieldModifier="public" Content="Disparity" HorizontalAlignment="Left"  IsChecked="True"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0,0,0" >
+                <DockPanel VerticalAlignment="Center" Margin="0,3,0,10" >
+                    <CheckBox Style="{DynamicResource GraySwitchStyleSmall}" x:Name="chb_showSonogram" x:FieldModifier="public" HorizontalAlignment="Left"  IsChecked="True"/>
+                    <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Sonogram</TextBlock>
+                </DockPanel>
+                <DockPanel VerticalAlignment="Center" Margin="0,10,0,10" >
+                    <CheckBox Style="{DynamicResource GraySwitchStyleSmall}" x:Name="chb_showAverage" x:FieldModifier="public" HorizontalAlignment="Left"  IsChecked="True"/>
+                    <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Average activity</TextBlock>
+                </DockPanel>
+                <DockPanel VerticalAlignment="Center" Margin="0,10,0,10" >
+                    <CheckBox Style="{DynamicResource GraySwitchStyleSmall}" x:Name="chb_showDiff" x:FieldModifier="public" HorizontalAlignment="Left"  IsChecked="True"/>
+                    <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Disparity</TextBlock>
+                </DockPanel>
             </StackPanel>
 
         </DockPanel>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20 196 20 0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20 160 20 0">
             <Button Margin="0 0 10 0" Click="Btn_SelectAll_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">

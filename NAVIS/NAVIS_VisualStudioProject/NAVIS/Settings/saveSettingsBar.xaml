@@ -65,7 +65,7 @@
 
         <Button x:Name="_btSave" DockPanel.Dock="Right"  Style="{DynamicResource Button-Transp}" Content=""  FontSize="29.333" 
                     Height="37" VerticalAlignment="Center" Width="37"  BorderBrush="{x:Null}" HorizontalAlignment="Right"
-                HorizontalContentAlignment="Stretch" Margin="5,2,10,2" ToolTip="Save as default settings" Click="_btSave_Click">
+                HorizontalContentAlignment="Stretch" Margin="0,2,5,2" ToolTip="Save as default settings" Click="_btSave_Click">
             <Button.Template>
                 <ControlTemplate>
                     <Grid HorizontalAlignment="Right">
@@ -85,7 +85,7 @@
 
         <Button x:Name="_btSaveAs" DockPanel.Dock="Right"  Style="{DynamicResource Button-Transp}" Content=""  FontSize="29.333" 
                     Height="37" VerticalAlignment="Center" Width="37"  BorderBrush="{x:Null}" HorizontalAlignment="Right"
-                HorizontalContentAlignment="Stretch" Margin="5,2,10,2" ToolTip="Save settings to file" Click="_btSaveAs_Click">
+                HorizontalContentAlignment="Stretch" Margin="0,2,10,2" ToolTip="Save settings to file" Click="_btSaveAs_Click">
             <Button.Template>
                 <ControlTemplate>
                     <Grid HorizontalAlignment="Right">
@@ -105,7 +105,7 @@
 
         <Button x:Name="_btRestore" DockPanel.Dock="Right"  Style="{DynamicResource Button-Transp}" Content=""  FontSize="29.333" 
                     Height="37" VerticalAlignment="Center" Width="37"  BorderBrush="{x:Null}" HorizontalAlignment="Right"
-                HorizontalContentAlignment="Stretch" Margin="5,2,10,2" ToolTip="Restore default settings" Click="_btRestore_Click">
+                HorizontalContentAlignment="Stretch" Margin="0,2,10,2" ToolTip="Restore default settings" Click="_btRestore_Click">
             <Button.Template>
                 <ControlTemplate>
                     <Grid HorizontalAlignment="Right">
@@ -125,7 +125,7 @@
 
         <Button x:Name="_btLoad" DockPanel.Dock="Right"  Style="{DynamicResource Button-Transp}" Content=""  FontSize="29.333" 
                     Height="37" VerticalAlignment="Center" Width="37"  BorderBrush="{x:Null}" HorizontalAlignment="Right"
-                HorizontalContentAlignment="Stretch" Margin="5,2,10,2" ToolTip="Load settings from file" Click="_btLoad_Click">
+                HorizontalContentAlignment="Stretch" Margin="0,2,10,2" ToolTip="Load settings from file" Click="_btLoad_Click">
             <Button.Template>
                 <ControlTemplate>
                     <Grid HorizontalAlignment="Right">

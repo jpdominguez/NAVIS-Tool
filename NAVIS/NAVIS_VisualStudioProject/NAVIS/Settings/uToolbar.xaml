@@ -31,33 +31,72 @@
              mc:Ignorable="d" 
              d:DesignHeight="360" d:DesignWidth="430">
     <StackPanel Background="#FFDADADA">
-        <WrapPanel Margin="24,20,24,0" VerticalAlignment="Center" Height="290" Orientation="Vertical">
+        <WrapPanel Margin="20,20,20,0" VerticalAlignment="Center" Height="290" Orientation="Vertical">
 
             <GroupBox VerticalAlignment="Top" Margin="0,6,20,6" Width="Auto" Header="Main" BorderBrush="LightGray">
-                <StackPanel VerticalAlignment="Center" Margin="0,6,20,6" Width="Auto">
-                    <CheckBox  Margin="5,3,0,10" x:Name="chb_LoadAedat" x:FieldModifier="public" Content="Load Aedat" HorizontalAlignment="Left"  IsChecked="True"/>
-                    <CheckBox Margin="5,3,0,10" x:Name="chb_Settings" x:FieldModifier="public" Content="Settings" HorizontalAlignment="Left"  IsChecked="True"/>
-                    <CheckBox Margin="5,3,0,10" x:Name="chb_About" x:FieldModifier="public" Content="About" HorizontalAlignment="Left"  IsChecked="True"/>
+                <StackPanel VerticalAlignment="Center" Margin="0,6,10,6" Width="Auto">
+                    <DockPanel Margin="5,3,0,0">
+                        <CheckBox x:Name="chb_LoadAedat" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left" IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Load Aedat</TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="5,5,0,0">
+                        <CheckBox x:Name="chb_Settings" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Settings</TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="5,5,0,0">
+                        <CheckBox x:Name="chb_About" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">About</TextBlock>
+                    </DockPanel>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox VerticalAlignment="Top" Margin="0,0,20,0" Width="Auto" Header="Report" BorderBrush="LightGray">
-                <StackPanel VerticalAlignment="Center" Margin="0,6,20,6" Width="Auto">
-                    <CheckBox  Margin="5,3,0,10" x:Name="chb_GeneratePDF" x:FieldModifier="public" Content="Generate PDF" HorizontalAlignment="Left"  IsChecked="True"/>
-                    <CheckBox Margin="5,3,0,10" x:Name="chb_GenerateCSV" x:FieldModifier="public" Content="Generate CSV" HorizontalAlignment="Left"  IsChecked="True"/>
+            <GroupBox VerticalAlignment="Top" Margin="0,10,20,0" Width="Auto" Header="Report" BorderBrush="LightGray">
+                <StackPanel VerticalAlignment="Center" Margin="0,6,10,6" Width="Auto">
+                    <DockPanel Margin="5,3,0,0">
+                        <CheckBox  x:Name="chb_GeneratePDF" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Generate PDF</TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="5,5,0,0">
+                        <CheckBox x:Name="chb_GenerateCSV" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Generate CSV</TextBlock>
+                    </DockPanel>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox VerticalAlignment="Top" Margin="10,6,0,6" Header="Tools" BorderBrush="LightGray">
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,6,0,6" Width="210">
-                    <CheckBox Margin="5,3,0,10" x:Name="chb_Sonogram" x:FieldModifier="public" Content="Sonogram" HorizontalAlignment="Left"  IsChecked="True"/>
-                    <CheckBox Margin="5,3,0,10" x:Name="chb_Histogram" x:FieldModifier="public" Content="Histogram" HorizontalAlignment="Left"  IsChecked="True"/>
-                    <CheckBox Margin="5,3,0,10" x:Name="chb_Average" x:FieldModifier="public" Content="Average activity" HorizontalAlignment="Left"  IsChecked="True"/>
-                    <CheckBox Margin="5,3,0,10" x:Name="chb_Diff" x:FieldModifier="public" Content="Disparity between cochleae" HorizontalAlignment="Left"  IsChecked="True"/>
-                    <CheckBox Margin="5,3,0,10" x:Name="chb_ManualAedatSplitter" x:FieldModifier="public" Content="Manual Aedat Splitter" HorizontalAlignment="Left"  IsChecked="True"/>
-                    <CheckBox Margin="5,3,0,10" x:Name="chb_AutomaticAedatSplitter" x:FieldModifier="public" Content="Automatic Aedat Splitter" HorizontalAlignment="Left"  IsChecked="True"/>
-                    <CheckBox Margin="5,3,0,10" x:Name="chb_StereoToMono" x:FieldModifier="public" Content="Stereo to mono" HorizontalAlignment="Left"  IsChecked="True"/>
-                    <CheckBox Margin="5,3,0,10" x:Name="chb_MonoToStereo" x:FieldModifier="public" Content="Mono to stereo" HorizontalAlignment="Left"  IsChecked="True"/>
+            <GroupBox VerticalAlignment="Top" Margin="0,6,0,6" Header="Tools" BorderBrush="LightGray">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,6,0,6" Width="220">
+                    <DockPanel Margin="5,0,0,5">
+                        <CheckBox x:Name="chb_Sonogram" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Sonogram</TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="5,0,0,5">
+                        <CheckBox x:Name="chb_Histogram" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Histogram</TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="5,0,0,5">
+                        <CheckBox x:Name="chb_Average" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Average activity</TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="5,0,0,5">
+                        <CheckBox x:Name="chb_Diff" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Disparity</TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="5,0,0,5">
+                        <CheckBox x:Name="chb_ManualAedatSplitter" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Manual Aedat Splitter</TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="5,0,0,5">
+                        <CheckBox x:Name="chb_AutomaticAedatSplitter" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Automatic Aedat Splitter</TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="5,0,0,5">
+                        <CheckBox x:Name="chb_StereoToMono" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Stereo to mono</TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="5,0,0,5">
+                        <CheckBox x:Name="chb_MonoToStereo" x:FieldModifier="public" Style="{DynamicResource GraySwitchStyleSmall}" HorizontalAlignment="Left"  IsChecked="True"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Mono to stereo</TextBlock>
+                    </DockPanel>
                 </StackPanel>
             </GroupBox>
 

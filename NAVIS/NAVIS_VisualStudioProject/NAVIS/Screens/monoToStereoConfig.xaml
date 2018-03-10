@@ -17,7 +17,7 @@
         </TextBlock>
 
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Top">
-            <CheckBox x:Name="cb_DelayBool" Style="{DynamicResource OrangeSwitchStyle}" Width="100" Height="50" IsChecked="False" HorizontalAlignment="Left" Margin="20 0 0 0" Checked="cb_DelayBool_Checked" Unchecked="cb_DelayBool_Unchecked"></CheckBox>
+            <CheckBox x:Name="cb_DelayBool" Style="{DynamicResource GraySwitchStyleBig}" Width="100" Height="50" IsChecked="False" HorizontalAlignment="Left" Margin="20 0 0 0" Checked="cb_DelayBool_Checked" Unchecked="cb_DelayBool_Unchecked"></CheckBox>
             <TextBox x:Name="tb_DelayValue" Width="120" Height="30" Margin="10 0 5 0" Visibility="Collapsed" VerticalAlignment="Center" VerticalContentAlignment="Center" Text="0" PreviewTextInput="tb_DelayValue_PreviewTextInput" CommandManager.PreviewCanExecute="HandleCanExecute"></TextBox>
             <TextBlock x:Name="tb_muSymbol" Width="20" Height="30" Margin="0 0 10 0" Visibility="Collapsed" VerticalAlignment="Center" >μs</TextBlock>
             <Button x:Name="btn_Confirm"
