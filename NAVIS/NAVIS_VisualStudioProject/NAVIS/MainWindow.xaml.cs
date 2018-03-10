@@ -95,7 +95,7 @@ namespace NAVIS
 
 
             // List of buttons which will be disabled untill the aedat file is loaded
-            buttonList = new List<Button> { Btn_LoadAedat, Btn_Settings, Btn_About, Btn_PDF, Btn_generateCSV, Btn_histogram, Btn_sonogram, Btn_average, Btn_difference, Btn_AedatSplitterManual, Btn_AedatSplitterAuto, Btn_MonoToStereo, Btn_StereoToMono };
+            buttonList = new List<Button> { Btn_LoadAedat, Btn_Settings, Btn_About, Btn_PDF, Btn_generateCSV, Btn_histogram, Btn_sonogram, Btn_average, Btn_difference, Btn_AedatSplitterManual, Btn_AedatSplitterAuto, Btn_StereoToMono, Btn_MonoToStereo};
             updateButtonList();
             menuItem_Reload.IsEnabled = false; menuItem_Report.IsEnabled = false; menuItem_Tools.IsEnabled = false;
             for (int i = 0; i < buttonList.Count; i++)
