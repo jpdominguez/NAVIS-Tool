@@ -77,11 +77,16 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <CheckBox x:Name="CB_normalized" VerticalAlignment="Center" Checked="CB_normalized_CheckedChanged" Unchecked="CB_normalized_CheckedChanged">
-                <TextBlock>
-                    Normalized
-                </TextBlock>
-            </CheckBox>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Style="{DynamicResource GraySwitchStyleSmall}" Width="50" Height="25" x:Name="CB_normalized" VerticalAlignment="Center" Checked="CB_normalized_CheckedChanged" Unchecked="CB_normalized_CheckedChanged"/>
+                <Label VerticalAlignment="Center">Normalized</Label>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+                <CheckBox Style="{DynamicResource GraySwitchStyleSmall}" Width="50" Height="25" x:Name="CB_line_chart" VerticalAlignment="Center" Checked="CB_line_chart_CheckedChanged" Unchecked="CB_line_chart_CheckedChanged" IsChecked="False"/>
+                <Label VerticalAlignment="Center">Line chart</Label>
+            </StackPanel>
+
         </DockPanel>
         <WindowsFormsHost  Margin="3,0,3,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Top" Background="White">
             <winformchart:Chart x:Name="chart_Histogram" Dock="Fill" >

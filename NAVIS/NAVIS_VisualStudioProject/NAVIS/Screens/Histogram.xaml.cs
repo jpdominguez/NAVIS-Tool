@@ -57,9 +57,9 @@ namespace NAVIS
         {
             InitializeComponent();
 
-            #region chart settings
+            #region chart settings            
             chart_Histogram.ChartAreas["ChartArea"].AxisX.Minimum = 0;
-            chart_Histogram.ChartAreas["ChartArea"].AxisX.Interval = 16;
+            chart_Histogram.ChartAreas["ChartArea"].AxisX.Interval = 4;
             chart_Histogram.ChartAreas["ChartArea"].AxisY.Interval = 1000;
             #endregion
 
@@ -192,6 +192,37 @@ namespace NAVIS
             }
             chart_Histogram.Series.ResumeUpdates();
         }
+
+
+
+        /// <summary>
+        /// Line_chart checkbox checkedChange event. Swaps between showing the histogram as a barr chart or as a line chart.
+        /// </summary>
+        private void CB_line_chart_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CB_line_chart.IsChecked == true)
+            {
+                chart_Histogram.Series["Events"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            }
+            else
+            {
+                chart_Histogram.Series["Events"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                /*
+                #region chart settings
+                yInterval = (int)((yInterval / resultados.Length) / 5);
+                chart_Histogram.ChartAreas["ChartArea"].AxisY.Interval = yInterval;
+
+                chart_Histogram.ChartAreas["ChartArea"].Axes[0].Title = "Address";
+                chart_Histogram.ChartAreas["ChartArea"].Axes[1].Title = "Number of events";
+
+                chart_Histogram.ChartAreas["ChartArea"].Axes[0].TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 11);
+                chart_Histogram.ChartAreas["ChartArea"].Axes[1].TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 11);
+                #endregion
+                */
+            }
+        }
+
+
 
         /// <summary>
         /// Save image click event. Saves an image with the information shown in the histogram chart.
