@@ -68,6 +68,10 @@
                         <MenuItem x:Name="menuItem_Reload"
                                   Click="Btn_Reload_Click"
                                   Header="Reload" />
+                        <MenuItem x:Name="menuItem_SaveCochleogram"
+                                  Click="Btn_SaveCochleogram_Click"
+                                  Header="Save cochleogram" 
+                                  IsEnabled="False"/>
                         <Separator />
                         <MenuItem Click="Btn_Settings_Click" Header="Settings" />
                         <MenuItem Click="Btn_About_Click" Header="About" />

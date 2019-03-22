@@ -157,6 +157,7 @@ namespace NAVIS
                 clearCharts();
                 displayCochleogram();
                 chart_Cochleogram.Visible = true;
+                menuItem_SaveCochleogram.IsEnabled = true;
             }
 
             text_ManualAedatSplitterInit.Text = "0";
@@ -855,6 +856,23 @@ namespace NAVIS
             reloadCochcleogram();
             this.Cursor = Cursors.Arrow;
         }
+
+        private void Btn_SaveCochleogram_Click(object sender, RoutedEventArgs e)
+        {
+            this.Cursor = Cursors.Wait;
+            SaveFileDialog saveImageDialog = new SaveFileDialog();
+            saveImageDialog.Title = "Select a name and a path for the .png file";
+            saveImageDialog.Filter = "png files|*.png";
+            if (saveImageDialog.ShowDialog() == true)
+            {
+                chart_Cochleogram.SaveImage(saveImageDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+
+                InfoWindow iw = new InfoWindow("Success!", "Image saved successfuly");
+                iw.ShowDialog();
+            }
+            this.Cursor = Cursors.Arrow;
+        }
+
 
         /// <summary>
         /// Reload click event. Initialize cochlea settings and reloads the cochleogram chart
